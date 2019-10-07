@@ -50,7 +50,7 @@ add_action( 'init', 'add_editor_styles' );
 // Custom template tags for this theme.
 require get_template_directory() . '/inc/template-tags.php';
 
-//Load Jetpack compatibility file.
+// Load Jetpack compatibility file.
 if ( defined( 'JETPACK__VERSION' ) ) {
     require get_template_directory() . '/inc/jetpack.php';
 }
@@ -60,7 +60,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 \*------------------------------------*/
 
 
-// Load external Files
+// Load Style and Scripts
 if(!is_admin()) {
     function enqueue_external_files(){
         wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '4.1.3' , false);
@@ -86,7 +86,7 @@ function header_scripts() {
 }
 add_action('init', 'header_scripts');
    
-// Load styles
+// Load Styles
 function acftheme_styles() {
     wp_register_style('bootstrap-component-blox', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('bootstrap-component-blox');
@@ -106,7 +106,7 @@ require_once( get_template_directory() .'/better-comments.php' );
 function main_nav() {
     wp_nav_menu(
     array(
-        'theme_location'  => 'main-menu',
+        'theme_location'  => '',
         'menu'            => '',
         'container'       => 'false',
         'container_class' => 'menu-{menu slug}-container',
@@ -125,6 +125,13 @@ function main_nav() {
         )
     );
 }
+
+// Add Dropdown Class to Sub-menu Class
+function change_submenu_class($menu) {  
+  $menu = preg_replace('/ class="sub-menu"/','/ class="sub-menu dropdown-menu" /',$menu);  
+  return $menu;  
+}  
+add_filter('wp_nav_menu','change_submenu_class');  
 
 // Adds 'nav-link' class to nav anchor
 function my_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
