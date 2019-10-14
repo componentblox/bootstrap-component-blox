@@ -9,7 +9,6 @@
 
 ?>
 
-
 <hr>
 <div class="comments">
 	<?php if (post_password_required()) : ?>
