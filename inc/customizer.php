@@ -1,6 +1,10 @@
 <?php 
+/**
+ * Add Logo Setting to Customizer
+ *
+ * @package bootstrap-component-blox
+ */
 
-// Add Logo Setting to Customizer
 add_theme_support( 'custom-logo', array(
 	'height'      => 100,
 	'width'       => 400,
@@ -10,7 +14,7 @@ add_theme_support( 'custom-logo', array(
 	'crop'        => false,
 ));
 
-// Add Theme Support
+// Add Theme Support.
 add_theme_support( 'custom-header', array(
     'default-image'          => '',
 	'width'                  => 0,
@@ -26,14 +30,15 @@ add_theme_support( 'custom-header', array(
 	'admin-preview-callback' => '',
 ) );
 
-// Add Body Settings
+/**
+ * Add Body Settings.
+ */
 function add_custom_customizer_settings( $wp_customize ) {
     
-	// ================= //
-    //       Panels      //
-    // ================= //
+	// Panels.    
+
     
-	// Navbar
+	// Navbar.
 	$wp_customize->add_panel( 'navbar_panel', array(
 		'capability' => 'edit_theme_options',
 		'theme_supports' => '',
@@ -43,7 +48,7 @@ function add_custom_customizer_settings( $wp_customize ) {
 	));
         
 	
-	// Footer
+	// Footer.
 	$wp_customize->add_panel( 'footer_panel', array(
 		'capability' => 'edit_theme_options',
 		'theme_supports' => '',
@@ -52,11 +57,9 @@ function add_custom_customizer_settings( $wp_customize ) {
 	));
 	
 
-    // ================= //
-    //     Sections      //
-    // ================= //
-     
-	// Navbar Classes
+    // Sections.
+
+	// Navbar Classes.
 	$wp_customize->add_section( 'navbar_classes_section', array(
 		'priority' => 0,
 		'capability' => 'edit_theme_options',
@@ -65,7 +68,7 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'panel' => 'navbar_panel',
 	));
 	
-	// Navbar Inner Classes
+	// Navbar Inner Classes.
 	$wp_customize->add_section( 'navbar_inner_classes_section', array(
 		'priority' => 0,
 		'capability' => 'edit_theme_options',
@@ -74,13 +77,13 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'panel' => 'navbar_panel',
 	));
 	
-	// Body Classes
+	// Body Classes.
 	$wp_customize->add_section( 'body' , array(
 		'title'      => __( 'Body', 'bootstrap-component-blox' ),
 		'priority'   => 130,
 	));
     
-	// Footer Classes
+	// Footer Classes.
 	$wp_customize->add_section( 'footer_class_section', array(
 		'priority' => 20,
 		'capability' => 'edit_theme_options',
@@ -89,7 +92,7 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'panel' => 'footer_panel',
 	));
 	
-	// Footer Credit
+	// Footer Credit.
 	$wp_customize->add_section( 'footer_credit_section', array(
 		'priority' => 0,
 		'capability' => 'edit_theme_options',
@@ -99,76 +102,72 @@ function add_custom_customizer_settings( $wp_customize ) {
 	));
 
 	
-	// ================= //
-    //      Settings     //
-    // ================= //
+	// Settings.    
     
-	// Navbar Classes
+	// Navbar Classes.
 	$wp_customize->add_setting( 'navbar_classes', array(
         'default' => '',
         'transport' => 'postMessage',
 		'sanitize_callback' => 'esc_attr',
     ));
 	
-	// Navbar Inner Classes
+	// Navbar Inner Classes.
 	$wp_customize->add_setting( 'navbar_inner_classes', array(
         'default' => '',
         'transport' => 'postMessage',
 		'sanitize_callback' => 'esc_attr',
     ));
 	
-	// Body Classes
+	// Body Classes.
 	$wp_customize->add_setting('body_container_classes', array(
 		'default' => '',
 		'sanitize_callback' => 'esc_attr',
 	));
 	
-	// Footer Classes	
+	// Footer Classes.	
 	$wp_customize->add_setting( 'footer_classes', array(
         'default' => '',
         'transport' => 'postMessage',
 		'sanitize_callback' => 'esc_attr',
     ));
 	
-	// Footer Credit		 
+	// Footer Credit.		 
     $wp_customize->add_setting( 'footer_credit', array(
         'default' => '',
         'transport' => 'postMessage',
 		'sanitize_callback' => 'wp_kses_post',
     ));
  
-    // ================= //
-    //      Controls     //
-    // ================= //
+    // Controls.     
  
-    // Navbar Classes
+    // Navbar Classes.
     $wp_customize->add_control( 'navbar_classes', array(
-		'label' => __( '' , 'bootstrap-component-blox' ),
+		'label' => __( 'Navbar Classes' , 'bootstrap-component-blox' ),
 		'section' => 'navbar_classes_section',
 		'priority' => 20, 
 		'type' => 'text',
 		'capability' => 'edit_theme_options',
 	));
 
-	// Navbar Inner Classes
+	// Navbar Inner Classes.
 	 $wp_customize->add_control( 'navbar_inner_classes', array(
-		'label' => __( '' , 'bootstrap-component-blox' ),
+		'label' => __( 'Navbar Inner Classes' , 'bootstrap-component-blox' ),
 		'section' => 'navbar_inner_classes_section',
 		'priority' => 20, 
 		'type' => 'text',
 		'capability' => 'edit_theme_options',
 	));
 	
-	// Footer Classes
+	// Footer Classes.
     $wp_customize->add_control( 'footer_classes', array(
-		'label' => __( '', 'bootstrap-component-blox' ),
+		'label' => __( 'Footer Classes', 'bootstrap-component-blox' ),
 		'section' => 'footer_class_section',
 		'priority' => 20, 
 		'type' => 'text',
 		'capability' => 'edit_theme_options',
 	));
     
-	// Body Classes
+	// Body Classes.
 	$wp_customize->add_control( 'body_classes' , array(
 		'type' => 'text',
 		'label'      => __( 'Classes', 'bootstrap-component-blox' ),
@@ -176,9 +175,9 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'settings'   => 'body_container_classes'
 	));
     
-	// Footer Credit
+	// Footer Credit.
 	$wp_customize->add_control( 'footer_credit', array(
-        'label' => __( '' , 'bootstrap-component-blox' ),
+        'label' => __( 'Footer Credit' , 'bootstrap-component-blox' ),
         'section' => 'footer_credit_section',
         'priority' => 5,
         'type' => 'textarea',

@@ -6,14 +6,15 @@
  *
  * @package bootstrap-component-blox
  */
+
 ?>
 
-<nav class="navbar-light navbar navbar-expand-lg <?php echo $navbar_classes;?> py-0">
-	<div class="container-fluid <?php echo $navbar_inner_classes;?>">
+<nav class="navbar-light navbar navbar-expand-lg <?php echo esc_attr($navbar_classes);?> py-0">
+	<div class="container-fluid <?php echo esc_attr($navbar_inner_classes);?>">
 						
     	<?php if( has_custom_logo() ) {?>
     	<a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-    		<img src="<?php echo $custom_logo_url[0];?>" alt="<?php echo get_bloginfo();?> Logo" />	
+    		<img src="<?php echo esc_url($custom_logo_url[0]);?>" alt="<?php echo esc_html(get_bloginfo());?> Logo" />	
     	</a>
     	<?php } else {?>
             <a id="navbar-brand-logo" class="navbar-brand" href="/"> 

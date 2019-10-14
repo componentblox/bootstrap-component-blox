@@ -6,13 +6,14 @@
  *
  * @package bootstrap-component-blox
  */
+
 ?>
 
 
 <hr>
 <div class="comments">
 	<?php if (post_password_required()) : ?>
-	<p><?php _e( 'Post is password protected. Enter the password to view any comments.', 'bootstrap-component-blox' ); ?></p>
+	<p><?php esc_html_e( 'Post is password protected. Enter the password to view any comments.', 'bootstrap-component-blox' ); ?></p>
 </div>
 
 <?php return; endif; ?>
@@ -30,7 +31,7 @@ if (have_comments()) : ?>
 
 <?php the_comments_navigation(); ?>
 
-<p><?php _e( 'Comments are closed here.', 'bootstrap-component-blox' ); ?></p>
+<p><?php esc_html_e( 'Comments are closed here.', 'bootstrap-component-blox' ); ?></p>
 
 <?php endif; ?>
 

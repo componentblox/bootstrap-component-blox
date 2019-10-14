@@ -13,7 +13,7 @@
 
 :focus {
 	outline: 0!important
-	box-shadow: none;
+	box-shadow: none!important;
 }
 
 .screen-reader-text {
@@ -157,7 +157,6 @@ embed, iframe, object {
 .gallery-caption {
 	display: block
 }
-/* Sidebar */
 #sidebar #gallery-1 {
 	padding-top: 10px
 }
@@ -189,7 +188,6 @@ embed, iframe, object {
 dl {
 	margin-bottom: 0
 }
-/* Table */
 table#wp-calendar {
 	width: 100%;
 	text-align: center
@@ -211,7 +209,6 @@ table#wp-calendar #today {
 table#wp-calendar #today, table#wp-calendar #today a {
 	color: #fff
 }
-/* Comment */
 #comment {
 	width: 100%;
 	border: 1px solid #ced4da;
@@ -232,7 +229,6 @@ table#wp-calendar #today, table#wp-calendar #today a {
 .comment-reply-link:hover {
 	color: initial
 }
-/* Navbar */
 #nav-header .dropdown-menu {
 	padding: .75rem;
 }

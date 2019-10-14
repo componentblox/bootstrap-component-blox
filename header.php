@@ -6,13 +6,13 @@
  *
  * @package bootstrap-component-blox
  */
+
 ?>
 
 <!doctype html>
 <html <?php language_attributes(); ?> class="no-js">
 	
 	<?php
-	// vars
 	$custom_logo = get_theme_mod('custom_logo');
 	$custom_logo_url = wp_get_attachment_image_src($custom_logo , 'full');
 	$body_classes = get_theme_mod('body_container_classes');

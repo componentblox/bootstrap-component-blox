@@ -1,11 +1,11 @@
 <?php 
-
 /**
  * The search template file
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package bootstrap-component-blox
+ *
  */
 
 get_header();?>
@@ -14,7 +14,7 @@ get_header();?>
     <div class="row">
         <div class="col-lg-8">
             
-			<h1 class="mb-5"><?php echo sprintf( __( '%s Search Results for ', 'bootstrap-component-blox' ), $wp_query->found_posts ); echo get_search_query(); ?></h1>
+			<h1 class="page-title mb-5"><?php printf( esc_html__( 'Search', 'bootstrap-component-blox' ), '<span>' . get_search_query() . '</span>' );?></h1>
 
 			<?php 
                 get_template_part('loop');

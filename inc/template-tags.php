@@ -9,7 +9,9 @@
 
 if ( ! function_exists( 'bootstrap_component_blox_posted_on' ) ) :
 	
-	// Prints HTML with meta information for the current post-date/time.
+	/**
+	 * Prints HTML with meta information for the current post-date/time.
+	 */ 
 	function bootstrap_component_blox_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
@@ -24,41 +26,45 @@ if ( ! function_exists( 'bootstrap_component_blox_posted_on' ) ) :
 		);
 
 		$posted_on = sprintf(
-			esc_html_x( 'Posted on %s', 'post date', 'bootstrap-component-blox' ),
+			esc_html( 'Posted on %s', 'post date', 'bootstrap-component-blox' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+		echo esc_attr('<span class="posted-on">' . $posted_on . '</span>');
 
 	}
 endif;
 
 if ( ! function_exists( 'bootstrap_component_blox_posted_by' ) ) :
 	
-	// Prints HTML with meta information for the current author.
+	/**
+	 * Prints HTML with meta information for the current author.
+	 */ 
 	function bootstrap_component_blox_posted_by() {
 		$byline = sprintf(
-			esc_html_x( 'by %s', 'post author', 'bootstrap-component-blox' ),
+			esc_attr( 'by %s', 'post author', 'bootstrap-component-blox' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+		echo esc_attr('<span class="byline"> ' . $byline . '</span>');
 
 	}
 endif;
 
 if ( ! function_exists( 'bootstrap_component_blox_entry_footer' ) ) :
-	// Prints HTML with meta information for the categories, tags and comments.
+	/** 
+	 * Prints HTML with meta information for the categories, tags and comments.
+	 */
 	function bootstrap_component_blox_entry_footer() {
 		if ( 'post' === get_post_type() ) {
 			$categories_list = get_the_category_list( esc_html__( ', ', 'bootstrap-component-blox' ) );
 			if ( $categories_list ) {
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'bootstrap-component-blox' ) . '</span>', $categories_list );
+				printf ( '<span class="cat-links">' . esc_attr( 'Posted in %1$s', 'bootstrap-component-blox' ) . '</span>', $categories_list );
 			}
 
 			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'bootstrap-component-blox' ) );
 			if ( $tags_list ) {
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'bootstrap-component-blox' ) . '</span>', $tags_list ); 
+				printf( '<span class="tags-links">' . esc_attr( 'Tagged %1$s', 'bootstrap-component-blox' ) . '</span>', $tags_list ); 
 			}
 		}
 
@@ -83,7 +89,7 @@ if ( ! function_exists( 'bootstrap_component_blox_entry_footer' ) ) :
 		edit_post_link(
 			sprintf(
 				wp_kses(
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'bootstrap-component-blox' ),
+					esc_attr( 'Edit <span class="screen-reader-text">%s</span>', 'bootstrap-component-blox' ),
 					array(
 						'span' => array(
 							'class' => array(),

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Bootstrap Component Blox functions and definitions
  *
@@ -9,8 +8,7 @@
  */
 
 if ( ! function_exists( 'bootstrap_component_blox_setup' ) ) :
-    
-    // Sets theme defaults and registers support for various WordPress features.
+    /** Sets theme defaults and registers support for various WordPress features. **/
     function bootstrap_component_blox_setup() {
         
         load_theme_textdomain( 'bootstrap-component-blox', get_template_directory() . '/languages' );
@@ -42,13 +40,15 @@ endif;
 
 add_action( 'after_setup_theme', 'bootstrap_component_blox_setup' );
 
-// Set the content width in pixels, based on the theme's design and stylesheet.
+/** Set the content width in pixels, based on the theme's design and stylesheet. **/
 function bootstrap_component_blox_content_width() {
     $GLOBALS['content_width'] = apply_filters( 'bootstrap_component_blox_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'bootstrap_component_blox_content_width', 0 );
 
-// Theme implement editor styling
+/** 
+ * Theme implement editor styling. 
+ */
 function add_editor_styles() {
 	add_editor_style( get_stylesheet_uri() );
 }
@@ -62,14 +62,15 @@ if ( defined( 'JETPACK__VERSION' ) ) {
     require get_template_directory() . '/inc/jetpack.php';
 }
 
-// Custom Customizer Settings
+// Custom Customizer Settings.
 require('inc/customizer.php');
 
-// Include Custom Comments
+// Include Custom Comments.
 require_once( get_template_directory() . '/custom-comments.php' );
 
-// Load Styles and Scripts
+// Load Styles and Scripts.
 if(!is_admin()) {
+    /** Enqueue External Files. **/
     function enqueue_external_files(){
         wp_enqueue_style('bootstrap-component-blox', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
         wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '4.1.3' , false);
@@ -83,7 +84,9 @@ if(!is_admin()) {
     add_action('init', 'enqueue_external_files');
 }
 
-// Register Navigation
+/**
+ * Register Navigation 
+ */
 function register_wp_boostrap_theme_menu() {
     register_nav_menus(array( 
         'main-menu' => __('Main Menu', 'bootstrap-component-blox'), 
@@ -92,7 +95,9 @@ function register_wp_boostrap_theme_menu() {
 }
 add_action('init', 'register_wp_boostrap_theme_menu'); 
 
-// Main Navigation Function
+/** 
+ * Main Navigation Function 
+ */
 function main_nav() {
     wp_nav_menu(
     array(
@@ -116,14 +121,20 @@ function main_nav() {
     );
 }
 
-// Add Dropdown Class to sub-menu Class
+/**
+ * Add dropdown class to sub-menu class. 
+ * 
+ * @param string $menu
+ */
 function change_submenu_class($menu) {  
-  $menu = preg_replace('/ class="sub-menu"/','/ class="sub-menu dropdown-menu" /',$menu);  
+  $menu = preg_replace('/ class="sub-menu"/','/ class="sub-menu dropdown-menu" /', $menu);  
   return $menu;  
 }  
 add_filter('wp_nav_menu','change_submenu_class');  
 
-// Adds 'nav-link' class to nav anchor
+/**
+ *  Adds 'nav-link' class to nav anchor 
+ */
 function my_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
     $classes     = 'nav-link';
     $item_output = preg_replace('/<a /', '<a class="'.$classes.'"', $item_output, 1);
@@ -131,23 +142,31 @@ function my_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
 }
 add_filter('walker_nav_menu_start_el', 'my_walker_nav_menu_start_el', 10, 4);
 
-// Remove the <div> surrounding the dynamic navigation to cleanup markup
+/** 
+ * Remove the <div> surrounding the dynamic navigation to cleanup markup. 
+ */
 function my_wp_nav_menu_args($args = '') {
     $args['container'] = false;
     return $args;
 }
 
-// Remove Injected classes, ID's and Page ID's from Navigation <li> items
+/**
+ *  Remove injected classes, ID's and Page ID's from Navigation <li> items. 
+ */
 function my_css_attributes_filter($var) {
     return is_array($var) ? array() : '';
 }
 
-// Remove invalid rel attribute values in the categorylist
+/** 
+ * Remove invalid rel attribute values in the categorylist. 
+ */
 function remove_category_rel_from_category_list($thelist) {
     return str_replace('rel="category tag"', 'rel="tag"', $thelist);
 }
 
-// Add page slug to body class
+/**
+ * Add page slug to body class. 
+ */
 function add_slug_to_body_class($classes) {
     global $post;
     if (is_home()) {
@@ -163,7 +182,9 @@ function add_slug_to_body_class($classes) {
     return $classes;
 }
 
-// Dynamic Sidebar Function
+/**
+ * Dynamic Sidebar Function. 
+ */
 function bootstrap_component_blox_widgets_init() {
 if (function_exists('register_sidebar')) {
 
@@ -229,7 +250,9 @@ if (function_exists('register_sidebar')) {
 }}
 
 
-// Comment form submit button callback
+/** 
+ * Comment form submit button callback. 
+ */
 function filter_comment_form_submit_button( $submit_button, $args ) {
     $submit_before = '<div class="form-group">';
     $submit_after = '</div>';
@@ -239,31 +262,39 @@ function filter_comment_form_submit_button( $submit_button, $args ) {
 add_filter( 'comment_form_submit_button', 'filter_comment_form_submit_button', 10, 2 );
 
 
-// Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
+/** 
+ * Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin. 
+ */
 function bootstrap_component_blox_pagination() {
     global $wp_query;
     $big = 999999999;
-    echo paginate_links(array(
+    echo esc_attr(paginate_links(array(
         'base' => str_replace($big, '%#%', get_pagenum_link($big)),
         'format' => '?paged=%#%',
         'current' => max(1, get_query_var('paged')),
         'total' => $wp_query->max_num_pages
-    ));
+    )));
 }
 add_action('init', 'bootstrap_component_blox_pagination');
 
-// Remove 'text/css' from our enqueued stylesheet
+/**
+ * Remove 'text/css' from our enqueued stylesheet. 
+ */
 function wp_bootstraptheme_style_remove($tag) {
     return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }
 
-// Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
+/**
+ * Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail. 
+ */
 function remove_thumbnail_dimensions( $html ) {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
 }
 
-// Threaded Comments
+/** 
+ * Threaded Comments. 
+ */
 function enable_threaded_comments() {
     if (!is_admin()) {
         if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
@@ -274,19 +305,28 @@ function enable_threaded_comments() {
 add_action('get_header', 'enable_threaded_comments');
 
 
-// Enable SVG Import
+/** 
+ * Enable SVG Import.
+ * 
+ * @param string $mimes
+ */
 function cc_mime_types($mimes) {
  $mimes['svg'] = 'image/svg+xml';
  return $mimes;
 }
 add_filter('upload_mimes', 'cc_mime_types');
 
-// Seach Bar 
+/** 
+ * Include search bar function.
+ * 
+ * @param  integer  $search_form_id
+ * @param  string  $search_form_btn_class
+ */
 function get_searchbar($search_form_id, $search_form_btn_class = "btn-dark" ) {
     include('searchform.php');
 }
 
-// Add Filters
+// Add Filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
 add_action('widgets_init', 'bootstrap_component_blox_widgets_init');
 add_filter( 'widget_text', 'shortcode_unautop');

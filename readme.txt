@@ -1,12 +1,11 @@
 === Bootstrap Component Blox ===
-Contributors: Component Blox
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, two-columns, left-sidebar, right-sidebar, custom-colors, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, blog
 
 Requires at least: 4.0
 Tested up to: 4.9.8
 Stable tag: 1.0.9
 License: GNU General Public License v3 or later
-License URI: https://www.gnu.org/licenses/gpl.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 'Bootstrap Component Blox' WordPress Theme, Copyright 2019 Component Blox.
 'Bootstrap Component Blox' is distributed under the terms of the GNU GPL.

@@ -1,5 +1,4 @@
 <?php 
-
 /**
  * The sidebar template file
  *

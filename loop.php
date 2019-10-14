@@ -12,14 +12,14 @@ if (have_posts()): while (have_posts()) : the_post(); ?>
 		<div class="mb-3">		
 			<?php if (has_post_thumbnail()) : ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-				<img class="img-fluid rounded" style="width: 100%;" src="<?php echo get_the_post_thumbnail_url();?>" alt="">
+				<img class="img-fluid rounded" style="width: 100%;" src="<?php echo esc_url(get_the_post_thumbnail_url());?>" alt="">
 			</a>
 			<?php endif; ?>
 			
 			<h1 class="mt-4"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title();?></a></h1>
 
 			<div class="post_meta">
-				<span class="author"><?php _e( 'Published by', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
+				<span class="author"><?php esc_html_e( 'Published by', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
 				<span class="date">| <?php the_time('F j, Y');?></span>
 				<span class="category">| <?php the_category(', ');?> </span>
 				<span class="comments">
@@ -41,7 +41,7 @@ if (have_posts()): while (have_posts()) : the_post(); ?>
 	?>
 	
 	<article>
-		<h2><?php _e( 'Sorry, nothing to display.', 'bootstrap-component-blox' ); ?></h2>
+		<h2><?php esc_html_e( 'Sorry, nothing to display.', 'bootstrap-component-blox' ); ?></h2>
 	</article>
 
 <?php endif; ?>

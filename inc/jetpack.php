@@ -45,7 +45,9 @@ function bootstrap_component_blox_jetpack_setup() {
 }
 add_action( 'after_setup_theme', 'bootstrap_component_blox_jetpack_setup' );
 
-// Custom render function for Infinite Scroll.
+/**
+ * Custom render function for Infinite Scroll.
+ */ 
 function bootstrap_component_blox_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();

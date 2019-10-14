@@ -6,6 +6,7 @@
  *
  * @package bootstrap-component-blox
  */
+
 ?>
 
 <div class="pagination">
