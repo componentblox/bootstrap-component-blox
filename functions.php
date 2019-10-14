@@ -1,9 +1,16 @@
 <?php
 
-// Bootstrap Component Blox functions and definitions
+/**
+ * Bootstrap Component Blox functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package bootstrap-component-blox
+ */
+
 if ( ! function_exists( 'bootstrap_component_blox_setup' ) ) :
     
-    // Sets up theme defaults and registers support for various WordPress features.
+    // Sets theme defaults and registers support for various WordPress features.
     function bootstrap_component_blox_setup() {
         
         load_theme_textdomain( 'bootstrap-component-blox', get_template_directory() . '/languages' );
@@ -55,54 +62,37 @@ if ( defined( 'JETPACK__VERSION' ) ) {
     require get_template_directory() . '/inc/jetpack.php';
 }
 
-/*------------------------------------*\
-               Load Files
-\*------------------------------------*/
+// Custom Customizer Settings
+require('inc/customizer.php');
 
+// Include Custom Comments
+require_once( get_template_directory() . '/custom-comments.php' );
 
-// Load Style and Scripts
+// Load Styles and Scripts
 if(!is_admin()) {
     function enqueue_external_files(){
-        wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '4.1.3' , false);
-        wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v5.11.2/css/all.css', false, '5.11.2');
-        wp_enqueue_script( 'popper', get_template_directory_uri() . '/js/popper.min.js' , array() , '1.14.7' , true );
-        wp_enqueue_script( 'bootstrap',  get_template_directory_uri() . '/js/bootstrap.min.js' , array() , '4.3.1' , true );
-        wp_enqueue_script( 'validator', get_template_directory_uri() . '/js/validator.min.js' , array() , '0.11.9' , true );		
+        wp_enqueue_style('bootstrap-component-blox', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '4.1.3' , false);
+        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.11.2/css/all.css', false, '5.11.2');
+        wp_enqueue_script('popper', get_template_directory_uri() . '/js/popper.min.js' , array() , '1.14.7' , true );
+        wp_enqueue_script('bootstrap',  get_template_directory_uri() . '/js/bootstrap.min.js' , array() , '4.3.1' , true);
+        wp_enqueue_script('validator', get_template_directory_uri() . '/js/validator.min.js' , array() , '0.11.9' , true);
+        wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
+        wp_enqueue_script('bootstrap-component-blox-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0', true );		
     }
     add_action('init', 'enqueue_external_files');
 }
 
-// Load scripts
-function header_scripts() {
-    if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-        wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
-    }
-    
-    wp_enqueue_script( 'bootstrap-component-blox-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0', true );
-
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
-    }
+// Register Navigation
+function register_wp_boostrap_theme_menu() {
+    register_nav_menus(array( 
+        'main-menu' => __('Main Menu', 'bootstrap-component-blox'), 
+        'sidebar-menu' => __('Sidebar Menu', 'bootstrap-component-blox'),
+    ));
 }
-add_action('init', 'header_scripts');
-   
-// Load Styles
-function acftheme_styles() {
-    wp_register_style('bootstrap-component-blox', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-    wp_enqueue_style('bootstrap-component-blox');
-}
-add_action('wp_enqueue_scripts', 'acftheme_styles');
+add_action('init', 'register_wp_boostrap_theme_menu'); 
 
-
-// Include Custom Comments
-require_once( get_template_directory() .'/better-comments.php' );
-
-
-/*------------------------------------*\
-              functions
-\*------------------------------------*/
-
-// Adds navigation
+// Main Navigation Function
 function main_nav() {
     wp_nav_menu(
     array(
@@ -126,7 +116,7 @@ function main_nav() {
     );
 }
 
-// Add Dropdown Class to Sub-menu Class
+// Add Dropdown Class to sub-menu Class
 function change_submenu_class($menu) {  
   $menu = preg_replace('/ class="sub-menu"/','/ class="sub-menu dropdown-menu" /',$menu);  
   return $menu;  
@@ -140,15 +130,6 @@ function my_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
     return $item_output;
 }
 add_filter('walker_nav_menu_start_el', 'my_walker_nav_menu_start_el', 10, 4);
-
-// Register Navigation
-function register_wp_boostrap_theme_menu() {
-    register_nav_menus(array( 
-        'main-menu' => __('Main Menu', 'bootstrap-component-blox'), 
-        'sidebar-menu' => __('Sidebar Menu', 'bootstrap-component-blox'),
-    ));
-}
-add_action('init', 'register_wp_boostrap_theme_menu'); 
 
 // Remove the <div> surrounding the dynamic navigation to cleanup markup
 function my_wp_nav_menu_args($args = '') {
@@ -166,7 +147,7 @@ function remove_category_rel_from_category_list($thelist) {
     return str_replace('rel="category tag"', 'rel="tag"', $thelist);
 }
 
-// Add page slug to body class, love this - Credit: Starkers Wordpress Theme
+// Add page slug to body class
 function add_slug_to_body_class($classes) {
     global $post;
     if (is_home()) {
@@ -182,7 +163,7 @@ function add_slug_to_body_class($classes) {
     return $classes;
 }
 
-// If Dynamic Sidebar Exists
+// Dynamic Sidebar Function
 function bootstrap_component_blox_widgets_init() {
 if (function_exists('register_sidebar')) {
 
@@ -257,8 +238,6 @@ function filter_comment_form_submit_button( $submit_button, $args ) {
 };
 add_filter( 'comment_form_submit_button', 'filter_comment_form_submit_button', 10, 2 );
 
-// Include Custom Customizer Settings
-include('inc/customizer.php');
 
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
 function bootstrap_component_blox_pagination() {
@@ -294,32 +273,6 @@ function enable_threaded_comments() {
 }
 add_action('get_header', 'enable_threaded_comments');
 
-// Add More Quick Tags
-function smackdown_add_quicktags() {
-
-    if ( wp_script_is( 'quicktags' ) ) { ?>
-        <script type="text/javascript">
-            QTags.addButton( 'div_tag', 'div', '\n<div class=""></div>', '', '', '', 1 );
-            QTags.addButton( 'span_tag', 'span', '\n<span></span>', '', '', '', 2 );
-            QTags.addButton( 'h2_tag', 'h2', '\n<h2></h2>', '', '', '', 3 );
-            QTags.addButton( 'h3_tag', 'h3', '\n<h3></h3>', '', '', '', 4 );
-            QTags.addButton( 'h4_tag', 'h4', '\n<h4></h4>', '', '', '', 5 );
-            QTags.addButton( 'hr_tag', 'hr', '\n<hr>', '', '', '', 6 );
-            QTags.addButton( 'strong_tag', 'strong', '\n<strong></strong>', '', '', '', 7 );
-            QTags.addButton( 'em_tag', 'em', '\n<em></em>', '', '', '', 8 );
-            QTags.addButton( 'ul_tag', 'ul', '\n<ul>\n\t<li>List</li>\n\t<li>List</li>\n\t<li>List</li>\n</ul>', '', '', '', 9 );
-        </script>
-    <?php 
-    }
-}
-add_action( 'admin_print_footer_scripts', 'smackdown_add_quicktags' );
-
-// Remove default quick tags
-function custom_quicktags( $qtInit, $editor_id = 'content' ) {
-     $qtInit['buttons'] = 'link,img';
-     return $qtInit;
-}
-add_filter( 'quicktags_settings', 'custom_quicktags', 10, 2 );
 
 // Enable SVG Import
 function cc_mime_types($mimes) {

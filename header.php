@@ -1,10 +1,20 @@
+<?php
+/**
+ * The theme header
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package bootstrap-component-blox
+ */
+?>
+
 <!doctype html>
 <html <?php language_attributes(); ?> class="no-js">
 	
 	<?php
 	// vars
-	$custom_logo = get_theme_mod( 'custom_logo' );
-	$custom_logo_url = wp_get_attachment_image_src( $custom_logo , 'full' );
+	$custom_logo = get_theme_mod('custom_logo');
+	$custom_logo_url = wp_get_attachment_image_src($custom_logo , 'full');
 	$body_classes = get_theme_mod('body_container_classes');
 	$navbar_classes = get_theme_mod('navbar_classes');
 	$navbar_inner_classes = get_theme_mod('navbar_inner_classes');

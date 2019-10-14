@@ -1,4 +1,14 @@
-<?php get_header(); ?>
+<?php 
+
+/**
+ * The template for displaying 404 pages (not found)
+ *
+ * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ *
+ * @package bootstrap-component-blox
+ */
+
+get_header();?>
 
 <main id="main-container" role="main" class="container-fluid px-0">
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

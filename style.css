@@ -11,6 +11,11 @@
 	Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
+:focus {
+	outline: 0!important
+	box-shadow: none;
+}
+
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
@@ -152,6 +157,7 @@ embed, iframe, object {
 .gallery-caption {
 	display: block
 }
+/* Sidebar */
 #sidebar #gallery-1 {
 	padding-top: 10px
 }
@@ -172,6 +178,10 @@ embed, iframe, object {
 }
 .sidebar ul {
 	padding-right: 15px
+	margin-bottom: 0
+}
+#sidebar .widget_search {
+	border: none!important;
 }
 .post_meta {
 	font-size: 14px
@@ -179,6 +189,7 @@ embed, iframe, object {
 dl {
 	margin-bottom: 0
 }
+/* Table */
 table#wp-calendar {
 	width: 100%;
 	text-align: center
@@ -200,6 +211,7 @@ table#wp-calendar #today {
 table#wp-calendar #today, table#wp-calendar #today a {
 	color: #fff
 }
+/* Comment */
 #comment {
 	width: 100%;
 	border: 1px solid #ced4da;
@@ -220,14 +232,16 @@ table#wp-calendar #today, table#wp-calendar #today a {
 .comment-reply-link:hover {
 	color: initial
 }
-:focus {
-	outline: 0!important
+/* Navbar */
+#nav-header .dropdown-menu {
+	padding: .75rem;
 }
-#sidebar ul {
-	margin-bottom: 0
+#nav-header .dropdown-menu .dropdown-menu {
+	left: 100%;
 }
-#sidebar .widget_search {
-	border: none!important;
+#nav-header .dropdown-menu .nav-link {
+	white-space: nowrap;
+	padding: .25rem;
 }
 @media(max-width: 992px) {
 	.border-left {

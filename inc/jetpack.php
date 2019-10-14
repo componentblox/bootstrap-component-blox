@@ -15,6 +15,7 @@
  * See: https://jetpack.com/support/content-options/
  */
 function bootstrap_component_blox_jetpack_setup() {
+	
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
@@ -44,9 +45,7 @@ function bootstrap_component_blox_jetpack_setup() {
 }
 add_action( 'after_setup_theme', 'bootstrap_component_blox_jetpack_setup' );
 
-/**
- * Custom render function for Infinite Scroll.
- */
+// Custom render function for Infinite Scroll.
 function bootstrap_component_blox_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();

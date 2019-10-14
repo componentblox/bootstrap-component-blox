@@ -1,4 +1,14 @@
-<?php get_header(); ?>
+<?php 
+
+/**
+ * The template for displaying all pages
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package bootstrap-component-blox
+ */
+
+get_header(); ?>
 
 <main id="main-container" role="main" class="container-fluid px-0">
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>

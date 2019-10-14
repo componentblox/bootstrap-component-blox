@@ -1,6 +1,6 @@
 <?php 
 
-// Add Logo Field to Customizer
+// Add Logo Setting to Customizer
 add_theme_support( 'custom-logo', array(
 	'height'      => 100,
 	'width'       => 400,
@@ -32,7 +32,6 @@ function add_custom_customizer_settings( $wp_customize ) {
 	// ================= //
     //       Panels      //
     // ================= //
-    // 
     
 	// Navbar
 	$wp_customize->add_panel( 'navbar_panel', array(
@@ -61,7 +60,7 @@ function add_custom_customizer_settings( $wp_customize ) {
 	$wp_customize->add_section( 'navbar_classes_section', array(
 		'priority' => 0,
 		'capability' => 'edit_theme_options',
-		'title' => __( 'Classes', 'bootstrap-component-blox' ),
+		'title' => __( 'Navbar Classes', 'bootstrap-component-blox' ),
 		'description' => '',
 		'panel' => 'navbar_panel',
 	));

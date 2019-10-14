@@ -1,4 +1,13 @@
 <?php 
+
+/**
+ * The template for post comments
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package bootstrap-component-blox
+ */
+
 if(comments_template()) {?>
 <hr>
 <div class="card my-4 border">

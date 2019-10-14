@@ -1,3 +1,14 @@
+<?php
+/**
+ * The template for displaying comments
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package bootstrap-component-blox
+ */
+?>
+
+
 <hr>
 <div class="comments">
 	<?php if (post_password_required()) : ?>
@@ -11,7 +22,7 @@ if (have_comments()) : ?>
 
 <h4><small><?php comments_number(); ?></small></h4>
 
-<ul><?php wp_list_comments( array('callback' => 'better_comments') );?></ul>
+<ul><?php wp_list_comments( array('callback' => 'custom_comments') );?></ul>
 
 <?php the_comments_navigation(); ?>
 

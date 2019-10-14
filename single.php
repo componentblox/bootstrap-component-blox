@@ -1,9 +1,14 @@
 <?php 
 
-/* Template Name: Single Post */
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package bootstrap-component-blox
+ */
 
 get_header();?>
-
 
 <main id="main-container" class="row container mx-auto mt-5" role="main">
 	<section class="col-12 col-lg-8 px-4">

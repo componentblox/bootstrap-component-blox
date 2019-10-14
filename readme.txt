@@ -1,38 +1,34 @@
-=== bootstrap-component-blox ===
+=== Bootstrap Component Blox ===
+Contributors: Component Blox
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, two-columns, left-sidebar, right-sidebar, custom-colors, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, blog
 
-Contributors: automattic
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Requires at least: 4.0
+Tested up to: 4.9.8
+Stable tag: 1.0.9
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl.html
 
-Requires at least: 4.5
-Tested up to: 4.8
-Stable tag: 1.0.0
-License: GNU General Public License v2 or later
-License URI: LICENSE
+'Bootstrap Component Blox' WordPress Theme, Copyright 2019 Component Blox.
+'Bootstrap Component Blox' is distributed under the terms of the GNU GPL.
 
-A starter theme called bootstrap-component-blox.
 
 == Description ==
+"Bootstrap Component Blox" is a bootstrap integrated WordPress theme. It is based on world's most popular framework Twitter Bootstrap 4. "Bootstrap Component Blox" is a perfect combination of Bootstrap 4 and WordPress. It is fast. light-weight and intergrate perfectly with Component Blox software. It supports all major & popular WordPress plugins. Check demo on https://theme.componentblox.com.
 
-Description
 
 == Installation ==
-
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
 2. Click Upload Theme and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
 
-== Frequently Asked Questions ==
-
-= Does this theme support any plugins? =
-
-bootstrap-component-blox includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 1.0 - May 12 2015 =
+= 1.0 - Nov 1 2019 =
 * Initial release
 
-== Credits ==
 
-* Based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+== Credits ==
 * normalize.css https://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](https://opensource.org/licenses/MIT)
+* Bootstrap 4 https://getbootstrap.com/, , [MIT](https://opensource.org/licenses/MIT)
+* Font Awesome https://fontawesome.com/, [MIT](https://opensource.org/licenses/MIT)

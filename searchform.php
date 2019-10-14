@@ -1,3 +1,14 @@
+<?php 
+
+/**
+ * The search form template file
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package bootstrap-component-blox
+ */
+?>
+
 <form class="container search" method="get" action="<?php echo home_url();?>" role="search">
 	<div class="row">
 		<div class="col-12 px-0">

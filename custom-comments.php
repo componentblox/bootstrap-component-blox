@@ -1,5 +1,5 @@
 <?php
-function better_comments( $comment, $args, $depth ) {
+function custom_comments( $comment, $args, $depth ) {
 	global $post;
 	$author_id = $post->post_author;
 	$GLOBALS['comment'] = $comment;

@@ -1,4 +1,10 @@
-<?php 
+<?php
+/**
+ * The template for displaying footer widgets
+ *
+ * @package bootstrap-component-blox
+ */
+
 if(is_active_sidebar('footer-area-1')){?>
 <div id="footer-widgets" class="footer-widgets">
     <div class="container">
@@ -31,5 +37,4 @@ if(is_active_sidebar('footer-area-1')){?>
         </div>
     </div>
 </div>
-
 <?php }?>

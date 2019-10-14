@@ -1,4 +1,13 @@
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+<?php 
+/**
+ * The loop template file
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package bootstrap-component-blox
+ */
+
+if (have_posts()): while (have_posts()) : the_post(); ?>
 
 		<div class="mb-3">		
 			<?php if (has_post_thumbnail()) : ?>
