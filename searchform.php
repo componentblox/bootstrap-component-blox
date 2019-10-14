@@ -5,8 +5,8 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package bootstrap-component-blox
- *
  */
+
 ?>
 
 <form class="container search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">

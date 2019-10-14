@@ -59,12 +59,12 @@ if ( ! function_exists( 'bootstrap_component_blox_entry_footer' ) ) :
 		if ( 'post' === get_post_type() ) {
 			$categories_list = get_the_category_list( esc_html__( ', ', 'bootstrap-component-blox' ) );
 			if ( $categories_list ) {
-				printf ( '<span class="cat-links">' . esc_attr( 'Posted in %1$s', 'bootstrap-component-blox' ) . '</span>', $categories_list );
+				printf ( '<span class="cat-links">' . esc_attr( 'Posted in %1$s', 'bootstrap-component-blox' ) . '</span>', esc_html($categories_list));
 			}
 
 			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'bootstrap-component-blox' ) );
 			if ( $tags_list ) {
-				printf( '<span class="tags-links">' . esc_attr( 'Tagged %1$s', 'bootstrap-component-blox' ) . '</span>', $tags_list ); 
+				printf( '<span class="tags-links">' . esc_attr( 'Tagged %1$s', 'bootstrap-component-blox' ) . '</span>', esc_html($tags_list)); 
 			}
 		}
 
@@ -72,8 +72,7 @@ if ( ! function_exists( 'bootstrap_component_blox_entry_footer' ) ) :
 			echo '<span class="comments-link">';
 			comments_popup_link(
 				sprintf(
-					wp_kses(
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bootstrap-component-blox' ),
+					wp_kses(__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bootstrap-component-blox' ),
 						array(
 							'span' => array(
 								'class' => array(),

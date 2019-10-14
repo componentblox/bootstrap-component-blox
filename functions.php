@@ -124,7 +124,7 @@ function main_nav() {
 /**
  * Add dropdown class to sub-menu class. 
  * 
- * @param string $menu
+ * @param string $menu adds additional call to sub-menu class.
  */
 function change_submenu_class($menu) {  
   $menu = preg_replace('/ class="sub-menu"/','/ class="sub-menu dropdown-menu" /', $menu);  
@@ -133,7 +133,12 @@ function change_submenu_class($menu) {
 add_filter('wp_nav_menu','change_submenu_class');  
 
 /**
- *  Adds 'nav-link' class to nav anchor 
+ *  Adds 'nav-link' class to nav anchor.
+ * 
+ * @param string $item_output This is the description.
+ * @param string $item This is the description.
+ * @param string $depth This is the description.
+ * @param string $args This is the description.
  */
 function my_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
     $classes     = 'nav-link';
@@ -144,6 +149,8 @@ add_filter('walker_nav_menu_start_el', 'my_walker_nav_menu_start_el', 10, 4);
 
 /** 
  * Remove the <div> surrounding the dynamic navigation to cleanup markup. 
+ * 
+ * @param string $args This is the description.
  */
 function my_wp_nav_menu_args($args = '') {
     $args['container'] = false;
@@ -152,6 +159,8 @@ function my_wp_nav_menu_args($args = '') {
 
 /**
  *  Remove injected classes, ID's and Page ID's from Navigation <li> items. 
+ * 
+ * @param string $var This is the description.
  */
 function my_css_attributes_filter($var) {
     return is_array($var) ? array() : '';
@@ -159,6 +168,8 @@ function my_css_attributes_filter($var) {
 
 /** 
  * Remove invalid rel attribute values in the categorylist. 
+ * 
+ * @param string $thelist This is the description.
  */
 function remove_category_rel_from_category_list($thelist) {
     return str_replace('rel="category tag"', 'rel="tag"', $thelist);
@@ -166,6 +177,8 @@ function remove_category_rel_from_category_list($thelist) {
 
 /**
  * Add page slug to body class. 
+ * 
+ * @param string $classes This is the description.
  */
 function add_slug_to_body_class($classes) {
     global $post;
@@ -252,6 +265,9 @@ if (function_exists('register_sidebar')) {
 
 /** 
  * Comment form submit button callback. 
+ * 
+ * @param string $submit_button This is the description.
+ * @param string $args This is the description.
  */
 function filter_comment_form_submit_button( $submit_button, $args ) {
     $submit_before = '<div class="form-group">';
@@ -279,6 +295,8 @@ add_action('init', 'bootstrap_component_blox_pagination');
 
 /**
  * Remove 'text/css' from our enqueued stylesheet. 
+ *
+ * @param string $tag This is the description.
  */
 function wp_bootstraptheme_style_remove($tag) {
     return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
@@ -286,8 +304,10 @@ function wp_bootstraptheme_style_remove($tag) {
 
 /**
  * Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail. 
+ *
+ * @param string $html This is the description.
  */
-function remove_thumbnail_dimensions( $html ) {
+function remove_thumbnail_dimensions($html) {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
 }
@@ -308,7 +328,7 @@ add_action('get_header', 'enable_threaded_comments');
 /** 
  * Enable SVG Import.
  * 
- * @param string $mimes
+ * @param string $mimes This is the description.
  */
 function cc_mime_types($mimes) {
  $mimes['svg'] = 'image/svg+xml';
@@ -319,8 +339,8 @@ add_filter('upload_mimes', 'cc_mime_types');
 /** 
  * Include search bar function.
  * 
- * @param  integer  $search_form_id
- * @param  string  $search_form_btn_class
+ * @param  string $search_form_id This is the description.
+ * @param  string $search_form_btn_class This is the description.
  */
 function get_searchbar($search_form_id, $search_form_btn_class = "btn-dark" ) {
     include('searchform.php');

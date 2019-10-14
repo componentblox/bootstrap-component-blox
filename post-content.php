@@ -5,8 +5,11 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package bootstrap-component-blox
- *
  */
+
+?>
+
+<?php
 
 $image_id = get_post_thumbnail_id(get_the_ID());
 $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);

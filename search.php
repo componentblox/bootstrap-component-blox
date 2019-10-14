@@ -5,10 +5,11 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package bootstrap-component-blox
- *
  */
 
-get_header();?>
+?>
+
+<?php get_header();?>
 
 <div class="container my-5">
     <div class="row">

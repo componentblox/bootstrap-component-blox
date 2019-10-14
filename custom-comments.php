@@ -1,12 +1,22 @@
 <?php
 /**
- * The template for displaying custom comments
+ * The template for displaying custom comments.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package bootstrap-component-blox
  */
 
+?>
+
+<?php
+/**
+ * Overwrite default comments
+ *
+ * @param string  $comment Stores the comments in a varible.
+ * @param string  $args Arguments.
+ * @param Integer $depth Determines the number of nested comments.
+ */
 function custom_comments( $comment, $args, $depth ) {
 	global $post;
 	$author_id = $post->post_author;

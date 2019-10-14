@@ -32,6 +32,8 @@ add_theme_support( 'custom-header', array(
 
 /**
  * Add Body Settings.
+ *
+ * @param string $wp_customize This is the description.
  */
 function add_custom_customizer_settings( $wp_customize ) {
     
