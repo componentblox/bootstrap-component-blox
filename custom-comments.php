@@ -7,9 +7,6 @@
  * @package bootstrap-component-blox
  */
 
-?>
-
-<?php
 /**
  * Overwrite default comments
  *
@@ -18,50 +15,58 @@
  * @param Integer $depth Determines the number of nested comments.
  */
 function custom_comments( $comment, $args, $depth ) {
-    ?>
-
-    <li <?php comment_class(); ?> id="comment-<?php comment_ID() ?>">
-
-        <?php
-            $wb_gravatar_url = get_avatar_url( $comment );
-        ?>
-        <article class="media bootstrap-component-blox-comment">
-            <?php if (! empty( $wb_gravatar_url ) ) : ?>
-                <img class="d-flex align-self-start mr-4 comment-img rounded" src="<?php echo esc_url( $wb_gravatar_url ); ?>" alt="<?php echo esc_attr( get_comment_author() ); ?>" width="60">
-            <?php endif; ?>
-            <div class="media-body">
-                <h6 class="mt-0 mb-0 comment-author">
-                    <?php echo get_comment_author_link(); ?>
-                    <?php if ( $comment->comment_author_email == get_the_author_meta( 'email' ) ) : ?>
-                        <small class="wb-comment-by-author ml-2 text-muted"><?php echo esc_html__( '&#8226; Post Author &#8226;', 'bootstrap-component-blox' ) ?></small>
-                    <?php endif; ?>
-                </h6>
-                <small class="date text-muted"><?php printf( // WPCS: PHPCS OK.
-                                                        /* translators: %1 %2: date and time. */
-                                                        esc_html__('%1$s at %2$s', 'bootstrap-component-blox'),
-                                                        esc_attr(get_comment_date()),
-                                                        esc_attr(get_comment_time())
-                                                    ); ?></small>
-                <?php if ($comment->comment_approved == '0') : ?>
-					<small><em class="comment-awaiting text-muted"><?php esc_html_e('Comment is awaiting approval', 'bootstrap-component-blox'); ?></em></small>
-					<br />
-				<?php endif; ?>
-
-                <div class="mt-3">
-                    <?php comment_text(); ?>
-                </div>
-
-                <?php
-                    $args['before'] = '';
-                ?>
-
-                <small class="reply">
-					<?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', 'bootstrap-component-blox' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ), $comment->comment_ID ); ?>
-					<?php edit_comment_link( esc_html__( 'Edit', 'bootstrap-component-blox' ) ); ?>
-				</small>
-            </div>
-            <!-- /.media-body -->
-        </article>
-
-    <?php
+	global $post;
+	$author_id = $post->post_author;
+	switch ( $comment->comment_type ) :
+		case 'pingback' :
+		case 'trackback' :
+	?>
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+		<div class="pingback-entry">
+			<span class="pingback-heading"><?php esc_html_e( 'Pingback:', 'bootstrap-component-blox' ); ?></span> 
+			<?php comment_author_link(); ?>
+		</div>
+	<?php
+		break;
+		default :
+	?>
+	
+	<li id="li-comment-<?php comment_ID();?>" class="p-3 mb-3 shadow-sm">
+		<article id="comment-<?php comment_ID(); ?>" <?php comment_class('clr'); ?>>
+			<div class="media mb-2">
+				<?php echo get_avatar( $comment, 45 ); ?>
+				<div class="media-body ml-3">
+					
+					<cite class="fn"><?php comment_author_link(); ?></cite>
+					
+					<div class="comment-date">
+						<?php printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
+							esc_url( get_comment_link( $comment->comment_ID ) ),
+							esc_attr(get_comment_time( 'c' )),
+							sprintf( esc_html( '%1$s', '1: date', 'bootstrap-component-blox' ), esc_attr(get_comment_date()) )
+						); ?> 
+					</div>
+				
+					<?php if ( '0' == $comment->comment_approved ) : ?>
+						<p class="comment-awaiting-moderation"><?php esc_attr( 'Your comment is awaiting moderation.', 'bootstrap-component-blox' ); ?></p>
+					<?php endif; ?>
+				
+					<div class="comment-content entry clr">
+						<?php comment_text(); ?>
+					</div>
+				
+					<button class="btn btn-light float-right">
+						<?php comment_reply_link( array_merge( $args, array(
+						'reply_text' => 'Reply', 'bootstrap-component-blox',
+						'depth'      => $depth,
+						'max_depth'	 => $args['max_depth'] )
+						) ); ?>
+					</button>
+					
+				</div>
+			</div>
+		</article>
+	<?php
+		break;
+	endswitch;
 }
