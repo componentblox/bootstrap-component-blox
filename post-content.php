@@ -30,7 +30,5 @@ if (has_post_thumbnail()) { ?>
 	</span>
 	<?php }?>
 </div>
-<hr>
-
 <?php the_content();?>
 <?php if(comments_open()) { get_template_part('post-comments'); }?>
