@@ -9,10 +9,10 @@ jQuery(document).ready(function() {
 	$("false ul").addClass("navbar-nav ml-auto");
 	
 	// Resize Body Container Based on Navbar Height
-	$('.entry-content, #sidebar').css('padding-top', $('#nav-header .fixed-top').height());
+	$('.entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
 	
 	$(window).resize(function(){
-  		$('.entry-content, #sidebar').css('padding-top', $('#nav-header .fixed-top').height());
+  		$('.entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
 	});
 	
 	// Wrap Widget With card-body Class
