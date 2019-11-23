@@ -14,9 +14,6 @@ jQuery(document).ready(function() {
 	$(window).resize(function(){
   		$('.entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
 	});
-	
-	// Wrap Widget With card-body Class
-	$('#footer-widgets .card-header , #sidebar .card-header ').next().wrap('<div class="card-body"></div>');
 
 	 // Add Bootstrap Dropdown Classes to Nested Menu Items
     $(".navbar .menu-item-has-children").addClass("dropdown");

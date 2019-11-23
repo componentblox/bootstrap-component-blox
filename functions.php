@@ -215,50 +215,50 @@ if (function_exists('register_sidebar')) {
         'name' => __('Footer Area 1', 'bootstrap-component-blox'),
         'description' => __('Description for this sidebar-area...', 'bootstrap-component-blox'),
         'id' => 'footer-area-1',
-        'before_widget' => '<div id="%1$s" class="card h-100"> ',
+        'before_widget' => '<div id="%1$s" class="h-100"> ',
         'after_widget' => '</div>',
-        'before_title' => '<div class="card-header">',
-        'after_title' => '</div>'
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
     ));
 
     register_sidebar(array(
         'name' => __('Footer Area 2', 'bootstrap-component-blox'),
         'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
         'id' => 'footer-area-2',
-        'before_widget' => '<div id=%1$s" class="card h-100">',
+        'before_widget' => '<div id="%1$s" class="h-100"> ',
         'after_widget' => '</div>',
-        'before_title' => '<div class="card-header">',
-        'after_title' => '</div>'
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
     ));
     
     register_sidebar(array(
         'name' => __('Footer Area 3', 'bootstrap-component-blox'),
         'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
         'id' => 'footer-area-3',
-        'before_widget' => '<div id="%1$s" class="card h-100">',
+        'before_widget' => '<div id="%1$s" class="h-100"> ',
         'after_widget' => '</div>',
-        'before_title' => '<div class="card-header">',
-        'after_title' => '</div>'
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
     ));
     
     register_sidebar(array(
         'name' => __('Footer Area 4', 'bootstrap-component-blox'),
         'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
         'id' => 'footer-area-4',
-        'before_widget' => '<div id="%1$s" class="card h-100">',
+        'before_widget' => '<div id="%1$s" class="h-100"> ',
         'after_widget' => '</div>',
-        'before_title' => '<div class="card-header">',
-        'after_title' => '</div>'
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
     ));
 
     register_sidebar(array(
         'name' => __('Custom Area', 'bootstrap-component-blox'),
         'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
         'id' => 'custom-area-1',
-        'before_widget' => '<div id="%1$s" class="%2$s card border mb-4">',
+        'before_widget' => '<div id="%1$s" class="h-100"> ',
         'after_widget' => '</div>',
-        'before_title' => '<h5 class="card-header">',
-        'after_title' => '</h5>'
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
     ));
 }}
 

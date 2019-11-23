@@ -244,3 +244,9 @@ table#wp-calendar #today, table#wp-calendar #today a {
 		border-left: none!important
 	}
 }
+
+@media(max-width: 768px) {
+	.col {
+		flex-basis: initial!important;
+	}
+}
