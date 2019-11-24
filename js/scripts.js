@@ -27,6 +27,9 @@ jQuery(document).ready(function() {
      'data-toggle': "dropdown",
     });
 
+    // Wrap Widget With card-body Class
+    $('#sidebar .card-header ').next().wrap('<div class="card-body"></div>');
+
     // Change dropdown from click to hover
     $('.navbar .dropdown').hover(function() {
         $(this).find('.dropdown-menu').first().stop(true, true).delay(250).fadeIn(200);

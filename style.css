@@ -175,8 +175,8 @@ embed, iframe, object {
 	display: block;
 	padding: 0
 }
-.sidebar ul {
-	padding-right: 15px
+#sidebar ul {
+	padding-left: 20px;
 	margin-bottom: 0
 }
 #sidebar .widget_search {
