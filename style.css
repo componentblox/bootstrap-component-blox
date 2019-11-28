@@ -11,10 +11,10 @@
 	Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
-:focus {
+/*:focus {
 	outline: 0!important;
 	box-shadow: none!important;
-}
+}*/
 
 .screen-reader-text {
 	border: 0;
