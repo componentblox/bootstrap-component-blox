@@ -2,3 +2,4 @@
 * text=auto
 
 /.gitattributes export-ignore
+/.DS_Store export-ignore
