@@ -1,6 +1,6 @@
 <?php 
 /**
- * Add Logo Setting to Customizer
+ * Adds Custom Settings to Customizer
  *
  * @package bootstrap-component-blox
  */
@@ -33,13 +33,12 @@ add_theme_support( 'custom-header', array(
 /**
  * Add Body Settings.
  *
- * @param string $wp_customize This is the description.
+ * @param string $wp_customize the WP_Customize_Manager object.
  */
 function add_custom_customizer_settings( $wp_customize ) {
     
 	// Panels.    
 
-    
 	// Navbar.
 	$wp_customize->add_panel( 'navbar_panel', array(
 		'capability' => 'edit_theme_options',

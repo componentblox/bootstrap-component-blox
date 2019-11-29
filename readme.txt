@@ -1,5 +1,4 @@
 === Bootstrap Component Blox ===
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, two-columns, left-sidebar, right-sidebar, custom-colors, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, blog
 
 Requires at least: 4.0
 Tested up to: 4.9.8
@@ -12,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 
 == Description ==
-"Bootstrap Component Blox" is a bootstrap integrated WordPress theme. It is based on world's most popular framework Twitter Bootstrap 4. "Bootstrap Component Blox" is a perfect combination of Bootstrap 4 and WordPress. It is fast. light-weight and intergrate perfectly with Component Blox software. It supports all major & popular WordPress plugins. Check demo on https://theme.componentblox.com.
+"Bootstrap Component Blox" is a Bootstrap integrated WordPress theme. It is based on world's most popular framework Twitter Bootstrap 4. "Bootstrap Component Blox" is a perfect combination of Bootstrap 4 and WordPress. It is fast. light-weight and integrates perfectly with Component Blox software. It supports all major & popular WordPress plugins.
 
 
 == Installation ==
@@ -22,9 +21,6 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 
 == Changelog ==
-
-= 1.0 - Nov 1 2019 =
-* Initial release
 
 
 == Credits ==
