@@ -18,7 +18,7 @@
     	</a>
     	<?php } else {?>
             <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-    	       <i class="fas fa-cube fa-2x text-white bg-primary px-3 py-2"></i>
+    	       <i class="fas fa-cube fa-2x text-white bg-dark px-3 py-2"></i>
             </a>
     	<?php }?>
     	

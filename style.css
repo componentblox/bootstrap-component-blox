@@ -182,8 +182,13 @@ embed, iframe, object {
 #sidebar .widget_search {
 	border: none!important;
 }
-.post_meta {
+.post_meta,
+.post-meta {
 	font-size: 14px
+}
+.post-image {
+    height: 300px;
+    object-fit: cover;
 }
 dl {
 	margin-bottom: 0
