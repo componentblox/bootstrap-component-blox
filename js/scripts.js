@@ -36,5 +36,9 @@ jQuery(document).ready(function() {
     }, function() {
         $(this).find('.dropdown-menu').first().stop(true, true).delay(100).fadeOut(200);
     });
-	    
+
+    // Add Bootstrap Pagination Classes
+    $( ".pagination a" ).wrap( "<li class='page-item'></li>" );
+    $( ".pagination a, .pagination span" ).addClass("page-link");
+     
 });

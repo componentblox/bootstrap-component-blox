@@ -190,6 +190,9 @@ embed, iframe, object {
     height: 300px;
     object-fit: cover;
 }
+.page-numbers.current.page-link {
+	background: #e9ecef;
+}
 dl {
 	margin-bottom: 0
 }
