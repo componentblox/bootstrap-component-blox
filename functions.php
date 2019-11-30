@@ -342,8 +342,8 @@ if ( ! function_exists( 'my_pagination' ) ) :
             'format' => '?paged=%#%',
             'current' => max( 1, get_query_var('paged') ),
             'total' => $wp_query->max_num_pages,
-            'prev_text'          => __('«'),
-            'next_text'          => __('»'),
+            'prev_text'          => ('«'),
+            'next_text'          => ('»'),
 
         ) );
     }
