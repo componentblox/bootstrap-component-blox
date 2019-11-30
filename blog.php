@@ -10,11 +10,11 @@
  * @package bootstrap-component-blox
  */
 
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$blog_paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 query_posts(array(
     'post_type'      => 'post',
-    'paged'          => $paged,
+    'paged'          => $blog_paged,
     'posts_per_page' => 10
 ));
 
