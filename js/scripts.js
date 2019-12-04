@@ -40,5 +40,18 @@ jQuery(document).ready(function() {
     // Add Bootstrap Pagination Classes
     $( ".pagination a" ).wrap( "<li class='page-item'></li>" );
     $( ".pagination a, .pagination span" ).addClass("page-link");
+
+    // Add class to body tag when user scrolls
+    var scrolled_class = $("body");
+      
+    $(window).scroll(function() {    
+          
+    var scroll = $(window).scrollTop();
+        if (scroll >= 100) {
+            scrolled_class.addClass("scrolled");
+        } else {
+            scrolled_class.removeClass("scrolled");
+        }
+    });
      
 });
