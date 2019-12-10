@@ -98,7 +98,7 @@ add_action('init', 'register_wp_boostrap_theme_menu');
 /** 
  * Main Navigation Parameters 
  */
-function main_nav() {
+function main_nav($classes = 'ml-auto') {
     wp_nav_menu(
     array(
         'theme_location'  => 'main-menu',
@@ -114,7 +114,7 @@ function main_nav() {
         'after'           => '',
         'link_before'     => '',
         'link_after'      => '',
-        'items_wrap'      => '<ul class="navbar-nav ml-auto">%3$s</ul>',
+        'items_wrap'      => '<ul class="navbar-nav ' . $classes . '">%3$s</ul>',
         'depth'           => 0,
         'walker'          => ''
         )
