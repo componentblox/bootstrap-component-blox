@@ -247,6 +247,10 @@ table#wp-calendar #today, table#wp-calendar #today a {
 	white-space: nowrap;
 	padding: .25rem;
 }
+#nav-header .nav-item:last-child .dropdown-menu {
+	left: initial;
+	right: 0;
+}
 @media(max-width: 992px) {
 	
 	.border-left {
