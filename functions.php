@@ -89,8 +89,8 @@ if(!is_admin()) {
  */
 function bcb_register_menu() {
     register_nav_menus(array( 
-        'main-menu' => __('Main Menu', 'bootstrap-component-blox'), 
-        'sidebar-menu' => __('Sidebar Menu', 'bootstrap-component-blox'),
+        'main-menu' => esc_html__('Main Menu', 'bootstrap-component-blox'), 
+        'sidebar-menu' => esc_html__('Sidebar Menu', 'bootstrap-component-blox'),
     ));
 }
 add_action('init', 'bcb_register_menu'); 
@@ -202,8 +202,8 @@ function bcb_widgets_init() {
 if (function_exists('register_sidebar')) {
 
     register_sidebar(array(
-        'name' => __('Sidebar Area', 'bootstrap-component-blox'),
-        'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
+        'name' => esc_html__('Sidebar Area', 'bootstrap-component-blox'),
+        'description' => esc_html__('Add Sibebar Widgets Here', 'bootstrap-component-blox'),
         'id' => 'sidebar-area-1',
         'before_widget' => '<div id="%1$s" class="%2$s card border mb-4">',
         'after_widget' => '</div>',
@@ -212,8 +212,8 @@ if (function_exists('register_sidebar')) {
     ));
     
     register_sidebar(array(
-        'name' => __('Footer Area 1', 'bootstrap-component-blox'),
-        'description' => __('Description for this sidebar-area...', 'bootstrap-component-blox'),
+        'name' => esc_html__('Footer Area 1', 'bootstrap-component-blox'),
+        'description' => esc_html__('Add Footer Widgets Here', 'bootstrap-component-blox'),
         'id' => 'footer-area-1',
         'before_widget' => '<div id="%1$s" class="h-100"> ',
         'after_widget' => '</div>',
@@ -222,8 +222,8 @@ if (function_exists('register_sidebar')) {
     ));
 
     register_sidebar(array(
-        'name' => __('Footer Area 2', 'bootstrap-component-blox'),
-        'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
+        'name' => esc_html__('Footer Area 2', 'bootstrap-component-blox'),
+        'description' => esc_html__('Add Footer Widgets Here', 'bootstrap-component-blox'),
         'id' => 'footer-area-2',
         'before_widget' => '<div id="%1$s"> ',
         'after_widget' => '</div>',
@@ -232,8 +232,8 @@ if (function_exists('register_sidebar')) {
     ));
     
     register_sidebar(array(
-        'name' => __('Footer Area 3', 'bootstrap-component-blox'),
-        'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
+        'name' => esc_html__('Footer Area 3', 'bootstrap-component-blox'),
+        'description' => esc_html__('Add Footer Widgets Here', 'bootstrap-component-blox'),
         'id' => 'footer-area-3',
         'before_widget' => '<div id="%1$s"> ',
         'after_widget' => '</div>',
@@ -242,8 +242,8 @@ if (function_exists('register_sidebar')) {
     ));
     
     register_sidebar(array(
-        'name' => __('Footer Area 4', 'bootstrap-component-blox'),
-        'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
+        'name' => esc_html__('Footer Area 4', 'bootstrap-component-blox'),
+        'description' => esc_html__('Add Footer Widgets Here', 'bootstrap-component-blox'),
         'id' => 'footer-area-4',
         'before_widget' => '<div id="%1$s"> ',
         'after_widget' => '</div>',
@@ -252,8 +252,8 @@ if (function_exists('register_sidebar')) {
     ));
 
     register_sidebar(array(
-        'name' => __('Custom Area', 'bootstrap-component-blox'),
-        'description' => __('Description for this widget-area...', 'bootstrap-component-blox'),
+        'name' => esc_html__('Custom Area', 'bootstrap-component-blox'),
+        'description' => esc_html__('Add Custom Widgets Here', 'bootstrap-component-blox'),
         'id' => 'custom-area-1',
         'before_widget' => '<div id="%1$s"> ',
         'after_widget' => '</div>',

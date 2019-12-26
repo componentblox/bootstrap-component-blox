@@ -13,40 +13,26 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
 
-#: default-blog.php:17
-msgid "Read More"
+#: 404.php:23
+msgid "Page not found."
 msgstr ""
 
-#: 404.php:17
-msgid "Oops! That page can&rsquo;t be found."
-msgstr ""
-
-#: 404.php:21
+#: 404.php:24
 msgid ""
-"It looks like nothing was found at this location. Maybe try one of the "
-"links below or a search?"
+"We're sorry, but it appears the search term you entered did not find a match.<br> Please try again using a different search term."
 msgstr ""
 
-#: 404.php:30
-msgid "Most Used Categories"
-msgstr ""
-
-#: 404.php:47
-#. translators: %1$s: smiley
-msgid "Try looking in the monthly archives. %1$s"
-msgstr ""
-
-#: comments.php:34
+#: comments.php:15
 #. translators: 1: title.
-msgid "One thought on &ldquo;%1$s&rdquo;"
+msgid "Post is password protected. Enter the password to view any comments."
 msgstr ""
 
-#: comments.php:67
-msgid "Comments are closed."
+#: comments.php:33
+msgid "Comments are closed here."
 msgstr ""
 
-#: footer.php:18
-msgid "https://wordpress.org/"
+#: footer.php:17
+msgid "Copyright"
 msgstr ""
 
 #: footer.php:20
@@ -59,16 +45,60 @@ msgstr ""
 msgid "Theme: %1$s by %2$s."
 msgstr ""
 
-#: functions.php:47
-msgid "Primary"
+#: functions.php:92
+msgid "Main Menu"
 msgstr ""
 
-#: functions.php:105
-msgid "Sidebar"
+#: functions.php:93
+msgid "Sidebar Menu"
 msgstr ""
 
-#: functions.php:107
-msgid "Add widgets here."
+#: functions.php:205
+msgid "Sidebar Area"
+msgstr ""
+
+#: functions.php:206
+msgid "Add Sibebar Widgets Here"
+msgstr ""
+
+#: functions.php:215
+msgid "Footer Area 1"
+msgstr ""
+
+#: functions.php:216
+msgid "Add Footer Widgets Here"
+msgstr ""
+
+#: functions.php:225
+msgid "Footer Area 2"
+msgstr ""
+
+#: functions.php:226
+msgid "Add Footer Widgets Here"
+msgstr ""
+
+#: functions.php:235
+msgid "Footer Area 3"
+msgstr ""
+
+#: functions.php:236
+msgid "Add Footer Widgets Here"
+msgstr ""
+
+#: functions.php:245
+msgid "Footer Area 4"
+msgstr ""
+
+#: functions.php:246
+msgid "Add Footer Widgets Here"
+msgstr ""
+
+#: functions.php:255
+msgid "Custom Area"
+msgstr ""
+
+#: functions.php:256
+msgid "Add Custom Widgets Here"
 msgstr ""
 
 #: header.php:24
