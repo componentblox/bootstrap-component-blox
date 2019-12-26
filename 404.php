@@ -21,7 +21,7 @@
 					<div class="col-12">
 						<i class="fas fa-search fa-5x mb-4"></i>
 						<h4><?php esc_html_e( 'Page not found', 'bootstrap-component-blox' ); ?></h4>
-						<p>We're sorry, but it appears the search term you entered did not find a match.<br> Please try again using a different search term.</p>
+						<p><?php esc_html_e("We're sorry, but it appears the search term you entered did not find a match.<br> Please try again using a different search term." , "bootstrap-component-blox");?></p>
 						<?php get_template_part('searchform');?>
 					</div>
 

@@ -37,7 +37,7 @@ get_header(); ?>
 					<?php if(file_exists($child_theme_directory . '/template-parts/blog/custom-blog.php') && filesize($child_theme_directory . '/template-parts/blog/custom-blog.php')) { include($child_theme_directory . '/template-parts/blog/custom-blog.php');} else { include('default-blog.php');
 					}?>	
 
-					<?php 
+					<?php
 					endwhile;	
 		    		endif;
 					?>
@@ -52,6 +52,8 @@ get_header(); ?>
 						</nav>
 					</div>
 				</div>
+
+				<?php wp_reset_query();?>
 			
 			</div>
 		</div>

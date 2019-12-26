@@ -19,12 +19,12 @@ if (has_post_thumbnail()) { ?>
 	<img class="img-fluid rounded w-100" src="<?php echo esc_html(get_the_post_thumbnail_url());?>" alt="<?php echo esc_html($alt_text);?>"/>
 <?php }?>
 
-<h1 class="mt-4"><?php the_title();?></h1>
+<h1 class="mt-4"><?php the_title_attribute();?></h1>
 
 <div class="post_meta mb-3">
-	<span class="author badge badge-light border p-2"><?php esc_attr_e( 'Published by', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
+	<span class="author badge badge-light border p-2"><?php esc_html_e( 'Published by ', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
 	<span class="date badge badge-light border p-2"> <?php the_time('F j, Y');?></span> 
-	<span class="date badge badge-light border p-2">Category: <?php if(!empty($category)) { echo '<a href="' .  esc_html(get_category_link($category[0]->term_id)) . '">' . esc_html( $category[0]->name );}?></a></span>
+	<span class="date badge badge-light border p-2"><?php esc_html_e('Category: ' , 'bootstrap-component-blox'); if(!empty($category)) { echo '<a href="' .  esc_url(get_category_link($category[0]->term_id)) . '">' . esc_html( $category[0]->name );}?></a></span>
 	
 	<?php if(comments_open()) {?>
 	

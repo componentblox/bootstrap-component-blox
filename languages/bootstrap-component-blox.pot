@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
 
+#: default-blog.php:17
+msgid "Read More"
+msgstr ""
+
 #: 404.php:17
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""

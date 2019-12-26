@@ -11,12 +11,12 @@ if (have_posts()): while (have_posts()) : the_post(); ?>
 
 		<div class="mb-3">		
 			<?php if (has_post_thumbnail()) : ?>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 				<img class="img-fluid rounded" style="width: 100%;" src="<?php echo esc_url(get_the_post_thumbnail_url());?>" alt="">
 			</a>
 			<?php endif; ?>
 			
-			<h1 class="mt-4"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title();?></a></h1>
+			<h1 class="mt-4"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title_attribute();?></a></h1>
 
 			<div class="post_meta">
 				<span class="author"><?php esc_html_e( 'Published by', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
@@ -31,7 +31,7 @@ if (have_posts()): while (have_posts()) : the_post(); ?>
 
 	    	<?php the_content();?>
 
-			<a href="<?php the_permalink();?>" class="btn btn-dark text-white">Read More</a>
+			<a href="<?php the_permalink();?>" class="btn btn-dark text-white"><?php esc_html_e('Read More' , 'bootstrap-component-blox');?></a>
 			<?php wp_link_pages(); ?> 	
 		</div>	
 

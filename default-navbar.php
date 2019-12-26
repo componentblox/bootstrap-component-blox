@@ -14,7 +14,7 @@
 						
     	<?php if( has_custom_logo() ) {?>
     	<a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-    		<img src="<?php echo esc_url($custom_logo_url[0]);?>" alt="<?php echo esc_html(get_bloginfo());?> Logo" />	
+    		<img src="<?php echo esc_url($custom_logo_url[0]);?>" alt="<?php echo esc_attr(get_bloginfo());?>" />	
     	</a>
     	<?php } else {?>
             <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
