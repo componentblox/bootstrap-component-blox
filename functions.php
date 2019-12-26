@@ -7,9 +7,9 @@
  * @package bootstrap-component-blox
  */
 
-if ( ! function_exists( 'bootstrap_component_blox_setup' ) ) :
+if ( ! function_exists( 'bcb_setup' ) ) :
     /** Sets theme defaults and registers support for various WordPress features. **/
-    function bootstrap_component_blox_setup() {
+    function bcb_setup() {
         
         load_theme_textdomain( 'bootstrap-component-blox', get_template_directory() . '/languages' );
 
@@ -28,7 +28,7 @@ if ( ! function_exists( 'bootstrap_component_blox_setup' ) ) :
         ) );
 
         // Set up the WordPress core custom background feature.
-        add_theme_support( 'custom-background', apply_filters( 'bootstrap_component_blox_custom_background_args', array(
+        add_theme_support( 'custom-background', apply_filters( 'bcb_custom_background_args', array(
             'default-color' => 'ffffff',
             'default-image' => '',
         ) ) );
@@ -38,21 +38,21 @@ if ( ! function_exists( 'bootstrap_component_blox_setup' ) ) :
     }
 endif;
 
-add_action( 'after_setup_theme', 'bootstrap_component_blox_setup' );
+add_action( 'after_setup_theme', 'bcb_setup' );
 
 /** Set the content width in pixels, based on the theme's design and stylesheet. **/
-function bootstrap_component_blox_content_width() {
-    $GLOBALS['content_width'] = apply_filters( 'bootstrap_component_blox_content_width', 640 );
+function bcb_content_width() {
+    $GLOBALS['content_width'] = apply_filters( 'bcb_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'bootstrap_component_blox_content_width', 0 );
+add_action( 'after_setup_theme', 'bcb_content_width', 0 );
 
 /** 
  * Theme implement editor styling. 
  */
-function add_editor_styles() {
+function bcb_add_editor_styles() {
 	add_editor_style( get_stylesheet_uri() );
 }
-add_action( 'init', 'add_editor_styles' );
+add_action( 'init', 'bcb_add_editor_styles' );
 
 // Custom template tags for this theme.
 require get_template_directory() . '/inc/template-tags.php';
@@ -71,7 +71,7 @@ require_once( get_template_directory() . '/custom-comments.php' );
 // Load Styles and Scripts.
 if(!is_admin()) {
     /** Enqueue Files. **/
-    function enqueue_external_files(){
+    function bcb_enqueue_external_files(){
         wp_enqueue_style('bootstrap-component-blox', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
         wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '4.1.3' , false);
         wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.11.2/css/all.css', false, '5.11.2');
@@ -81,19 +81,19 @@ if(!is_admin()) {
         wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
         wp_enqueue_script('bootstrap-component-blox-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0', true );		
     }
-    add_action('init', 'enqueue_external_files');
+    add_action('init', 'bcb_enqueue_external_files');
 }
 
 /**
  * Register Navigation 
  */
-function register_wp_boostrap_theme_menu() {
+function bcb_register_menu() {
     register_nav_menus(array( 
         'main-menu' => __('Main Menu', 'bootstrap-component-blox'), 
         'sidebar-menu' => __('Sidebar Menu', 'bootstrap-component-blox'),
     ));
 }
-add_action('init', 'register_wp_boostrap_theme_menu'); 
+add_action('init', 'bcb_register_menu'); 
 
 /** 
  * Main Navigation Parameters 
@@ -126,11 +126,11 @@ function main_nav($classes = 'ml-auto') {
  * 
  * @param string $menu adds additional class to sub-menu class.
  */
-function change_submenu_class($menu) {  
+function bcb_change_submenu_class($menu) {  
   $menu = preg_replace('/ class="sub-menu"/','/ class="sub-menu dropdown-menu" /', $menu);  
   return $menu;  
 }  
-add_filter('wp_nav_menu','change_submenu_class');  
+add_filter('wp_nav_menu','bcb_change_submenu_class');  
 
 /**
  *  Adds 'nav-link' class to nav anchor.
@@ -140,19 +140,19 @@ add_filter('wp_nav_menu','change_submenu_class');
  * @param string $depth Depth of menu item. Used for padding.
  * @param string $args An object of wp_nav_menu() arguments.
  */
-function my_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
+function bcb_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
     $classes     = 'nav-link';
     $item_output = preg_replace('/<a /', '<a class="'.$classes.'"', $item_output, 1);
     return $item_output;
 }
-add_filter('walker_nav_menu_start_el', 'my_walker_nav_menu_start_el', 10, 4);
+add_filter('walker_nav_menu_start_el', 'bcb_walker_nav_menu_start_el', 10, 4);
 
 /** 
  * Remove the <div> surrounding the dynamic navigation to cleanup markup. 
  * 
  * @param string $args Array of wp_nav_menu() arguments.
  */
-function my_wp_nav_menu_args($args = '') {
+function bcb_wp_nav_menu_args($args = '') {
     $args['container'] = false;
     return $args;
 }
@@ -162,7 +162,7 @@ function my_wp_nav_menu_args($args = '') {
  * 
  * @param string $var CSS Attributes.
  */
-function my_css_attributes_filter($var) {
+function bcb_css_attributes_filter($var) {
     return is_array($var) ? array() : '';
 }
 
@@ -171,7 +171,7 @@ function my_css_attributes_filter($var) {
  * 
  * @param string $thelist Attribute value.
  */
-function remove_category_rel_from_category_list($thelist) {
+function bcb_remove_category_rel_from_category_list($thelist) {
     return str_replace('rel="category tag"', 'rel="tag"', $thelist);
 }
 
@@ -180,7 +180,7 @@ function remove_category_rel_from_category_list($thelist) {
  * 
  * @param string $classes CSS class.
  */
-function add_slug_to_body_class($classes) {
+function bcb_add_slug_to_body_class($classes) {
     global $post;
     if (is_home()) {
         $key = array_search('blog', $classes);
@@ -198,7 +198,7 @@ function add_slug_to_body_class($classes) {
 /**
  * Dynamic Sidebar Function. 
  */
-function bootstrap_component_blox_widgets_init() {
+function bcb_widgets_init() {
 if (function_exists('register_sidebar')) {
 
     register_sidebar(array(
@@ -261,6 +261,7 @@ if (function_exists('register_sidebar')) {
         'after_title' => '</h4>'
     ));
 }}
+add_action('widgets_init', 'bcb_widgets_init');
 
 
 /** 
@@ -269,70 +270,20 @@ if (function_exists('register_sidebar')) {
  * @param string $submit_button HTML markup for the submit button.
  * @param string $args (array) Arguments passed to comment_form().
  */
-function filter_comment_form_submit_button( $submit_button, $args ) {
+function bcb_filter_comment_form_submit_button( $submit_button, $args ) {
     $submit_before = '<div class="form-group">';
     $submit_after = '</div>';
     $submit_button = '<input name="submit" type="submit" id="submit" class="submit btn btn-dark" value="Post Comment">';
     return $submit_before . $submit_button . $submit_after;
 };
-add_filter( 'comment_form_submit_button', 'filter_comment_form_submit_button', 10, 2 );
-
-
-/** 
- * Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin. 
- */
-function bootstrap_component_blox_pagination() {
-    global $wp_query;
-    $big = 999999999;
-    echo esc_attr(paginate_links(array(
-        'base' => str_replace($big, '%#%', get_pagenum_link($big)),
-        'format' => '?paged=%#%',
-        'current' => max(1, get_query_var('paged')),
-        'total' => $wp_query->max_num_pages
-    )));
-}
-add_action('init', 'bootstrap_component_blox_pagination');
-
-/**
- * Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail. 
- *
- * @param string $html Removes thumbnail width and height HTML Markup.
- */
-function remove_thumbnail_dimensions($html) {
-    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
-    return $html;
-}
-
-/** 
- * Threaded Comments. 
- */
-function enable_threaded_comments() {
-    if (!is_admin()) {
-        if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-            wp_enqueue_script('comment-reply');
-        }
-    }
-}
-add_action('get_header', 'enable_threaded_comments');
-
-
-/** 
- * Enable SVG Import.
- * 
- * @param string $mimes Media type.
- */
-function cc_mime_types($mimes) {
- $mimes['svg'] = 'image/svg+xml';
- return $mimes;
-}
-add_filter('upload_mimes', 'cc_mime_types');
+add_filter( 'comment_form_submit_button', 'bcb_filter_comment_form_submit_button', 10, 2 );
 
 
 /** 
  * Bootstrap Pagination. 
  */
-if ( ! function_exists( 'my_pagination' ) ) :
-    function my_pagination() {
+if ( ! function_exists( 'bcb_pagination' ) ) :
+    function bcb_pagination() {
         global $wp_query;
 
         $big = 999999999; // need an unlikely integer
@@ -349,18 +300,52 @@ if ( ! function_exists( 'my_pagination' ) ) :
     }
 endif;
 
+/**
+ * Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail. 
+ *
+ * @param string $html Removes thumbnail width and height HTML Markup.
+ */
+function bcb_remove_thumbnail_dimensions($html) {
+    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
+    return $html;
+}
+
+/** 
+ * Threaded Comments. 
+ */
+function bcb_enable_threaded_comments() {
+    if (!is_admin()) {
+        if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
+            wp_enqueue_script('comment-reply');
+        }
+    }
+}
+add_action('get_header', 'bcb_enable_threaded_comments');
+
+
+/** 
+ * Enable SVG Import.
+ * 
+ * @param string $mimes Media type.
+ */
+function bcb_cc_mime_types($mimes) {
+ $mimes['svg'] = 'image/svg+xml';
+ return $mimes;
+}
+add_filter('upload_mimes', 'bcb_cc_mime_types');
+
+
 /** 
  * Include search bar function.
  * 
  * @param  string $search_form_id Custom ID for form container.
  * @param  string $search_form_btn_class Custom class for form button.
  */
-function get_searchbar($search_form_id, $search_form_btn_class = "btn-dark" ) {
+function bcb_get_searchbar($search_form_id, $search_form_btn_class = "btn-dark" ) {
     include('searchform.php');
 }
 
 // Add Filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
-add_action('widgets_init', 'bootstrap_component_blox_widgets_init');
 add_filter( 'widget_text', 'shortcode_unautop');
 add_filter( 'widget_text', 'do_shortcode');

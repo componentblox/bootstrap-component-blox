@@ -14,7 +14,7 @@
  * @param string  $args Arguments.
  * @param Integer $depth Determines the number of nested comments.
  */
-function custom_comments( $comment, $args, $depth ) {
+function bcb_custom_comments( $comment, $args, $depth ) {
 	global $post;
 	$author_id = $post->post_author;
 	switch ( $comment->comment_type ) :

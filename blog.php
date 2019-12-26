@@ -47,7 +47,7 @@ get_header(); ?>
 					<div class="col-12 d-flex justify-content-center">
 						<nav aria-label="Page navigation">
   							<ul class="pagination">
-								<?php my_pagination();?>
+								<?php bcb_pagination();?>
 							</ul>
 						</nav>
 					</div>
