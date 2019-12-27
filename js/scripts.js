@@ -9,10 +9,10 @@ jQuery(document).ready(function() {
 	$("false ul").addClass("navbar-nav ml-auto");
 	
 	// Resize Body Container Based on Navbar Height
-	$('.entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
+	$('article > .entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
 	
 	$(window).resize(function(){
-  		$('.entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
+  		$('article > .entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
 	});
 
 	 // Add Bootstrap Dropdown Classes to Nested Menu Items
