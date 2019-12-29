@@ -23,7 +23,6 @@ msgid ""
 msgstr ""
 
 #: comments.php:15
-#. translators: 1: title.
 msgid "Post is password protected. Enter the password to view any comments."
 msgstr ""
 
@@ -31,18 +30,28 @@ msgstr ""
 msgid "Comments are closed here."
 msgstr ""
 
+#: custom-comments.php:26
+msgid "Pingback:"
+msgstr ""
+
+#: default-blog.php:16
+msgid "By"
+msgstr ""
+
 #: footer.php:17
 msgid "Copyright"
 msgstr ""
 
-#: footer.php:20
-#. translators: %s: CMS name, i.e. WordPress.
-msgid "Proudly powered by %s"
+#: footer.php:17
+msgid "Component Blox."
 msgstr ""
 
-#: footer.php:25
-#. translators: 1: Theme name, 2: Theme author.
-msgid "Theme: %1$s by %2$s."
+#: footer.php:17
+msgid "Powered by"
+msgstr ""
+
+#: footer.php:17
+msgid "Bootstrap"
 msgstr ""
 
 #: functions.php:92
@@ -101,12 +110,32 @@ msgstr ""
 msgid "Add Custom Widgets Here"
 msgstr ""
 
-#: header.php:24
-msgid "Skip to content"
+#: loop.php:22
+msgid "Published by"
 msgstr ""
 
-#: header.php:45
-msgid "Primary Menu"
+#: loop.php:22
+msgid "Read More"
+msgstr ""
+
+#: loop.php:34
+msgid "Sorry, nothing to display."
+msgstr ""
+
+#: page.php:19
+msgid "Pages:"
+msgstr ""
+
+#: post-comments.php:13
+msgid "Leave a Comment"
+msgstr ""
+
+#: post-content.php:19
+msgid "Published by"
+msgstr ""
+
+#: searchform.php:16
+msgid "Search"
 msgstr ""
 
 #: inc/template-tags.php:52
@@ -133,73 +162,6 @@ msgstr ""
 #. translators: %s: Name of current post. Only visible to screen readers
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
-
-#: search.php:21
-#. translators: %s: search query.
-msgid "Search Results for: %s"
-msgstr ""
-
-#: template-parts/content-none.php:14
-msgid "Nothing Found"
-msgstr ""
-
-#: template-parts/content-none.php:25
-#. translators: 1: link to WP admin new post page.
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-
-#: template-parts/content-none.php:38
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
-msgstr ""
-
-#: template-parts/content-none.php:44
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr ""
-
-#: template-parts/content-page.php:22 template-parts/content.php:45
-msgid "Pages:"
-msgstr ""
-
-#: template-parts/content.php:34
-#. translators: %s: Name of current post. Only visible to screen readers
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
-msgstr ""
-
-#. Theme Name of the plugin/theme
-msgid "_s"
-msgstr ""
-
-#. Theme URI of the plugin/theme
-msgid "https://underscores.me/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, if "
-"you like. I'm a theme meant for hacking so don't use me as a <em>Parent "
-"Theme</em>. Instead try turning me into the next, most awesome, WordPress "
-"theme out there. That's what I'm here for."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "Automattic"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "https://automattic.com/"
-msgstr ""
-
-#: comments.php:40
-#. translators: 1: comment count number, 2: title.
-msgctxt "comments title"
-msgid "%1$s thought on &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] ""
-msgstr[1] ""
 
 #: inc/template-tags.php:29
 #. translators: %s: post date.
