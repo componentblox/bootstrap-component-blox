@@ -14,7 +14,9 @@ $child_theme_directory = get_stylesheet_directory();
 get_template_part('footer-widgets');?>
 	
 	<footer class="text-center p-3 <?php echo esc_html($footer_classes);?>" role="contentinfo">
-		<div class="site-info"><?php if($footer_credit){echo ($footer_credit);} else {?>&copy;<?php echo esc_html(date('Y'));?> <?php esc_html_e('Copyright' , 'bootstrap-component-blox');?> <a href="<?php echo esc_url( __( 'https://componentblox.com/', 'bootstrap-component-blox' ) ); ?>"><?php esc_html_e('Component Blox.' , 'bootstrap-component-blox');?></a> <?php esc_html_e('Powered by' , 'bootstrap-component-blox');?> <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bootstrap-component-blox' ) ); ?>"><?php printf( esc_html__( '%s', 'bootstrap-component-blox' ), 'WordPress' ); ?></a> &amp; <a href="<?php echo esc_url( __( 'https://getbootstrap.com/', 'bootstrap-component-blox' ) ); ?>" title="Bootstrap"> <?php esc_html_e('Bootstrap' , 'bootstrap-component-blox');?></a>.<?php }?></div>
+		<div class="site-info"><?php if($footer_credit){echo esc_html($footer_credit , 'bootstrap-component-blox');} else {?>&copy;<?php echo esc_html(date('Y'));?> <?php esc_html_e('Copyright' , 'bootstrap-component-blox');?> <a href="<?php echo esc_url( __( 'https://componentblox.com/', 'bootstrap-component-blox' ) ); ?>"><?php esc_html_e('Component Blox.' , 'bootstrap-component-blox');?></a> <?php esc_html_e('Powered by' , 'bootstrap-component-blox');?> <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bootstrap-component-blox' ) ); ?>">
+			<?php 
+			printf( esc_html__( 'WordPress', 'bootstrap-component-blox' )); ?></a> &amp; <a href="<?php echo esc_url( __( 'https://getbootstrap.com/', 'bootstrap-component-blox' ) ); ?>" title="Bootstrap"> <?php esc_html_e('Bootstrap' , 'bootstrap-component-blox');?></a>.<?php }?></div>
 	</footer>
     <?php wp_footer(); ?>
 

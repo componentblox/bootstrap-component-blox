@@ -72,6 +72,7 @@ if ( ! function_exists( 'bcb_entry_footer' ) ) :
 			echo '<span class="comments-link">';
 			comments_popup_link(
 				sprintf(
+					/* translators: %s: WordPress. */
 					wp_kses(__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bootstrap-component-blox' ),
 						array(
 							'span' => array(
