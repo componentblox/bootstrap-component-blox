@@ -351,6 +351,13 @@ function bcb_get_searchbar($search_form_id, $search_form_btn_class = "btn-dark" 
     include('searchform.php');
 }
 
+/**
+ * Before Main Body Content Hook 
+ */
+function cb_after_main_content() {
+    do_action('cb_after_main_content');
+}
+
 // Add Filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
 add_filter( 'widget_text', 'shortcode_unautop');

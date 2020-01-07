@@ -11,6 +11,8 @@ $footer_credit = get_theme_mod('footer_credit');
 $footer_classes = get_theme_mod('footer_classes');
 $child_theme_directory = get_stylesheet_directory();
 
+cb_after_main_content();
+
 get_template_part('footer-widgets');?>
 	
 	<footer class="text-center p-3 <?php echo esc_html($footer_classes);?>" role="contentinfo">
