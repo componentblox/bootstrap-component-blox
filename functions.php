@@ -352,10 +352,17 @@ function bcb_get_searchbar($search_form_id, $search_form_btn_class = "btn-dark" 
 }
 
 /**
- * Before Main Body Content Hook 
+ * Before Footer 
  */
-function cb_after_main_content() {
-    do_action('cb_after_main_content');
+function cb_before_footer() {
+    do_action('cb_before_footer');
+}
+
+/**
+ * Before Navbar
+ */
+function cb_before_navbar() {
+    do_action('cb_before_navbar');
 }
 
 // Add Filters.

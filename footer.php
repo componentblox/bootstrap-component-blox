@@ -11,7 +11,7 @@ $footer_credit = get_theme_mod('footer_credit');
 $footer_classes = get_theme_mod('footer_classes');
 $child_theme_directory = get_stylesheet_directory();
 
-cb_after_main_content();
+cb_before_footer();
 
 get_template_part('footer-widgets');?>
 	
