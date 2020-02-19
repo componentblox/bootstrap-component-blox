@@ -10,7 +10,16 @@
 $footer_credit = get_theme_mod('footer_credit');
 $footer_classes = get_theme_mod('footer_classes');
 $child_theme_directory = get_stylesheet_directory();
-$arr = array('href' => array(), 'br' => array(), 'strong' => array());
+$arr = array(
+	'a' => array(
+		'href' => array(),
+		'title' => array(),
+		'target' => array(),
+	),
+	'br' => array(),
+	'em' => array(),
+	'strong' => array(),
+);
 
 cb_before_footer();
 
@@ -27,4 +36,6 @@ get_template_part('footer-widgets');?>
 
 	</body>
 </html>
+
+
 
