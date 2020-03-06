@@ -53,5 +53,19 @@ jQuery(document).ready(function() {
             scrolled_class.removeClass("scrolled");
         }
     });
+
+    // Adjust Navbar if WP Toolbar is visible
+    let wpToolbar = document.getElementById('wpadminbar')
+    let navbar = document.getElementsByClassName('fixed-top')
+
+    if (typeof(wpToolbar) != 'undefined' && wpToolbar != null) {
+        for(var i = 0; i < navbar.length; i++) {
+            navbar[i].classList.add('wp-toolbar');
+        }
+    } else {
+        for(var i = 0; i < navbar.length; i++) {
+            navbar[i].classList.remove('wp-toolbar');
+        }
+    }
      
 });

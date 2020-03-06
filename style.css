@@ -15,7 +15,6 @@
 	outline: 0!important;
 	box-shadow: none!important;
 }
-
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
@@ -237,6 +236,9 @@ table#wp-calendar #today, table#wp-calendar #today a {
 .comment-reply-link:hover {
 	color: initial
 }
+#nav-header .wp-toolbar {
+	top: 32px;
+}
 #nav-header .dropdown-menu {
 	padding: .75rem;
 }
@@ -252,12 +254,16 @@ table#wp-calendar #today, table#wp-calendar #today a {
 	right: 0;
 }
 @media(max-width: 992px) {
-	
 	.border-left {
 		border-left: none!important
 	}
-
 	.col {
 		flex-basis: initial!important;
+	}
+}
+
+@media(max-width: 768px) {
+	#nav-header .wp-toolbar {
+		top: 46px;
 	}
 }
