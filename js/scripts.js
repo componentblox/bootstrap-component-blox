@@ -2,33 +2,31 @@
  * File scipts.js.
  */
 
-jQuery(document).ready(function() {
-
-	let $ = jQuery
+jQuery(document).ready(function($) {
 	
-	$("false ul").addClass("navbar-nav ml-auto");
+    // Add class to unset navbar
+	$('false ul').addClass('navbar-nav ml-auto');
 	
-	// Resize Body Container Based on Navbar Height
+	// Resize body container based on navbar height
 	$('article > .entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
-	
-	$(window).resize(function(){
+    $(window).resize(function(){
   		$('article > .entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
 	});
 
-	 // Add Bootstrap Dropdown Classes to Nested Menu Items
-    $(".navbar .menu-item-has-children").addClass("dropdown");
-    $(".navbar .menu-item-has-children > a").addClass("dropdown-toggle");
+	// Add Bootstrap dropdown classes to nested menu items
+    $('.navbar .menu-item-has-children').addClass('dropdown');
+    $('.navbar .menu-item-has-children > a').addClass('dropdown-toggle');
 
-    // Add Attributes to sub menu
-    $(".dropdown-toggle").attr({
-     'role': "button",
-     'aria-haspopup': "true",
-     'aria-expanded': "false",
-     'data-toggle': "dropdown",
+    // Add attributes to sub menu
+    $('.dropdown-toggle').attr({
+     'role' : 'button',
+     'aria-haspopup' : 'true',
+     'aria-expanded' : 'false',
+     'data-toggle' : 'dropdown',
     });
 
-    // Wrap Widget With card-body Class
-    $('#sidebar .card-header ').next().wrap('<div class="card-body"></div>');
+    // Wrap widget with card-body class
+    $('#sidebar .card-header').next().wrap('<div class="card-body"></div>');
 
     // Change dropdown from click to hover
     $('.navbar .dropdown').hover(function() {
@@ -37,33 +35,32 @@ jQuery(document).ready(function() {
         $(this).find('.dropdown-menu').first().stop(true, true).delay(100).fadeOut(200);
     });
 
-    // Add Bootstrap Pagination Classes
-    $( ".pagination a" ).wrap( "<li class='page-item'></li>" );
-    $( ".pagination a, .pagination span" ).addClass("page-link");
+    // Add Bootstrap pagination classes
+    $('.pagination a').wrap('<li class="page-item"></li>');
+    $('.pagination a, .pagination span').addClass('page-link');
 
     // Add class to body tag when user scrolls
-    var scrolled_class = $("body");
-      
+    let scrolled_class = $('body');
     $(window).scroll(function() {    
           
-    var scroll = $(window).scrollTop();
+        let scroll = $(window).scrollTop();
         if (scroll >= 100) {
-            scrolled_class.addClass("scrolled");
+            scrolled_class.addClass('scrolled');
         } else {
-            scrolled_class.removeClass("scrolled");
+            scrolled_class.removeClass('scrolled');
         }
     });
 
-    // Adjust Navbar if WP Toolbar is visible
+    // Adjust navbar if WP toolbar is visible
     let wpToolbar = document.getElementById('wpadminbar')
     let navbar = document.getElementsByClassName('fixed-top')
 
     if (typeof(wpToolbar) != 'undefined' && wpToolbar != null) {
-        for(var i = 0; i < navbar.length; i++) {
+        for(let i = 0; i < navbar.length; i++) {
             navbar[i].classList.add('wp-toolbar');
         }
     } else {
-        for(var i = 0; i < navbar.length; i++) {
+        for(let i = 0; i < navbar.length; i++) {
             navbar[i].classList.remove('wp-toolbar');
         }
     }
