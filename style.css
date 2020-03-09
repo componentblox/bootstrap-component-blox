@@ -253,6 +253,9 @@ table#wp-calendar #today, table#wp-calendar #today a {
 	left: initial;
 	right: 0;
 }
+#footer-widgets .nav-link {
+	padding-left: 0;
+}
 @media(max-width: 992px) {
 	.border-left {
 		border-left: none!important
