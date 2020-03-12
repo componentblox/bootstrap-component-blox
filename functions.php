@@ -52,7 +52,7 @@ add_action( 'after_setup_theme', 'bcb_content_width', 0 );
 function bcb_add_editor_styles() {
 	add_editor_style( get_stylesheet_uri() );
 }
-add_action( 'init', 'bcb_add_editor_styles' );
+add_action('init', 'bcb_add_editor_styles');
 
 // Custom template tags for this theme.
 require get_template_directory() . '/inc/template-tags.php';
