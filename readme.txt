@@ -1,8 +1,8 @@
 === Bootstrap Component Blox ===
 
 Requires at least: 4.0
-Tested up to: 4.9.8
-Stable tag: 1.0.9
+Tested up to: 5.3
+Stable tag: 1.1
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 
 == Description ==
-"Bootstrap Component Blox" is a Bootstrap integrated WordPress theme. It is based on world's most popular framework Twitter Bootstrap 4. "Bootstrap Component Blox" is a perfect combination of Bootstrap 4 and WordPress. It is fast. light-weight and integrates perfectly with Component Blox software. It supports all major & popular WordPress plugins.
+"Bootstrap Component Blox" is a Bootstrap integrated WordPress theme. It is based on world's most popular framework Twitter Bootstrap 4. "Bootstrap Component Blox" is a perfect combination of Bootstrap 4 and WordPress. It is fast, light-weight and integrates perfectly with Component Blox platform. It supports all major & popular WordPress plugins.
 
 
 == Installation ==
