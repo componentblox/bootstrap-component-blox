@@ -7,7 +7,7 @@
  * @package bootstrap-component-blox
  */
 
-if ( ! function_exists( 'bcb_setup' ) ) :
+if (! function_exists('bcb_setup')) :
     /** Sets theme defaults and registers support for various WordPress features. **/
     function bcb_setup() {
         
