@@ -11,7 +11,7 @@ if (! function_exists('bcb_setup')) :
     /** Sets theme defaults and registers support for various WordPress features. **/
     function bcb_setup() {
         
-        load_theme_textdomain( 'bootstrap-component-blox', get_template_directory() . '/languages' );
+        load_theme_textdomain( 'bootstrap-component-blox', get_template_directory() . '/languages');
 
         // Add default posts and comments RSS feed links to head.
         add_theme_support( 'automatic-feed-links' );
