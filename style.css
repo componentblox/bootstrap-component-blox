@@ -241,6 +241,9 @@ table#wp-calendar #today, table#wp-calendar #today a {
 }
 #nav-header .dropdown-menu {
 	padding: .75rem;
+	border: none;
+	border-radius: 0;
+	top: 95%;
 }
 #nav-header .dropdown-menu .dropdown-menu {
 	left: 100%;
