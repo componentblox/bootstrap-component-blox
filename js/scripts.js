@@ -30,9 +30,9 @@ jQuery(document).ready(function($) {
 
     // Change dropdown from click to hover
     $('.navbar .dropdown').hover(function() {
-        $(this).find('.dropdown-menu').first().stop(true, true).delay(250).fadeIn(200);
+        $(this).find('.dropdown-menu').first().stop(true, true).fadeIn(200);
     }, function() {
-        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).fadeOut(200);
+        $(this).find('.dropdown-menu').first().stop(true, true).fadeOut(100);
     });
 
     // Add Bootstrap pagination classes
