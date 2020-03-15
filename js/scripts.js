@@ -40,15 +40,19 @@ jQuery(document).ready(function($) {
     $('.pagination a, .pagination span').addClass('page-link');
 
     // Add class to body tag when user scrolls
-    let scrolled_class = $('body');
-    $(window).scroll(function() {    
-          
-        let scroll = $(window).scrollTop();
-        if (scroll >= 100) {
-            scrolled_class.addClass('scrolled');
+    var scrollPosition = window.scrollY;
+    var body = document.getElementsByTagName('body')[0];
+
+    window.addEventListener('scroll', function() {
+
+        scrollPosition = window.scrollY;
+
+        if (scrollPosition >= 100) {
+            body.classList.add('scrolled');
         } else {
-            scrolled_class.removeClass('scrolled');
+            body.classList.remove('scrolled');
         }
+
     });
 
     // Adjust navbar if WP toolbar is visible
