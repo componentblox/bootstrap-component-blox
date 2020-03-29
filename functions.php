@@ -215,7 +215,7 @@ if (function_exists('register_sidebar')) {
         'name' => esc_html__('Footer Area 1', 'bootstrap-component-blox'),
         'description' => esc_html__('Add Footer Widgets Here', 'bootstrap-component-blox'),
         'id' => 'footer-area-1',
-        'before_widget' => '<div id="%1$s" class="h-100"> ',
+        'before_widget' => '<div id="%1$s"> ',
         'after_widget' => '</div>',
         'before_title' => '<h4>',
         'after_title' => '</h4>'
