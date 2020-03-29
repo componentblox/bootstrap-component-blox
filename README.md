@@ -6,3 +6,5 @@ Component Blox WordPress Theme is light, fast, stable, and reliable. The core th
  <li>Bootstrap Framework</li>
  <li>Font Awesome</li>
 </ul>
+<hr>
+<img src="https://componentblox.com/wp-content/uploads/screenshot.png" width="500" height="auto">
