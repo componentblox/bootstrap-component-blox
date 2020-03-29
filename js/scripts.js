@@ -16,10 +16,10 @@ jQuery(document).ready(function($) {
 
     // Add attributes to sub menu
     $('.dropdown-toggle').attr({
-     'role' : 'button',
-     'aria-haspopup' : 'true',
-     'aria-expanded' : 'false',
-     'data-toggle' : 'dropdown',
+        'role' : 'button',
+        'aria-haspopup' : 'true',
+        'aria-expanded' : 'false',
+        'data-toggle' : 'dropdown',
     });
 
     // Wrap widget with card-body class
