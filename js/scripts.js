@@ -9,9 +9,6 @@ jQuery(document).ready(function($) {
 	
 	// Resize body container based on navbar height
 	$('article > .entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
-    $(window).resize(function(){
-  		$('article > .entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
-	});
 
 	// Add Bootstrap dropdown classes to nested menu items
     $('.navbar .menu-item-has-children').addClass('dropdown');
