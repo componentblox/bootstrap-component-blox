@@ -350,14 +350,14 @@ function bcb_get_searchbar($search_form_id, $search_form_btn_class = "btn-dark" 
 }
 
 /**
- * Before Footer 
+ * Hook: Before Footer 
  */
 function cb_before_footer() {
     do_action('cb_before_footer');
 }
 
 /**
- * Before Navbar
+ * Hook: Before Navbar
  */
 function cb_before_navbar() {
     do_action('cb_before_navbar');
