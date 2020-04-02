@@ -23,14 +23,7 @@ if (have_posts()): while (have_posts()) : the_post();
 			<?php }?>
 			
 			<h4><a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"><?php the_title_attribute();?></a></h4>
-
-			<div class="post_meta">
-				<span class="author"><?php esc_html_e( 'Published by', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
-				<span class="date">| <?php the_time('F j, Y');?></span>
-			</div>
-			
 			<hr>
-
 	    	<p><?php echo esc_html(wp_trim_words( get_the_content(),20, '...' ));?></p>
 
 			<p class="mb-0"><a href="<?php the_permalink();?>" class="btn btn-dark text-white"><?php esc_html_e('Read More' , 'bootstrap-component-blox');?></a>
