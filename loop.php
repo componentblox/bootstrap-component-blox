@@ -14,7 +14,7 @@ if (have_posts()): while (have_posts()) : the_post();
 	$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 	$image = wp_get_attachment_image_url( $thumbnail_id, 'medium' );?>
 
-	<div class="col-12 col-lg-4 mb-4 mb-lg-0">	
+	<div class="col-12 col-lg-4 mb-4">	
 		<div class="card p-3">	
 			<?php if (has_post_thumbnail()) { ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
