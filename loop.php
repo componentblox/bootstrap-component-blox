@@ -27,10 +27,6 @@ if (have_posts()): while (have_posts()) : the_post();
 			<div class="post_meta">
 				<span class="author"><?php esc_html_e( 'Published by', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
 				<span class="date">| <?php the_time('F j, Y');?></span>
-				<?php if(the_category()) {?><span class="category">| <?php the_category(', ');?> </span><?php }?>
-				<span class="comments">
-					<?php if (comments_open(get_the_ID())) comments_popup_link( __( 'Leave your thoughts', 'bootstrap-component-blox' ), __( '1 Comment', 'bootstrap-component-blox' ), __( '% Comments', 'bootstrap-component-blox' ));?>
-				</span>
 			</div>
 			
 			<hr>
