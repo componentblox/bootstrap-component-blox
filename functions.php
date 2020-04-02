@@ -366,7 +366,7 @@ function cb_before_navbar() {
 /**
  * Search Bar
  */
-function cb_search_form($searchClasses) {
+function cb_search_form($searchClasses = '') {
     include('searchform.php');
 }
 
