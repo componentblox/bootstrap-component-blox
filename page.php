@@ -20,7 +20,6 @@ get_header(); ?>
 					'after'  => '</div>',
 				));?>
 			</div>
-			  <?php bcb_search_form('bg-dark');?>
 		
 		</article>
 		
