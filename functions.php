@@ -326,7 +326,6 @@ function bcb_enable_threaded_comments() {
 }
 add_action('get_header', 'bcb_enable_threaded_comments');
 
-
 /** 
  * Enable SVG Import.
  * 
@@ -339,34 +338,24 @@ function bcb_cc_mime_types($mimes) {
 add_filter('upload_mimes', 'bcb_cc_mime_types');
 
 
-/** 
- * Include search bar function.
- * 
- * @param  string $search_form_id Custom ID for form container.
- * @param  string $search_form_btn_class Custom class for form button.
- */
-function bcb_get_searchbar($search_form_id, $search_form_btn_class = "btn-dark" ) {
-    include('searchform.php');
-}
-
 /**
  * Hook: Before Footer 
  */
-function cb_before_footer() {
-    do_action('cb_before_footer');
+function bcb_before_footer() {
+    do_action('bcb_before_footer');
 }
 
 /**
  * Hook: Before Navbar
  */
-function cb_before_navbar() {
-    do_action('cb_before_navbar');
+function bcb_before_navbar() {
+    do_action('bcb_before_navbar');
 }
 
 /**
  * Search Bar
  */
-function cb_search_form($searchClasses = '') {
+function bcb_search_form($searchClasses = "") {
     include('searchform.php');
 }
 

@@ -7,6 +7,8 @@
  * @package bootstrap-component-blox
  */
 
+$searchClasses = "";
+
 ?>
 
 <form class="cb_search position-relative" method="get" action="<?php echo esc_url(home_url('/'));?>" role="search">

@@ -21,7 +21,7 @@ $arr = array(
 	'strong' => array(),
 );
 
-cb_before_footer();
+bcb_before_footer();
 
 get_template_part('footer-widgets');?>
 	
