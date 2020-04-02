@@ -11,5 +11,5 @@
 
 <form class="cb_search position-relative" method="get" action="<?php echo esc_url(home_url('/'));?>" role="search">
 	<input class="<?php echo $searchClasses;?>" type="text" name="s" placeholder="Search..." value="<?php the_search_query(); ?>">
-	<button type="submit" role="button" aria-label="magnifying glass icon" class="fa fa-search"></button>
+	<button type="submit" role="button" aria-label="search" class="fa fa-search"></button>
 </form>
