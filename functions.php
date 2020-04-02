@@ -7,7 +7,7 @@
  * @package bootstrap-component-blox
  */
 
-if (! function_exists('bcb_setup')) :
+if (!function_exists('bcb_setup')) :
     /** Sets theme defaults and registers support for various WordPress features. **/
     function bcb_setup() {
         
@@ -270,19 +270,19 @@ add_action('widgets_init', 'bcb_widgets_init');
  * @param string $submit_button HTML markup for the submit button.
  * @param string $args (array) Arguments passed to comment_form().
  */
-function bcb_filter_comment_form_submit_button( $submit_button, $args ) {
+function bcb_filter_comment_form_submit_button($submit_button, $args) {
     $submit_before = '<div class="form-group">';
     $submit_after = '</div>';
     $submit_button = '<input name="submit" type="submit" id="submit" class="submit btn btn-dark" value="Post Comment">';
     return $submit_before . $submit_button . $submit_after;
-};
+}
 add_filter( 'comment_form_submit_button', 'bcb_filter_comment_form_submit_button', 10, 2 );
 
 
 /** 
  * Does Custom Bootstrap Pagination Exist. 
  */
-if ( ! function_exists( 'bcb_pagination' ) ) :
+if(!function_exists('bcb_pagination')) :
     
     /** 
      * Custom Pagination. 
@@ -355,9 +355,12 @@ function bcb_before_navbar() {
 /**
  * Search Bar
  */
-function bcb_search_form($searchClasses = "") {
-    include('searchform.php');
-}
+function bcb_search_form($searchClasses = "") {?>
+    <form class="cb_search position-relative" method="get" action="<?php echo esc_url(home_url('/'));?>" role="search">
+        <input class="<?php echo $searchClasses;?>" type="text" name="s" placeholder="Search..." value="<?php the_search_query(); ?>">
+        <button type="submit" role="button" aria-label="search" class="fa fa-search"></button>
+    </form>
+<?php }
 
 // Add Filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );

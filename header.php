@@ -33,3 +33,5 @@
        <?php bcb_before_navbar(); ?>
        <header id="nav-header" class="clear" role="banner">
             <?php if(file_exists($child_theme_directory . '/template-parts/navbar/custom-navbar.php') && filesize($child_theme_directory . '/template-parts/navbar/custom-navbar.php')) { include($child_theme_directory . '/template-parts/navbar/custom-navbar.php');} else { include('default-navbar.php');}?></header>
+
+          
