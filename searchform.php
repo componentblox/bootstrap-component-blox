@@ -9,13 +9,7 @@
 
 ?>
 
-<form class="container search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-	<div class="row">
-		<div class="col-12 px-0">
-			<div class="input-group">
-				<input type="search" name="s" class="form-control search-input" placeholder="Search for..." value="<?php the_search_query(); ?>">
-				<button class="btn btn-dark search-submit rounded-0" type="submit" role="button"><?php esc_html_e( 'Search', 'bootstrap-component-blox' ); ?></button>
-			</div>
-		</div>
-	</div>
+<form class="cb_search position-relative" method="get" action="<?php echo esc_url(home_url('/'));?>" role="search">
+	<input class="<?php $searchClasses;?>" type="text" name="s" placeholder="Search..." value="<?php the_search_query(); ?>">
+	<button type="submit" role="button" aria-label="magnifying glass icon" class="fa fa-search"></button>
 </form>

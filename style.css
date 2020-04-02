@@ -259,6 +259,18 @@ table#wp-calendar #today, table#wp-calendar #today a {
 #footer-widgets .nav-link {
 	padding-left: 0;
 }
+.cb_search input {
+	padding: 10px 20px;
+	width: 100%;
+}
+.cb_search button {
+	position: absolute;
+    border: none!important;
+    background: none!important;
+    transform: translatex(-150%) translatey(-50%);
+    top: 50%;
+}
+
 @media(max-width: 992px) {
 	.border-left {
 		border-left: none!important

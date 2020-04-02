@@ -363,6 +363,13 @@ function cb_before_navbar() {
     do_action('cb_before_navbar');
 }
 
+/**
+ * Search Bar
+ */
+function cb_search_form($searchClasses) {
+    include('searchform.php');
+}
+
 // Add Filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
 add_filter( 'widget_text', 'shortcode_unautop');
