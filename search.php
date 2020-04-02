@@ -22,11 +22,15 @@
                     </div>
                     <?php get_template_part('loop');?>
                 </div>
+                
+                <?php if (paginate_links()) {?>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                         <?php get_template_part('pagination');?>
                     </div>
                 </div>
+                <?php }?>
+            
             </div>
         </div>
         
