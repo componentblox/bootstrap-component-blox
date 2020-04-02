@@ -7,17 +7,22 @@
  * @package bootstrap-component-blox
  */
 
-if (have_posts()): while (have_posts()) : the_post(); ?>
+if (have_posts()): while (have_posts()) : the_post(); 
+	
+	// vars
+	$thumbnail_id = get_post_thumbnail_id( $post->ID );
+	$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+	$image = wp_get_attachment_image_url( $thumbnail_id, 'medium' );?>
 
-		<div class="col-12 col-lg-4 mb-4 mb-lg-0">	
+	<div class="col-12 col-lg-4 mb-4 mb-lg-0">	
 		<div class="card p-3">	
-			<?php if (has_post_thumbnail()) : ?>
+			<?php if (has_post_thumbnail()) { ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-				<img class="img-fluid rounded" style="width: 100%;" src="<?php echo esc_url(get_the_post_thumbnail_url());?>" alt="">
+				<img class="w-100 mb-2" src="<?php echo esc_url($image);?>" alt="<?php echo $alt;?>">
 			</a>
-			<?php endif; ?>
+			<?php }?>
 			
-			<h4><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title_attribute();?></a></h4>
+			<h4><a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"><?php the_title_attribute();?></a></h4>
 
 			<div class="post_meta">
 				<span class="author"><?php esc_html_e( 'Published by', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
