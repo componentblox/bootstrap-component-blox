@@ -290,7 +290,7 @@ if(!function_exists('bcb_pagination')) :
     function bcb_pagination() {
         global $wp_query;
 
-        $big = 999999999; // need an unlikely integer.
+        $big = 999999999;
 
         echo wp_kses_post(paginate_links( array(
             'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),

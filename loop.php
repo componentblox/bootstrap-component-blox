@@ -35,7 +35,7 @@ if (have_posts()): while (have_posts()) : the_post();
 		else: 
 	?>
 	
-	<div class="col-12 text-center mt-4">
+	<div class="col-12 text-center my-4">
 		<h2><?php esc_html_e( 'Sorry, nothing to display.', 'bootstrap-component-blox' ); ?></h2>
 	</div>
 
