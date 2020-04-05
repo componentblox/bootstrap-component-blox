@@ -60,20 +60,38 @@ function add_custom_customizer_settings( $wp_customize ) {
 
     // Sections.
 
-	// Navbar Classes.
+    // Navbar Type.
+	$wp_customize->add_section( 'navbar_type_section', array(
+		'priority' => 0,
+		'capability' => 'edit_theme_options',
+		'title' => __( 'Navbar Type', 'bootstrap-component-blox' ),
+		'description' => '',
+		'panel' => 'navbar_panel',
+	));
+
+	// Top Navbar Classes.
 	$wp_customize->add_section( 'navbar_classes_section', array(
 		'priority' => 0,
 		'capability' => 'edit_theme_options',
-		'title' => __( 'Navbar Classes', 'bootstrap-component-blox' ),
+		'title' => __( 'Top Navbar Classes', 'bootstrap-component-blox' ),
 		'description' => '',
 		'panel' => 'navbar_panel',
 	));
 	
-	// Navbar Inner Classes.
+	// Top Navbar Inner Classes.
 	$wp_customize->add_section( 'navbar_inner_classes_section', array(
 		'priority' => 0,
 		'capability' => 'edit_theme_options',
-		'title' => __( 'Inner Navbar Classes', 'bootstrap-component-blox' ),
+		'title' => __( 'Top Navbar Inner Classes', 'bootstrap-component-blox' ),
+		'description' => '',
+		'panel' => 'navbar_panel',
+	));
+
+	// Sidebar Navbar Classes.
+	$wp_customize->add_section( 'sidebar_classes_section', array(
+		'priority' => 0,
+		'capability' => 'edit_theme_options',
+		'title' => __( 'Sidebar Navbar Classes', 'bootstrap-component-blox' ),
 		'description' => '',
 		'panel' => 'navbar_panel',
 	));
@@ -101,9 +119,15 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'description' => '',
 		'panel' => 'footer_panel',
 	));
-
 	
-	// Settings.    
+	// Settings. 
+
+	// Navbar Type.
+	$wp_customize->add_setting( 'navbar_type', array(
+        'default' => '',
+        'transport' => 'postMessage',
+		'sanitize_callback' => 'esc_attr',
+    ));   
     
 	// Navbar Classes.
 	$wp_customize->add_setting( 'navbar_classes', array(
@@ -114,6 +138,13 @@ function add_custom_customizer_settings( $wp_customize ) {
 	
 	// Navbar Inner Classes.
 	$wp_customize->add_setting( 'navbar_inner_classes', array(
+        'default' => '',
+        'transport' => 'postMessage',
+		'sanitize_callback' => 'esc_attr',
+    ));
+
+    // Sidebar Navbar Classes.
+	$wp_customize->add_setting( 'sidebar_classes', array(
         'default' => '',
         'transport' => 'postMessage',
 		'sanitize_callback' => 'esc_attr',
@@ -139,7 +170,21 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'sanitize_callback' => 'wp_kses_post',
     ));
  
-    // Controls.     
+    // Controls.
+
+    // Navbar Type.
+	$wp_customize->add_control( 'navbar_type', array(
+		'label'    => __( 'Navbar Type' , 'bootstrap-component-blox' ),
+		'section'  => 'navbar_type_section',
+		'priority' => 20, 
+		'default'  => 'top',
+		'type'     => 'select',
+	    'choices'  => array(
+	        'top'  => 'Top',
+	        'side' => 'Side',
+	    ),
+	    'capability' => 'edit_theme_options',
+	));     
  
     // Navbar Classes.
     $wp_customize->add_control( 'navbar_classes', array(
@@ -151,9 +196,18 @@ function add_custom_customizer_settings( $wp_customize ) {
 	));
 
 	// Navbar Inner Classes.
-	 $wp_customize->add_control( 'navbar_inner_classes', array(
+	$wp_customize->add_control( 'navbar_inner_classes', array(
 		'label' => __( 'Navbar Inner Classes' , 'bootstrap-component-blox' ),
 		'section' => 'navbar_inner_classes_section',
+		'priority' => 20, 
+		'type' => 'text',
+		'capability' => 'edit_theme_options',
+	));
+
+	// Sidebar Classes.
+    $wp_customize->add_control( 'sidebar_classes', array(
+		'label' => __( 'Sidebar Classes' , 'bootstrap-component-blox' ),
+		'section' => 'sidebar_classes_section',
 		'priority' => 20, 
 		'type' => 'text',
 		'capability' => 'edit_theme_options',

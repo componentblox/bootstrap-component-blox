@@ -12,14 +12,14 @@
 <nav class="navbar-light navbar navbar-expand-lg <?php echo esc_attr($navbar_classes);?> py-0">
 	<div class="container-fluid <?php echo esc_attr($navbar_inner_classes);?>">
 						
-    	<?php if( has_custom_logo() ) {?>
+    	<?php if(has_custom_logo()) {?>
     	<a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-    		<img src="<?php echo esc_url($custom_logo_url[0]);?>" alt="<?php echo esc_attr(get_bloginfo());?>" />	
+    	   <img src="<?php echo esc_url($custom_logo_url[0]);?>" alt="<?php echo esc_attr(get_bloginfo());?>" />	
     	</a>
     	<?php } else {?>
-            <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-    	       <i class="fas fa-cube fa-2x text-white bg-dark px-3 py-2"></i>
-            </a>
+        <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
+    	   <i class="fas fa-cube fa-2x text-white bg-dark px-3 py-2"></i>
+        </a>
     	<?php }?>
     	
     	<button id="toggler" class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse" data-target="#navbar-main-menu" aria-controls="navbar-main-menu" aria-expanded="false" aria-label="Toggle Navigation">
@@ -30,6 +30,6 @@
         <div id="navbar-main-menu" class="navbar-collapse collapse">
           	<?php main_nav(); ?>
         </div>
-  	
+
   	</div>
 </nav>

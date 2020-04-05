@@ -260,17 +260,52 @@ table#wp-calendar #today, table#wp-calendar #today a {
 	padding-left: 0;
 }
 .search input {
-	padding: 10px 20px;
+	padding: 10px 15px;
 	width: 100%;
 }
 .search button {
 	position: absolute;
     border: none!important;
     background: none!important;
-    transform: translatex(-150%) translatey(-50%);
+    transform: translatey(-50%);
     top: 50%;
+    right: 10px;
+}
+#sidebar-navbar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    height: 100vh;
+    color: #fff;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    z-index: 99999;
+    padding: 1rem;
+    background: #fff;
+    border-left: 1px solid #dee2e6;
 }
 
+#sidebar-navbar .nav-link {
+    color: rgba(0,0,0,.5);
+}
+
+#sidebar-navbar.collapse {
+	display: block;
+}
+#sidebar-navbar.show {
+    right: 0;
+}
+#sidebar-navbar-dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
 @media(max-width: 992px) {
 	.border-left {
 		border-left: none!important

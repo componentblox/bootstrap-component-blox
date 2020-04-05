@@ -16,7 +16,9 @@
 	$custom_logo = get_theme_mod('custom_logo');
 	$custom_logo_url = wp_get_attachment_image_src($custom_logo , 'full');
 	$body_classes = get_theme_mod('body_container_classes');
+	$navbar_type = get_theme_mod('navbar_type');
 	$navbar_classes = get_theme_mod('navbar_classes');
+	$sidebar_classes = get_theme_mod('sidebar_classes');
 	$navbar_inner_classes = get_theme_mod('navbar_inner_classes');
 	$child_theme_directory = get_stylesheet_directory();
 	?>
@@ -28,10 +30,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?php wp_head(); ?>
 	</head>
-	
+
 	<body <?php body_class($body_classes); ?>>		
        <?php bcb_before_navbar(); ?>
        <header id="nav-header" class="clear" role="banner">
-            <?php if(file_exists($child_theme_directory . '/template-parts/navbar/custom-navbar.php') && filesize($child_theme_directory . '/template-parts/navbar/custom-navbar.php')) { include($child_theme_directory . '/template-parts/navbar/custom-navbar.php');} else { include('default-navbar.php');}?></header>
+            <?php 
+            if($navbar_type == 'side') {
+				$navbar_type_template = include('sidebar-navbar.php');
+            } else {
+				$navbar_type_template = include('default-navbar.php');
+            }
 
-          
+            if(file_exists($child_theme_directory . '/template-parts/navbar/custom-navbar.php') && filesize($child_theme_directory . '/template-parts/navbar/custom-navbar.php')) { include($child_theme_directory . '/template-parts/navbar/custom-navbar.php');} else { $navbar_type_template;}?></header>        
