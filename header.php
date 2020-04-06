@@ -39,4 +39,4 @@
 				$navbar_type_template = include('sidebar-navbar.php');
             } else {
 				$navbar_type_template = include('default-navbar.php');
-            }}?></header>        
+            }?></header>        
