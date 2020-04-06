@@ -95,6 +95,15 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'description' => '',
 		'panel' => 'navbar_panel',
 	));
+
+	// Add Search Icon to Navbar.
+	$wp_customize->add_section( 'navbar_search_section', array(
+		'priority' => 0,
+		'capability' => 'edit_theme_options',
+		'title' => __( 'Enable Search', 'bootstrap-component-blox' ),
+		'description' => '',
+		'panel' => 'navbar_panel',
+	));
 	
 	// Body Classes.
 	$wp_customize->add_section( 'body' , array(
@@ -147,6 +156,13 @@ function add_custom_customizer_settings( $wp_customize ) {
 	$wp_customize->add_setting( 'sidebar_classes', array(
         'default' => '',
         'transport' => 'postMessage',
+		'sanitize_callback' => 'esc_attr',
+    ));
+
+    // Navbar Search.
+	$wp_customize->add_setting( 'navbar_search', array(
+        'default' => '',
+        'transport' => 'refresh',
 		'sanitize_callback' => 'esc_attr',
     ));
 	
@@ -210,6 +226,15 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'section' => 'sidebar_classes_section',
 		'priority' => 20, 
 		'type' => 'text',
+		'capability' => 'edit_theme_options',
+	));
+
+	// Enable Search.
+    $wp_customize->add_control( 'navbar_search', array(
+		'label' => __( 'Enable Search' , 'bootstrap-component-blox' ),
+		'section' => 'navbar_search_section',
+		'priority' => 20, 
+		'type'=> 'checkbox',
 		'capability' => 'edit_theme_options',
 	));
 	

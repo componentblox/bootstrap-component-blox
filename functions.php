@@ -102,24 +102,27 @@ function main_nav($classes = 'ml-auto') {
     wp_nav_menu(
     array(
         'theme_location'  => 'main-menu',
-        'menu'            => '',
         'container'       => 'false',
         'container_class' => 'menu-{menu slug}-container',
-        'container_id'    => '',
         'menu_class'      => 'menu',
-        'menu_id'         => '',
         'echo'            => true,
         'fallback_cb'     => 'wp_page_menu',
-        'before'          => '',
-        'after'           => '',
-        'link_before'     => '',
-        'link_after'      => '',
         'items_wrap'      => '<ul class="navbar-nav ' . $classes . '">%3$s</ul>',
-        'depth'           => 0,
-        'walker'          => ''
+        'depth'           => 0
         )
     );
 }
+
+/**
+ * Add Search Bar to Navbar
+ */
+function bcb_add_search_to_nav( $items, $args ) {
+    if(get_theme_mod('navbar_search')) {
+        $items .= '<li><span class="nav-link"><i class="fas fa-search" data-toggle="modal" data-target="#searchModal"></i></span></li>';
+    }
+    return $items;
+}
+add_filter( 'wp_nav_menu_items', 'bcb_add_search_to_nav', 10, 2 );
 
 /**
  * Adds bootstrap 'dropdown-menu' class to 'sub-menu' class. 
