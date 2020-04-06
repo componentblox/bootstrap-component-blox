@@ -302,8 +302,8 @@ table#wp-calendar #today, table#wp-calendar #today a {
     line-height: 35px;
     text-align: center;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0;
+    right: 0;
     cursor: pointer;
 }
 @media(max-width: 992px) {
