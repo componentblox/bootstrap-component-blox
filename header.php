@@ -35,10 +35,8 @@
        <?php bcb_before_navbar(); ?>
        <header id="nav-header" class="clear" role="banner">
             <?php 
-            if($navbar_type == 'side') {
+            if(file_exists($child_theme_directory . '/template-parts/navbar/custom-navbar.php') && filesize($child_theme_directory . '/template-parts/navbar/custom-navbar.php')) { include($child_theme_directory . '/template-parts/navbar/custom-navbar.php');} elseif($navbar_type == 'side') {
 				$navbar_type_template = include('sidebar-navbar.php');
             } else {
 				$navbar_type_template = include('default-navbar.php');
-            }
-
-            if(file_exists($child_theme_directory . '/template-parts/navbar/custom-navbar.php') && filesize($child_theme_directory . '/template-parts/navbar/custom-navbar.php')) { include($child_theme_directory . '/template-parts/navbar/custom-navbar.php');} else { $navbar_type_template;}?></header>        
+            }}?></header>        
