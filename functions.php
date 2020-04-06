@@ -369,3 +369,11 @@ function bcb_search_form($searchClasses = "") {?>
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
 add_filter( 'widget_text', 'shortcode_unautop');
 add_filter( 'widget_text', 'do_shortcode');
+
+
+require('update-checker.php');
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+    'https://theme.componentblox.com/wp-content/themes/theme.json',
+    __FILE__, //Full path to the main plugin file or functions.php.
+    'bootstrap-component-blox'
+);
