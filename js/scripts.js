@@ -52,20 +52,6 @@ jQuery(document).ready(function($) {
 
     });
 
-    // Adjust navbar if WP toolbar is visible
-    let wpToolbar = document.getElementById('wpadminbar')
-    let navbar = document.getElementsByClassName('fixed-top')
-
-    if (typeof(wpToolbar) != 'undefined' && wpToolbar != null) {
-        for(let i = 0; i < navbar.length; i++) {
-            navbar[i].classList.add('wp-toolbar');
-        }
-    } else {
-        for(let i = 0; i < navbar.length; i++) {
-            navbar[i].classList.remove('wp-toolbar');
-        }
-    }
-
     // Add data attribute
     if($('.navbar').hasClass('fixed-top')) {
         $('.navbar').attr('data-toggle', 'sticky-onscroll');
