@@ -9,7 +9,7 @@
 
 ?>
 
-<nav class="navbar-light navbar navbar-expand-lg <?php echo esc_attr($navbar_classes);?> py-0">
+<nav class="navbar-light navbar navbar-expand-lg py-0 <?php echo esc_attr($navbar_classes);?>">
 	<div class="container-fluid <?php echo esc_attr($navbar_inner_classes);?>">
 						
     	<?php if(has_custom_logo()) {?>
