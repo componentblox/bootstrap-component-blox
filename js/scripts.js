@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
     // Add animation class to dropdown menu
     let addAnimationClasses = document.querySelectorAll('.navbar .dropdown-menu');
     addAnimationClasses.forEach(function(animationClasses) {
-        animationClasses.classList.add('sub-menu-animate' , 'slideUp');
+        animationClasses.classList.add('submenu-animate' , 'slideUp');
     });
  
     // Add attributes to sub menus
@@ -75,11 +75,8 @@ jQuery(document).ready(function($) {
     });
 
     // Add data attribute for Navbar
-    let navbar = document.querySelector('.navbar');
-    let hasFixedTop = navbar.classList.contains('fixed-top');
-    if (hasFixedTop == true) {
-       navbar.setAttribute('data-toggle', 'sticky-onscroll')
-    }
+    let navbar = document.querySelector('.fixed-top');
+    navbar.setAttribute('data-toggle', 'sticky-onscroll')
 
     // Sticky Navbar
     let stickyToggle = function (sticky, stickyWrapper, scrollElement) {
@@ -97,8 +94,8 @@ jQuery(document).ready(function($) {
 
     // Find all data-toggle="sticky-onscroll" elements
     $('[data-toggle="sticky-onscroll"]').each(function () {
-        let sticky = $(this);
-        let stickyWrapper = $('<div>').addClass('sticky-wrapper');
+        var sticky = $(this);
+        var stickyWrapper = $('<div>').addClass('sticky-wrapper');
         sticky.before(stickyWrapper);
 
         // Scroll & resize events
