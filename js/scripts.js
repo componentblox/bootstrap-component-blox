@@ -97,8 +97,8 @@ jQuery(document).ready(function($) {
     };
 
     $('[data-toggle="sticky-onscroll"]').each(function () {
-        var sticky = $(this);
-        var stickyWrapper = $('<div>').addClass('sticky-wrapper');
+        let sticky = $(this);
+        let stickyWrapper = $('<div>').addClass('sticky-wrapper');
         sticky.before(stickyWrapper);
 
         // Scroll & resize events
