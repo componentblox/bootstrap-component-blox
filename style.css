@@ -241,20 +241,28 @@ table#wp-calendar #today, table#wp-calendar #today a {
 }
 #nav-header .dropdown-menu {
 	padding: .75rem;
-	border: none;
-	border-radius: 0;
 	top: 95%;
 }
 #nav-header .dropdown-menu .dropdown-menu {
 	left: 100%;
+	top: 0;
 }
 #nav-header .dropdown-menu .nav-link {
 	white-space: nowrap;
 	padding: .25rem;
 }
-#nav-header .nav-item:last-child .dropdown-menu {
-	left: initial;
-	right: 0;
+#nav-header .dropdown-toggle::after {
+	font-family: "Font Awesome 5 Free"; 
+	font-weight: 900; 
+	content: "\f107";
+	padding-left: 3px;
+	font-size: 10px;
+	display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+	border: none;
 }
 #footer-widgets .nav-link {
 	padding-left: 0;
@@ -306,6 +314,45 @@ table#wp-calendar #today, table#wp-calendar #today a {
     right: 0;
     cursor: pointer;
 }
+
+.sub-menu-animate {
+	animation-duration: 0.3s;
+	-webkit-animation-duration: 0.3s;
+	animation-fill-mode: both;
+	-webkit-animation-fill-mode: both;
+}
+@keyframes slideUp {
+	0% {
+		transform: translateY(1rem);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0rem);
+		opacity: 1;
+	}
+	0% {
+		transform: translateY(1rem);
+		opacity: 0;
+	}
+}
+@-webkit-keyframes slideUp {
+	0% {
+		-webkit-transform: transform;
+		-webkit-opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateY(0);
+		-webkit-opacity: 1;
+	}
+	0% {
+		-webkit-transform: translateY(1rem);
+		-webkit-opacity: 0;
+	}
+}
+.slideUp {
+	-webkit-animation-name: slideUp;
+	animation-name: slideUp;
+}
 @media(max-width: 992px) {
 	.border-left {
 		border-left: none!important
@@ -314,9 +361,7 @@ table#wp-calendar #today, table#wp-calendar #today a {
 		flex-basis: initial!important;
 	}
 }
-
 @media(max-width: 768px) {
 	#nav-header .wp-toolbar {
 		top: 46px;
 	}
-}

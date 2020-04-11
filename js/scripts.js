@@ -4,63 +4,87 @@
 
 jQuery(document).ready(function($) {
 	
-    // Add class to unset navbar
-	$('false ul').addClass('navbar-nav ml-auto');
-	
-	// // Resize body container based on navbar height
-	// $('article > .entry-content, #sidebar').css('margin-top', $('#nav-header .fixed-top').height());
-
 	// Add Bootstrap dropdown classes to nested menu items
-    $('.navbar .menu-item-has-children').addClass('dropdown');
-    $('.navbar .menu-item-has-children > a').addClass('dropdown-toggle');
-
-    // Add attributes to sub menu
-    $('.dropdown-toggle').attr({
-        'role' : 'button',
-        'aria-haspopup' : 'true',
-        'aria-expanded' : 'false',
-        'data-toggle' : 'dropdown',
+    let menuItemHasChildren = document.querySelectorAll('.navbar .menu-item-has-children');
+    menuItemHasChildren.forEach(function(childItem) {
+        childItem.classList.add('dropdown');
     });
 
-    // Wrap widget with card-body class
-    $('#sidebar .card-header').next().wrap('<div class="card-body"></div>');
+    // Add Bootstrap toggle classes to nested menu items
+    let menuItemHasChildrenAnchor = document.querySelectorAll('.navbar .menu-item-has-children > a');
+    menuItemHasChildrenAnchor.forEach(function(childItemAnchor) {
+        childItemAnchor.classList.add('dropdown-toggle');
+    });
+
+    // Add animation class to dropdown menu
+    let addAnimationClasses = document.querySelectorAll('.navbar .dropdown-menu');
+    addAnimationClasses.forEach(function(animationClasses) {
+        animationClasses.classList.add('sub-menu-animate' , 'slideUp');
+    });
+ 
+    // Add attributes to sub menus
+    let menuAttributes = document.querySelectorAll('.dropdown-toggle');
+    menuAttributes.forEach(function(attributes) {
+        function setAttributes(el, options) {
+            Object.keys(options).forEach(function(attr) {
+                el.setAttribute(attr, options[attr]);
+            })
+        }
+        setAttributes(attributes, {"role": "button", "aria-haspopup": "true", "aria-expanded": "false" , "data-toggle": "dropdown" });
+    });
+
+    // Add Bootstrap toggle classes to nested menu items
+    let sidebarCardUl = document.querySelectorAll('#sidebar .card ul');
+    let cardUl = sidebarCardUl;
+    cardUl.forEach(function(ul) {
+        ul.outerHTML = `<div class="card-body">${ul.outerHTML}</div>`;
+    });
 
     // Change dropdown from click to hover
-    $('.navbar .dropdown').hover(function() {
-        $(this).find('.dropdown-menu').first().stop(true, true).fadeIn(300);
-    }, function() {
-        $(this).find('.dropdown-menu').first().stop(true, true).fadeOut(300);
+    let navbarDropdown = document.querySelectorAll('.navbar .dropdown');
+    navbarDropdown.forEach(function(dropdown) {
+        dropdown.addEventListener("mouseenter", function( event ) {   
+            dropdownMenu = this.querySelector('.dropdown-menu');
+                dropdownMenu.style.display = 'block';
+      
+        });
+        dropdown.addEventListener("mouseleave", function( event ) {   
+            dropdownMenu = this.querySelector('.dropdown-menu');
+                dropdownMenu.style.display = 'none';
+      
+        });
     });
 
     // Add Bootstrap pagination classes
-    $('.pagination a').wrap('<li class="page-item"></li>');
-    $('.pagination a, .pagination span').addClass('page-link');
+    let paginationIndex = document.querySelectorAll('.pagination a, .pagination span');
+    paginationIndex.forEach(function(index) {
+        index.classList.add('page-link');
+    });
 
     // Add class to body tag when user scrolls
-    var scrollPosition = window.scrollY;
-    var body = document.getElementsByTagName('body')[0];
-
+    let scrollPosition = window.scrollY;
+    let body = document.getElementsByTagName('body')[0];
     window.addEventListener('scroll', function() {
-
         scrollPosition = window.scrollY;
-
-        if (scrollPosition >= 100) {
+        
+        if(scrollPosition >= 100) {
             body.classList.add('scrolled');
         } else {
             body.classList.remove('scrolled');
         }
-
     });
 
-    // Add data attribute
-    if($('.navbar').hasClass('fixed-top')) {
-        $('.navbar').attr('data-toggle', 'sticky-onscroll');
+    // Add data attribute for Navbar
+    let navbar = document.querySelector('.navbar');
+    let hasFixedTop = navbar.classList.contains('fixed-top');
+    if (hasFixedTop == true) {
+       navbar.setAttribute('data-toggle', 'sticky-onscroll')
     }
 
-    // Sticky navbar
-    var stickyToggle = function (sticky, stickyWrapper, scrollElement) {
-        var stickyHeight = sticky.outerHeight();
-        var stickyTop = stickyWrapper.offset().top;
+    // Sticky Navbar
+    let stickyToggle = function (sticky, stickyWrapper, scrollElement) {
+        let stickyHeight = sticky.outerHeight();
+        let stickyTop = stickyWrapper.offset().top;
         if (scrollElement.scrollTop() >= stickyTop) {
             stickyWrapper.height(stickyHeight);
             sticky.addClass('fixed-top');
@@ -73,8 +97,8 @@ jQuery(document).ready(function($) {
 
     // Find all data-toggle="sticky-onscroll" elements
     $('[data-toggle="sticky-onscroll"]').each(function () {
-        var sticky = $(this);
-        var stickyWrapper = $('<div>').addClass('sticky-wrapper');
+        let sticky = $(this);
+        let stickyWrapper = $('<div>').addClass('sticky-wrapper');
         sticky.before(stickyWrapper);
 
         // Scroll & resize events
@@ -85,5 +109,7 @@ jQuery(document).ready(function($) {
         // On page load
         stickyToggle(sticky, stickyWrapper, $(window));
     });
+
+
      
 });

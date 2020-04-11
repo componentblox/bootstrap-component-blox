@@ -20,9 +20,9 @@
     </div>
 </nav>
 
-<nav id="sidebar-navbar" class="<?php echo esc_attr($sidebar_classes);?> collapse">
+<nav id="sidebar-navbar" class="<?php echo esc_attr($sidebar_classes);?> navbar collapse navbar">
     <div id="sidebar-navbar-dismiss" data-toggle="collapse" data-target="#sidebar-navbar">
         <i class="fas fa-times text-muted"></i>
     </div>
-    <?php main_nav();?>
+    <?php main_nav('mt-3');?>
 </nav>

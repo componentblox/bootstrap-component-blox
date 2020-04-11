@@ -108,7 +108,8 @@ function main_nav($classes = 'ml-auto') {
         'echo'            => true,
         'fallback_cb'     => 'wp_page_menu',
         'items_wrap'      => '<ul class="navbar-nav ' . $classes . '">%3$s</ul>',
-        'depth'           => 0
+        'depth'           => 0,
+        'fallback_cb'     => '',
         )
     );
 }
