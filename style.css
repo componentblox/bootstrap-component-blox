@@ -240,16 +240,16 @@ table#wp-calendar #today, table#wp-calendar #today a {
 	top: 32px;
 }
 #nav-header .dropdown-menu {
-	padding: .75rem;
 	top: 95%;
 }
+
 #nav-header .dropdown-menu .dropdown-menu {
 	left: 100%;
 	top: 0;
 }
 #nav-header .dropdown-menu .nav-link {
 	white-space: nowrap;
-	padding: .25rem;
+	padding: .25rem .75em;
 }
 #nav-header .dropdown-toggle::after {
 	font-family: "Font Awesome 5 Free"; 
@@ -263,6 +263,12 @@ table#wp-calendar #today, table#wp-calendar #today a {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
 	border: none;
+}
+#nav-header .sub-menu .dropdown-toggle::after {
+	transform: rotate(-90deg);
+	transform-origin: center;
+	position: relative;
+	top: 2px;
 }
 #footer-widgets .nav-link {
 	padding-left: 0;

@@ -35,20 +35,24 @@ jQuery(document).ready(function($) {
 
     // Add Bootstrap toggle classes to nested menu items
     let sidebarCardUl = document.querySelectorAll('#sidebar .card ul');
-    let cardUl = sidebarCardUl;
-    cardUl.forEach(function(ul) {
+    sidebarCardUl.forEach(function(ul) {
         ul.outerHTML = `<div class="card-body">${ul.outerHTML}</div>`;
+    });
+
+    let sidebarCardText = document.querySelectorAll('.textwidget');
+    sidebarCardText.forEach(function(text) {
+        text.outerHTML = `<div class="card-body">${text.outerHTML}</div>`;
     });
 
     // Change dropdown from click to hover
     let navbarDropdown = document.querySelectorAll('.navbar .dropdown');
     navbarDropdown.forEach(function(dropdown) {
-        dropdown.addEventListener("mouseenter", function( event ) {   
+        dropdown.addEventListener('mouseenter', function( event ) {   
             dropdownMenu = this.querySelector('.dropdown-menu');
                 dropdownMenu.style.display = 'block';
       
         });
-        dropdown.addEventListener("mouseleave", function( event ) {   
+        dropdown.addEventListener('mouseleave', function( event ) {   
             dropdownMenu = this.querySelector('.dropdown-menu');
                 dropdownMenu.style.display = 'none';
       
@@ -76,7 +80,7 @@ jQuery(document).ready(function($) {
 
     // Add data attribute to any div that has a class of '.fixed-top'
     let classOfFixedTop = document.querySelector('.fixed-top');
-    classOfFixedTop.setAttribute('data-toggle', 'sticky-onscroll')
+    classOfFixedTop.setAttribute('data-toggle', 'sticky-onscroll');
 
     // Sticky Navbar
     let stickyToggle = function (sticky, stickyWrapper, scrollElement) {
@@ -92,7 +96,6 @@ jQuery(document).ready(function($) {
         }
     };
 
-    // Find all data-toggle="sticky-onscroll" elements
     $('[data-toggle="sticky-onscroll"]').each(function () {
         var sticky = $(this);
         var stickyWrapper = $('<div>').addClass('sticky-wrapper');
@@ -107,6 +110,4 @@ jQuery(document).ready(function($) {
         stickyToggle(sticky, stickyWrapper, $(window));
     });
 
-
-     
 });
