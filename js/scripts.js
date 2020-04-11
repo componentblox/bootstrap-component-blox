@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
     // Add animation class to dropdown menu
     let addAnimationClasses = document.querySelectorAll('.navbar .dropdown-menu');
     addAnimationClasses.forEach(function(animationClasses) {
-        animationClasses.classList.add('submenu-animate' , 'slideUp');
+        animationClasses.classList.add('sub-menu-animate' , 'slideUp');
     });
  
     // Add attributes to sub menus
