@@ -357,6 +357,22 @@ function bcb_before_navbar() {
 }
 
 /**
+ *  Utility: Gets Featured Image URL
+ */
+function bcb_image_url($id, $size = "full") {
+   $image = wp_get_attachment_image_url($id, $size);
+   echo $image;
+}
+
+/**
+ *  Utility: Gets Featured Image Alt
+ */
+function bcb_image_alt($id) {
+   $alt = get_post_meta($id, '_wp_attachment_image_alt', true);
+   echo $alt;
+}
+
+/**
  * Search Bar
  */
 function bcb_search_form($searchClasses = "") {?>
