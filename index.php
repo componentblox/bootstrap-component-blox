@@ -15,7 +15,7 @@ get_header(); ?>
 
 			<div class="container my-5">
 				<div class="row">
-					<div class="col-12 col-lg-8 px-5">
+					<div class="col-12 col-lg-8 px-5 mb-4">
 						<?php 
 							get_template_part('loop');
 							get_template_part('pagination'); 
