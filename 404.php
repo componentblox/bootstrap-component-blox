@@ -18,7 +18,7 @@
 			<div class="container py-5">
 				<div class="row text-center">
 
-					<div class="col-12">
+					<div class="col-12 col-lg-8 mx-auto">
 						<i class="fas fa-search fa-5x mb-4"></i>
 						<h4><?php esc_html_e( 'Page not found', 'bootstrap-component-blox' ); ?></h4>
 						<p><?php esc_html_e("We're sorry, but it appears the search term you entered did not find a match. Please try again using a different search term." , "bootstrap-component-blox");?></p>
