@@ -23,7 +23,7 @@ if (have_posts()): while (have_posts()) : the_post();
 		
 		<h4 class="mb-0"><a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"><?php the_title_attribute();?></a></h4>
 		<hr>
-    	<p><?php echo esc_html(wp_trim_words( get_the_content(),20, '...' ));?></p>
+    	<?php echo esc_html(wp_trim_words( get_the_content(),20, '...' ));?>
 		<p class="mb-0"><a href="<?php the_permalink();?>" class="btn btn-dark text-white"><?php esc_html_e('Read More' , 'bootstrap-component-blox');?></a>
 		<?php wp_link_pages();?></p>
 	</div>	
