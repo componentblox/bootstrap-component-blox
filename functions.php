@@ -54,7 +54,7 @@ function bcb_add_editor_styles() {
 }
 add_action('init', 'bcb_add_editor_styles');
 
-// Custom template tags for this theme.
+// Require custom template tags.
 require get_template_directory() . '/inc/template-tags.php';
 
 // Load Jetpack compatibility file.
@@ -62,16 +62,15 @@ if ( defined( 'JETPACK__VERSION' ) ) {
     require get_template_directory() . '/inc/jetpack.php';
 }
 
-// Custom Customizer Settings.
+// Include custom theme customizer settings.
 require('inc/customizer.php');
 
-// Include Custom Comments.
+// Include custom comments.
 require_once( get_template_directory() . '/custom-comments.php' );
 
-// Load Styles and Scripts.
+// Load styles and scripts.
 if(!is_admin()) {
-    /** Enqueue Files. **/
-    function bcb_enqueue_parent_styles_scripts(){
+    function bcb_enqueue_theme_styles_scripts(){
         wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '4.4.1' , false);
         wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css', false, '5.12.1');
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
@@ -79,7 +78,7 @@ if(!is_admin()) {
         wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
         wp_enqueue_script('bootstrap-component-blox-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0', true );	
     }
-    add_action('wp_enqueue_scripts', 'bcb_enqueue_parent_styles_scripts');
+    add_action('wp_enqueue_scripts', 'bcb_enqueue_theme_styles_scripts');
 }
 
 /**
@@ -98,7 +97,7 @@ add_action('init', 'bcb_register_menu');
  *
  * @param string $classes Custom menu classes.
  */
-function main_nav($classes = 'ml-auto') {
+function bcb_main_nav($classes = 'ml-auto') {
     wp_nav_menu(
     array(
         'theme_location'  => 'main-menu',
@@ -200,7 +199,7 @@ function bcb_add_slug_to_body_class($classes) {
 }
 
 /**
- * Dynamic Sidebar Function. 
+ * Dynamic sidebar and footer widgets. 
  */
 function bcb_widgets_init() {
 if (function_exists('register_sidebar')) {
@@ -284,7 +283,7 @@ add_filter( 'comment_form_submit_button', 'bcb_filter_comment_form_submit_button
 
 
 /** 
- * Does Custom Bootstrap Pagination Exist. 
+ * Does custom bootstrap pagination exist. 
  */
 if(!function_exists('bcb_pagination')) :
     
@@ -335,29 +334,32 @@ add_action('get_header', 'bcb_enable_threaded_comments');
  * 
  * @param string $mimes Media type.
  */
-function bcb_cc_mime_types($mimes) {
+function bcb_mime_types($mimes) {
  $mimes['svg'] = 'image/svg+xml';
  return $mimes;
 }
-add_filter('upload_mimes', 'bcb_cc_mime_types');
+add_filter('upload_mimes', 'bcb_mime_types');
 
 
 /**
- * Hook: Before Footer 
+ * Hook: Before Footer.
  */
 function bcb_before_footer() {
     do_action('bcb_before_footer');
 }
 
 /**
- * Hook: Before Navbar
+ * Hook: Before Navbar.
  */
 function bcb_before_navbar() {
     do_action('bcb_before_navbar');
 }
 
 /**
- *  Utility: Gets Featured Image URL
+ *  Utility: output image URL when provided an image ID.
+ *
+ * @param string #id image ID.
+ * @param string $size thumbnail size.
  */
 function bcb_image_url($id, $size = "full") {
    $image = wp_get_attachment_image_url($id, $size);
@@ -365,7 +367,9 @@ function bcb_image_url($id, $size = "full") {
 }
 
 /**
- *  Utility: Gets Featured Image Alt
+ *  Utility: Gets Featured Image Alt.
+ *
+ * @param string $id image ID.
  */
 function bcb_image_alt($id) {
    $alt = get_post_meta($id, '_wp_attachment_image_alt', true);
@@ -373,7 +377,9 @@ function bcb_image_alt($id) {
 }
 
 /**
- * Search Bar
+ * Utility: Search Bar
+ *
+ * @param string $searchClasses Bootstrap or Unique Classes
  */
 function bcb_search_form($searchClasses = "") {?>
     <form class="search position-relative" method="get" action="<?php echo esc_url(home_url('/'));?>" role="search">
@@ -382,15 +388,11 @@ function bcb_search_form($searchClasses = "") {?>
     </form>
 <?php }
 
-// Add Filters.
+// Add filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
 add_filter( 'widget_text', 'shortcode_unautop');
 add_filter( 'widget_text', 'do_shortcode');
 
-// Check Core Theme Updates
+// Check theme for update releases
 require('update-checker.php');
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-    'https://theme.componentblox.com/wp-content/themes/theme.json',
-    __FILE__, //Full path to the main plugin file or functions.php.
-    'bootstrap-component-blox'
-);
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker( 'https://theme.componentblox.com/wp-content/themes/theme.json', __FILE__, 'bootstrap-component-blox');

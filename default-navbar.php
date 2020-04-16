@@ -28,7 +28,7 @@
     	</button>
     
         <div id="navbar-main-menu" class="navbar-collapse collapse">
-          	<?php main_nav(); ?>
+          	<?php bcb_main_nav(); ?>
         </div>
 
   	</div>
