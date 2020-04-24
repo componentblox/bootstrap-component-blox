@@ -80,7 +80,9 @@ jQuery(document).ready(function($) {
 
     // Add data attribute to any div that has a class of '.fixed-top'
     let classOfFixedTop = document.querySelector('.fixed-top');
-    classOfFixedTop.setAttribute('data-toggle', 'sticky-onscroll');
+    if(classOfFixedTop) {
+        classOfFixedTop.setAttribute('data-toggle', 'sticky-onscroll');
+    }
 
     // Sticky Navbar
     let stickyToggle = function (sticky, stickyWrapper, scrollElement) {
