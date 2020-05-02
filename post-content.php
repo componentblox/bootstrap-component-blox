@@ -10,13 +10,11 @@
 ?>
 
 <?php
-
 $image_id = get_post_thumbnail_id(get_the_ID());
-$alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 $category = get_the_category();
 
 if (has_post_thumbnail()) { ?>
-	<img class="img-fluid rounded w-100" src="<?php echo esc_html(get_the_post_thumbnail_url());?>" alt="<?php echo esc_html($alt_text);?>"/>
+	<img class="img-fluid rounded w-100" src="<?php bcb_image_url($image_id);?>" alt="<?php bcb_image_alt($image_id);?>"/>
 <?php }?>
 
 <h1 class="mt-4"><?php the_title_attribute();?></h1>

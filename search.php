@@ -20,8 +20,8 @@
                     <div class="col-12 text-center">
                         <h1 class="page-title mb-5"><?php printf( esc_html__( 'Search Results', 'bootstrap-component-blox' ), '<span>' . get_search_query() . '</span>' );?></h1>
                     </div>
-                    <?php get_template_part('loop');?>
                 </div>
+                <?php get_template_part('loop');?>
                 
                 <?php if (paginate_links()) {?>
                 <div class="row">
