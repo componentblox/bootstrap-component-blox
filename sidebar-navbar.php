@@ -24,5 +24,5 @@
     <div id="sidebar-navbar-dismiss" data-toggle="collapse" data-target="#sidebar-navbar">
         <i class="fas fa-times text-muted"></i>
     </div>
-    <?php main_nav('mt-3');?>
+    <?php bcb_main_nav('mt-3');?>
 </nav>
