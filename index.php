@@ -22,9 +22,9 @@ get_header(); ?>
 						?>
 					</div>
 
-					<div class="col-12 col-lg-4 px-5 border-left">
+					<aside class="col-12 col-lg-4 px-5 border-left">
 						<?php get_sidebar();?>
-					</div>
+					</aside>
 
 				</div>
 			</div>

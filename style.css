@@ -366,6 +366,9 @@ table#wp-calendar #today, table#wp-calendar #today a {
 	.col {
 		flex-basis: initial!important;
 	}
+	aside.border-left {
+		border-left: none!important;
+	}
 }
 @media(max-width: 768px) {
 	#nav-header .wp-toolbar {
