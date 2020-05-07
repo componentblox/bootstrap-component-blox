@@ -39,11 +39,6 @@ jQuery(document).ready(function($) {
         ul.outerHTML = `<div class="card-body">${ul.outerHTML}</div>`;
     });
 
-    let sidebarCardText = document.querySelectorAll('.textwidget');
-    sidebarCardText.forEach(function(text) {
-        text.outerHTML = `<div class="card-body">${text.outerHTML}</div>`;
-    });
-
     // Change dropdown from click to hover
     let navbarDropdown = document.querySelectorAll('.navbar .dropdown');
     navbarDropdown.forEach(function(dropdown) {
