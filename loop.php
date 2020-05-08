@@ -9,7 +9,7 @@
 
 
 ?>
-<div class="row">
+<div class="row px-3">
 	<div class="card-deck">
 
 <?php

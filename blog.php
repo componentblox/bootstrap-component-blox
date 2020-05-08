@@ -25,7 +25,7 @@ get_header(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
 			<div class="container mt-5">
-				<div class="row">
+				<div class="row px-3">
 					<div class="card-deck">
 						<?php 
 						if (have_posts()): 
