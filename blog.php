@@ -15,7 +15,8 @@ $blog_paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 query_posts(array(
     'post_type'      => 'post',
     'paged'          => $blog_paged,
-    'posts_per_page' => 10
+    'posts_per_page' => 12,
+    'ignore_sticky_posts' => 1,
 ));
 
 get_header(); ?>
@@ -25,22 +26,23 @@ get_header(); ?>
 		<div class="entry-content">
 			<div class="container mt-5">
 				<div class="row">
-					<?php 
-					if (have_posts()): 
-					while (have_posts()) : the_post(); 
+					<div class="card-deck">
+						<?php 
+						if (have_posts()): 
+						while (have_posts()) : the_post(); 
+								
+						$image_id = get_post_thumbnail_id(get_the_ID());
+						$category = get_the_category();
+						$child_theme_directory = get_stylesheet_directory();?>
 							
-					$image_id = get_post_thumbnail_id(get_the_ID());
-					$alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
-					$category = get_the_category();
-					$child_theme_directory = get_stylesheet_directory();?>
-						
-					<?php if(file_exists($child_theme_directory . '/template-parts/blog/custom-blog.php') && filesize($child_theme_directory . '/template-parts/blog/custom-blog.php')) { include($child_theme_directory . '/template-parts/blog/custom-blog.php');} else { include('default-blog.php');
-					}?>	
+						<?php if(file_exists($child_theme_directory . '/template-parts/blog/custom-blog.php') && filesize($child_theme_directory . '/template-parts/blog/custom-blog.php')) { include($child_theme_directory . '/template-parts/blog/custom-blog.php');} else { include('default-blog.php');
+						}?>	
 
-					<?php
-					endwhile;	
-		    		endif;
-					?>
+						<?php
+						endwhile;	
+			    		endif;
+						?>
+					</div>
 				</div>
 
 				<div class="row">
