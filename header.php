@@ -13,13 +13,8 @@
 <html <?php language_attributes(); ?> class="no-js">
 	
 	<?php
-	$custom_logo = get_theme_mod('custom_logo');
-	$custom_logo_url = wp_get_attachment_image_src($custom_logo , 'full');
 	$body_classes = get_theme_mod('body_container_classes');
 	$navbar_type = get_theme_mod('navbar_type');
-	$navbar_classes = get_theme_mod('navbar_classes');
-	$sidebar_classes = get_theme_mod('sidebar_classes');
-	$navbar_inner_classes = get_theme_mod('navbar_inner_classes');
 	?>
 	
 	<head>
@@ -35,8 +30,8 @@
         <header id="nav-header" class="clear" role="banner">
             <?php 
             if($navbar_type == 'side') {
-				include('template-parts/navbar/navbar-sidebar.php');
+				get_template_part('template-parts/navbar/navbar' , 'sidebar');
             } else {
-				include('template-parts/navbar/navbar-nav.php');
+				get_template_part('template-parts/navbar/navbar' , 'nav');
             }?>
         </header>        

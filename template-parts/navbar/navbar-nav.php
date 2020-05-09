@@ -7,6 +7,12 @@
  * @package bootstrap-component-blox
  */
 
+    $custom_logo = get_theme_mod('custom_logo');
+    $custom_logo_url = wp_get_attachment_image_src($custom_logo , 'full');
+    $navbar_classes = get_theme_mod('navbar_classes');
+    $sidebar_classes = get_theme_mod('sidebar_classes');
+    $navbar_inner_classes = get_theme_mod('navbar_inner_classes');
+
 ?>
 
 <nav class="navbar-light navbar navbar-expand-lg py-0 <?php echo esc_attr($navbar_classes);?>">
