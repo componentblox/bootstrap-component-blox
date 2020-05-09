@@ -9,7 +9,7 @@
 
 $footer_credit = get_theme_mod('footer_credit');
 $footer_classes = get_theme_mod('footer_classes');
-$child_theme_directory = get_stylesheet_directory();
+
 $arr = array(
 	'a' => array(
 		'href' => array(),
@@ -34,6 +34,6 @@ if(get_theme_mod('navbar_search')) {
 			printf( esc_html__( 'WordPress', 'bootstrap-component-blox' )); ?></a> &amp; <a href="<?php echo esc_url( __( 'https://getbootstrap.com/', 'bootstrap-component-blox' ) ); ?>" title="Bootstrap"> <?php esc_html_e('Bootstrap' , 'bootstrap-component-blox');?></a>.<?php }?></div>
 	</footer>
     <?php wp_footer(); ?>
-    <?php if(file_exists($child_theme_directory . '/footer-scripts.php')) { get_template_part('footer' , 'scripts');}?>
+    <?php get_template_part('footer' , 'scripts');?>
 	</body>
 </html>

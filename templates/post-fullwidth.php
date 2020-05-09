@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts in fullwidth
  * 
- * Template Name: Fullwidth
+ * Template Name: Post Fullwidth
  * Template Post Type: post
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post

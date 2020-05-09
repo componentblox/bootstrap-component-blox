@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying default navbar
+ * The template for displaying navbar
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -18,13 +18,12 @@
     	</a>
     	<?php } else {?>
         <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-    	   <?php get_template_part('inc/svg' , 'logo');?>
+    	   <?php get_template_part('template-parts/navbar/navbar' , 'logo');?>
         </a>
     	<?php }?>
     	
     	<button id="toggler" class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse" data-target="#navbar-main-menu" aria-controls="navbar-main-menu" aria-expanded="false" aria-label="Toggle Navigation">
-    		<?php if (file_exists($child_theme_directory . '/template-parts/navbar/navbar-toggler.php') && filesize($child_theme_directory . '/template-parts/navbar/navbar-toggler.php')) { get_template_part('/template-parts/navbar/navbar' , 'toggler');
-    		} else {?><span class="navbar-toggler-icon"></span><?php }?>
+    		<?php get_template_part('template-parts/navbar/navbar' , 'toggler');?>
     	</button>
     
         <div id="navbar-main-menu" class="navbar-collapse collapse">

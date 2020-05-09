@@ -20,11 +20,10 @@
 	$navbar_classes = get_theme_mod('navbar_classes');
 	$sidebar_classes = get_theme_mod('sidebar_classes');
 	$navbar_inner_classes = get_theme_mod('navbar_inner_classes');
-	$child_theme_directory = get_stylesheet_directory();
 	?>
 	
 	<head>
-		<?php if(file_exists($child_theme_directory . '/header-scripts.php')) { get_template_part('header' , 'scripts');}?>
+		<?php get_template_part('header' , 'scripts');?>
 		<meta charset="<?php bloginfo('charset'); ?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,11 +34,9 @@
         <?php bcb_before_navbar();?>
         <header id="nav-header" class="clear" role="banner">
             <?php 
-            if(file_exists($child_theme_directory . '/template-parts/navbar/custom-navbar.php') && filesize($child_theme_directory . '/template-parts/navbar/custom-navbar.php')) { 
-            	include($child_theme_directory . '/template-parts/navbar/custom-navbar.php');
-            } elseif($navbar_type == 'side') {
-				include('sidebar-navbar.php');
+            if($navbar_type == 'side') {
+				include('template-parts/navbar/navbar-sidebar.php');
             } else {
-				include('default-navbar.php');
+				include('template-parts/navbar/navbar-nav.php');
             }?>
         </header>        

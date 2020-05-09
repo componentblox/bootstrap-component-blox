@@ -7,7 +7,7 @@
  * @package bootstrap-component-blox
  */
 
-get_header(); ?>
+get_header();?>
 
 <main id="main-container" role="main" class="container-fluid px-0">
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -33,4 +33,4 @@ get_header(); ?>
 	</article>
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer();?>

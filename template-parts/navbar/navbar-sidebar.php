@@ -1,4 +1,14 @@
-<!-- Sidebar Navbar  -->
+<?php
+/**
+ * The template for displaying navbar sidebar
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package bootstrap-component-blox
+ */
+
+?>
+
 <nav class="navbar-light navbar navbar-expand-lg <?php echo esc_attr($navbar_classes);?> py-0">
     <div class="container-fluid <?php echo esc_attr($navbar_inner_classes);?>">
                         
@@ -13,8 +23,7 @@
         <?php }?>
         
         <button id="toggler" class="sidebar-navbar-collapse btn text-right collapsed" data-toggle="collapse" data-target="#sidebar-navbar" type="button" aria-expanded="false">
-            <?php if (file_exists($child_theme_directory . '/template-parts/navbar/navbar-toggler.php') && filesize($child_theme_directory . '/template-parts/navbar/navbar-toggler.php')) { get_template_part('/template-parts/navbar/navbar' , 'toggler');
-            } else {?><span class="navbar-toggler-icon"></span><?php }?>
+            <?php get_template_part('/template-parts/navbar/navbar' , 'toggler');?>
         </button>
 
     </div>

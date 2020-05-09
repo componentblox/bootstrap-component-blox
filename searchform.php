@@ -13,5 +13,3 @@
 	<input type="text" name="s" placeholder="Search..." value="<?php the_search_query(); ?>">
 	<button type="submit" role="button" aria-label="search" class="fa fa-search"></button>
 </form>
-
-
