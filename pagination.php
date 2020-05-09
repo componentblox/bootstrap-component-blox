@@ -9,6 +9,6 @@
 
 ?>
 
-<div class="pagination">
+<div class="pagination mb-4">
 	<?php bcb_pagination(); ?>
 </div>
