@@ -7,24 +7,18 @@
  * @package bootstrap-component-blox
  */
 
-    $custom_logo = get_theme_mod('custom_logo');
-    $custom_logo_url = wp_get_attachment_image_src($custom_logo , 'full');
-    $navbar_classes = get_theme_mod('navbar_classes');
-    $sidebar_classes = get_theme_mod('sidebar_classes');
-    $navbar_inner_classes = get_theme_mod('navbar_inner_classes');
-
 ?>
 
-<nav class="navbar-light navbar navbar-expand-lg <?php echo esc_attr($navbar_classes);?> py-0">
-    <div class="container-fluid <?php echo esc_attr($navbar_inner_classes);?>">
+<nav class="navbar-light navbar navbar-expand-lg <?php echo esc_attr(get_theme_mod('navbar_classes'));?> py-0">
+    <div class="container-fluid <?php echo esc_attr(get_theme_mod('navbar_inner_classes'));?>">
                         
         <?php if(has_custom_logo()) {?>
         <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-           <img src="<?php echo esc_url($custom_logo_url[0]);?>" alt="<?php echo esc_attr(get_bloginfo());?>" />    
+           <img src="<?php echo esc_url(bcb_image_url(get_theme_mod('custom_logo')));?>" alt="<?php echo esc_attr(get_bloginfo());?>" />    
         </a>
         <?php } else {?>
         <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-            <?php get_template_part('inc/svg' , 'logo');?>
+            <?php get_template_part('template-parts/navbar/navbar' , 'logo');?>
         </a>
         <?php }?>
         
@@ -35,7 +29,7 @@
     </div>
 </nav>
 
-<nav id="sidebar-navbar" class="<?php echo esc_attr($sidebar_classes);?> navbar collapse navbar">
+<nav id="sidebar-navbar" class="<?php echo esc_attr(get_theme_mod('sidebar_classes'));?> navbar collapse navbar">
     <div id="sidebar-navbar-dismiss" data-toggle="collapse" data-target="#sidebar-navbar">
         <i class="fas fa-times text-muted"></i>
     </div>
