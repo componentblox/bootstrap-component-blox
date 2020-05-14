@@ -88,6 +88,7 @@ function bcb_register_menu() {
     register_nav_menus(array( 
         'main-menu' => esc_html__('Main Menu', 'bootstrap-component-blox'), 
         'sidebar-menu' => esc_html__('Sidebar Menu', 'bootstrap-component-blox'),
+        'aux-menu' => esc_html__('Auxiliary Menu', 'bootstrap-component-blox'),
     ));
 }
 add_action('init', 'bcb_register_menu'); 
@@ -95,12 +96,33 @@ add_action('init', 'bcb_register_menu');
 /** 
  * Main Navigation Parameters 
  *
- * @param string $classes Custom menu classes.
+ * @param string $classes custom menu classes.
  */
 function bcb_main_nav($classes = 'ml-auto') {
     wp_nav_menu(
     array(
         'theme_location'  => 'main-menu',
+        'container'       => 'false',
+        'container_class' => 'menu-{menu slug}-container',
+        'menu_class'      => 'menu',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'items_wrap'      => '<ul class="navbar-nav ' . $classes . '">%3$s</ul>',
+        'depth'           => 0,
+        'fallback_cb'     => '',
+        )
+    );
+}
+
+/** 
+ * Auxiliary Navigation Parameters 
+ *
+ * @param string $classes custom menu classes.
+ */
+function bcb_aux_nav($classes = 'ml-auto') {
+    wp_nav_menu(
+    array(
+        'theme_location'  => 'aux-menu',
         'container'       => 'false',
         'container_class' => 'menu-{menu slug}-container',
         'menu_class'      => 'menu',
@@ -335,11 +357,10 @@ add_action('get_header', 'bcb_enable_threaded_comments');
  * @param string $mimes Media type.
  */
 function bcb_mime_types($mimes) {
- $mimes['svg'] = 'image/svg+xml';
- return $mimes;
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
 }
 add_filter('upload_mimes', 'bcb_mime_types');
-
 
 /**
  * Hook: Before Footer.
