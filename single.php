@@ -14,10 +14,10 @@ get_header();?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">
 
-				<?php 
-				while (have_posts()) { the_post();
-					get_template_part('template-parts/post/post' , 'content');
-				}?>
+			<?php 
+			while (have_posts()) { the_post();
+				get_template_part('template-parts/post/post' , 'content');
+			}?>
 			
 			</div>
 		</article>
@@ -26,7 +26,6 @@ get_header();?>
 	<aside class="col-12 col-lg-4 px-4 border-left">
 		<?php get_sidebar();?>
 	</aside>
-
 </main>
 
 <?php get_footer();?>
