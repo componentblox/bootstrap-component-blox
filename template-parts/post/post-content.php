@@ -33,4 +33,4 @@ if (has_post_thumbnail()) { ?>
 	<?php }?>
 </div>
 <?php the_content();?>
-<?php if(comments_open()) { get_template_part('post-comments'); }?>
+<?php if(comments_open()) { get_template_part('template-parts/post/post' , 'comments'); }?>

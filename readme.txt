@@ -20,9 +20,6 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 3. Click Activate to use your new theme right away.
 
 
-== Changelog ==
-
-
 == Credits ==
 * normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
 * Bootstrap http://getbootstrap.com, (C) 2011-2015 Twitter, Inc., [MIT] (https://github.com/twbs/bootstrap/blob/master/LICENSE)

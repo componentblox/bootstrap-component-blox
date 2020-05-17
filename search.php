@@ -21,12 +21,12 @@
                         <h1 class="page-title mb-5"><?php printf( esc_html__( 'Search Results', 'bootstrap-component-blox' ), '<span>' . get_search_query() . '</span>' );?></h1>
                     </div>
                 </div>
-                <?php get_template_part('loop');?>
+                <?php get_template_part('template-parts/post/post' , 'loop');?>
                 
                 <?php if (paginate_links()) {?>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                        <?php get_template_part('pagination');?>
+                        <?php get_template_part('template-parts/post/post' , 'pagination');?>
                     </div>
                 </div>
                 <?php }?>
