@@ -1,6 +1,6 @@
 <?php 
 /**
- * The loop template file
+ * The template for displaying loop
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *

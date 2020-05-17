@@ -1,6 +1,6 @@
 <?php 
 /**
- * The template for post comments
+ * The template for displaying post comments
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *

@@ -22,6 +22,7 @@
 
 	<body <?php body_class(get_theme_mod('body_container_classes'));?> >		
         <?php bcb_before_navbar();?>
+        <?php if(!is_page_template('templates/post-blank.php')) {?>
         <header id="nav-header" class="clear" role="banner">
             <?php 
             if(get_theme_mod('navbar_type') == 'side') {
@@ -29,4 +30,5 @@
             } else {
 				get_template_part('template-parts/navbar/navbar' , 'nav');
             }?>
-        </header>        
+        </header>  
+        <?php }?>      

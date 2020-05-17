@@ -409,6 +409,16 @@ function bcb_search_form($searchClasses = "") {?>
     </form>
 <?php }
 
+/**
+ * Utility: Search Bar Modal
+ */
+function bcb_include_search_modal() { 
+    if(get_theme_mod('navbar_search')) { 
+        get_template_part('template-parts/post/post-searchModal');
+    }
+}
+add_action('wp_footer', 'bcb_include_search_modal'); 
+
 // Add filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
 add_filter( 'widget_text', 'shortcode_unautop');

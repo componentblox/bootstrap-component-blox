@@ -1,6 +1,6 @@
 <?php 
 /**
- * The search form template file
+ * The template for displaying search form
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *

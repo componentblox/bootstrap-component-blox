@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for posts content
+ * The template for displaying post content
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
