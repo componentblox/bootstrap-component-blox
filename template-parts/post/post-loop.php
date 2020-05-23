@@ -33,10 +33,10 @@
 		</div>
 
 	<?php }} else { ?>
-			<div>
-				<p class="alert alert-warning text-center"><?php esc_html_e('We could not find your search. Please try Again.' , 'bootstrap-component-blox');?></p>
-				<?php get_template_part('searchform');?>
-			</div>
+		<div class="col-12 col-lg-6 mx-auto">
+			<p class="alert alert-warning text-center"><?php esc_html_e('We could not find your search. Please try Again.' , 'bootstrap-component-blox');?></p>
+			<?php get_template_part('searchform');?>
+		</div>
 		
 	<?php }?>
     </div>	
