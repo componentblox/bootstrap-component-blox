@@ -33,7 +33,7 @@
 		</div>
 
 	<?php }} else { ?>
-		<div class="col-12 col-lg-6 mx-auto">
+		<div class="col-12 col-lg-6 mx-auto mb-4">
 			<p class="alert alert-warning text-center"><?php esc_html_e('We could not find your search. Please try Again.' , 'bootstrap-component-blox');?></p>
 			<?php get_template_part('searchform');?>
 		</div>
