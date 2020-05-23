@@ -7,18 +7,15 @@
  * @package bootstrap-component-blox
  */
 
-
 ?>
 <div class="row justify-content-center">
 	<div class="card-deck flex-fill">
 
-<?php
-	if (have_posts()) {
-	while (have_posts()) { the_post(); 
-		
-	$image_id = get_post_thumbnail_id($post->ID);
-?>
-
+	<?php
+		if (have_posts()) {
+		while (have_posts()) { the_post(); 		
+		$image_id = get_post_thumbnail_id($post->ID);
+	?>
 		<div class="card p-3 mb-4" style="min-width: 18rem;">
 			<?php if (has_post_thumbnail()) { ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>">
