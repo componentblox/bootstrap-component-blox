@@ -14,15 +14,15 @@ get_header();?>
 		<div class="entry-content">
 
 			<div class="container my-5">
-				<div class="row">
-					<div class="col-12 col-lg-8 px-5">
+				<div class="row px-4">
+					<div class="col-12 col-lg-8">
 						<?php 
 							get_template_part('template-parts/post/post' , 'loop');
 							get_template_part('template-parts/post/post' , 'pagination'); 
 						?>
 					</div>
 
-					<aside class="col-12 col-lg-4 px-5 border-left">
+					<aside class="col-12 col-lg-4 px-0 px-lg-4">
 						<?php get_sidebar();?>
 					</aside>
 

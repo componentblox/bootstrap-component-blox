@@ -6,7 +6,7 @@
  */
 
 if(is_active_sidebar('footer-area-1')){?>
-<div id="footer-widgets" class="footer-widgets">
+<div id="footer-widgets" class="footer-widgets px-3">
     <div class="container-fluid">
         <div class="row py-5">
 	    

@@ -10,7 +10,7 @@
 get_header();?>
 
 <main id="main-container" class="row container mx-auto mt-5" role="main">
-	<section class="col-12 col-lg-8 px-4">
+	<section class="col-12 col-lg-8">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">
 
@@ -23,7 +23,7 @@ get_header();?>
 		</article>
 	</section>
 	
-	<aside class="col-12 col-lg-4 px-4 border-left">
+	<aside class="col-12 col-lg-4">
 		<?php get_sidebar();?>
 	</aside>
 </main>

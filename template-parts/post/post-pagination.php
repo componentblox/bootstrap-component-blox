@@ -9,6 +9,6 @@
 
 ?>
 
-<div class="pagination mb-4">
+<div class="pagination mb-4 d-flex justify-content-center">
 	<?php bcb_pagination(); ?>
 </div>
