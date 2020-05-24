@@ -12,15 +12,13 @@
 <nav class="navbar-light navbar navbar-expand-lg <?php echo esc_attr(get_theme_mod('navbar_classes'));?> py-0">
     <div class="container-fluid <?php echo esc_attr(get_theme_mod('navbar_inner_classes'));?>">
                         
-        <?php if(has_custom_logo()) {?>
         <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-           <img src="<?php echo esc_url(bcb_image_url(get_theme_mod('custom_logo')));?>" alt="<?php echo esc_attr(get_bloginfo());?>" />    
+            <?php if(has_custom_logo()) {?>
+                <img src="<?php echo esc_url(bcb_image_url(get_theme_mod('custom_logo')));?>" alt="<?php echo esc_attr(get_bloginfo());?>" />   
+            <?php } else {
+                get_template_part('template-parts/navbar/navbar' , 'logo');
+            }?>
         </a>
-        <?php } else {?>
-        <a id="navbar-brand-logo" class="navbar-brand" href="/"> 
-            <?php get_template_part('template-parts/navbar/navbar' , 'logo');?>
-        </a>
-        <?php }?>
         
         <button id="toggler" class="sidebar-navbar-collapse btn text-right collapsed" data-toggle="collapse" data-target="#sidebar-navbar" type="button" aria-expanded="false">
             <?php get_template_part('/template-parts/navbar/navbar' , 'toggler');?>
