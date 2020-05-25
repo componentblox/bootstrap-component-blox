@@ -270,8 +270,12 @@ table#wp-calendar #today, table#wp-calendar #today a {
 	position: relative;
 	top: 2px;
 }
+
+#footer-widgets ul {
+	padding-left: 20px;
+}
 #footer-widgets .nav-link {
-	padding-left: 0;
+	padding: 0;
 }
 .search input {
 	padding: 10px 15px;
