@@ -398,6 +398,13 @@ function bcb_image_alt($id) {
 }
 
 /**
+ *  Utility: Gets Thumbnail ID
+ */
+function bcb_image_id() {
+    return get_post_thumbnail_id();
+}
+
+/**
  * Utility: Search Bar
  *
  * @param string $searchClasses Bootstrap or Unique Classes
