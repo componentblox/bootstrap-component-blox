@@ -10,11 +10,11 @@
 ?>
 
 <?php
-$image_id = get_post_thumbnail_id(get_the_ID());
+
 $category = get_the_category();
 
 if (has_post_thumbnail()) { ?>
-	<img id="bcb-featured-image" class="img-fluid w-100" src="<?php bcb_image_url($image_id);?>" alt="<?php bcb_image_alt($image_id);?>"/>
+	<img id="bcb-featured-image" class="img-fluid w-100" src="<?php bcb_image_url(bcb_image_id());?>" alt="<?php bcb_image_alt(bcb_image_id());?>"/>
 <?php }?>
 
 <h1 class="mt-4"><?php the_title_attribute();?></h1>
