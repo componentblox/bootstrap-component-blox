@@ -426,6 +426,41 @@ function bcb_include_search_modal() {
 }
 add_action('wp_footer', 'bcb_include_search_modal'); 
 
+/**
+ * Utility: Icon Render Function
+ *
+ * @param string $name Icon Name
+ * @param string $size Controls Sizing
+ */
+function bcb_icon($name, $size = '20')  {?>
+    <svg width="<?php echo $size;?>" height="<?php echo $size;?>" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <?php include(__DIR__ . '/icons/' . $name . '.svg');?>
+    </svg>
+<?php }
+
+/**
+ * Utility: Icon Render Shortcode Function
+ *
+ * @param string $name Icon Name
+ * @param string $size Control Sizing
+ */
+function bcb_icon_shortcode($atts) {
+    $a = shortcode_atts( array(
+        'name' => '',
+        'size' => '20',
+    ), $atts);
+    
+    $size = $a['size'];
+    
+    ob_start();?>
+    <svg width="<?php echo $size;?>" height="<?php echo $size;?>" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <?php include(__DIR__ . '/icons/' . $a['name'] . '.svg');?>
+    </svg>
+    <?php 
+    return ob_get_clean();
+}
+add_shortcode( 'bcb_icon', 'bcb_icon_shortcode' );
+
 // Add filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
 add_filter( 'widget_text', 'shortcode_unautop');

@@ -9,14 +9,14 @@
 
 ?>
 
-<div class="row row-cols-1 row-cols-lg-3">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
 	<?php
 		if (have_posts()) {
 		while (have_posts()) { the_post(); 		
 	?>
 	<div class="col mb-4">
-		<div class="card p-3 mb-4 h-100">
+		<div class="card p-3 h-100">
 			<?php if (has_post_thumbnail()) { ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>">
 				<img class="w-100 mb-3" src="<?php bcb_image_url(bcb_image_id(), 'medium');?>" alt="<?php bcb_image_alt(bcb_image_id());?>"/>

@@ -9,4 +9,13 @@
 
 ?>
 
-<svg height="auto" viewBox="0 0 1792 1792" width="60" xmlns="http://www.w3.org/2000/svg"><path d="M896 1629l640-349v-636l-640 233v752zm-64-865l698-254-698-254-698 254zm832-252v768q0 35-18 65t-49 47l-704 384q-28 16-61 16t-61-16l-704-384q-31-17-49-47t-18-65v-768q0-40 23-73t61-47l704-256q22-8 44-8t44 8l704 256q38 14 61 47t23 73z"/></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 360 360" style="enable-background:new 0 0 360 360;" width="60" height="60" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#E92952;}
+	.st1{fill:#602AE9;}
+</style>
+<rect id="icon" x="144.2" y="144.1" class="st0" width="71.8" height="71.8"/>
+<path class="st1" d="M278,13.7c37.4,0,68.4,30.6,68.4,68.4v195.8c0,37.8-31,68.4-68.4,68.4H82c-37.8,0-68.4-30.6-68.4-68.4V82.1
+	c0-37.8,30.6-68.4,68.4-68.4L278,13.7z M85.2,274.3h188.6V85.7H85.2V274.3z"/>
+</svg>
