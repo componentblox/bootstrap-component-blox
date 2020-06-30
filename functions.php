@@ -454,7 +454,7 @@ function bcb_icon_shortcode($atts) {
     
     ob_start();?>
     <svg width="<?php echo $size;?>" height="<?php echo $size;?>" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <?php include(__DIR__ . '/icons/' . $a['name'] . '.svg');?>
+        <?php include(locate_template('/icons/' . $a['name'] . '.svg'));?>
     </svg>
     <?php 
     return ob_get_clean();
