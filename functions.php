@@ -340,6 +340,20 @@ function bcb_remove_thumbnail_dimensions($html) {
 }
 
 /** 
+ * Check current template file name
+ */
+function bcb_check_template_name($template_name) {
+    global $template;
+    $template_file_name = basename($template);
+    if($template_name == $template_file_name) {
+        return true;
+    } else {
+        return false;
+    } 
+}
+add_action('wp_head', 'bcb_check_template_name');
+
+/** 
  * Threaded Comments. 
  */
 function bcb_enable_threaded_comments() {

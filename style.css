@@ -105,6 +105,10 @@ body {
 embed, iframe, object {
 	max-width: 100%
 }
+.card-object-cover {
+	height: 250px; 
+	object-fit: cover; 
+}
 .wp-caption {
 	margin-bottom: 1.5em;
 	max-width: 100%
@@ -277,9 +281,11 @@ table#wp-calendar #today, table#wp-calendar #today a {
 #footer-widgets .nav-link {
 	padding: 0;
 }
-.search input {
+.search input[type="text"] {
 	padding: 10px 15px;
 	width: 100%;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }
 .search button {
 	position: absolute;
