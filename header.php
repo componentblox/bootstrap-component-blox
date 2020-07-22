@@ -20,7 +20,8 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body <?php body_class(get_theme_mod('body_container_classes'));?> >		
+	<body <?php body_class(get_theme_mod('body_container_classes'));?>>
+		<?php wp_body_open();?>		
         <?php bcb_before_navbar();?>
         <?php if(!is_page_template('templates/post-blank.php')) {?>
         <header id="nav-header" class="clear" role="banner">
