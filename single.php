@@ -9,7 +9,7 @@
 
 get_header();?>
 
-<main id="main-container" class="row container mx-auto mt-5" role="main">
+<main id="main-container" class="row container mx-auto my-5" role="main">
 	<section class="col-12 col-lg-8">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">
