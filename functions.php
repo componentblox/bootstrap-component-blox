@@ -391,6 +391,13 @@ function bcb_before_navbar() {
 }
 
 /**
+ * Hook: After Navbar.
+ */
+function bcb_after_navbar() {
+    do_action('bcb_after_navbar');
+}
+
+/**
  *  Utility: output image URL when provided an image ID.
  *
  * @param string #id image ID.

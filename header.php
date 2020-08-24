@@ -32,4 +32,5 @@
 				get_template_part('template-parts/navbar/navbar' , 'nav');
             }?>
         </header>  
-        <?php }?>      
+        <?php }?>  
+        <?php bcb_after_navbar();?>    
