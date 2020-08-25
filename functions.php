@@ -405,7 +405,7 @@ function bcb_after_navbar() {
  */
 function bcb_image_url($id, $size = "full") {
    $image = wp_get_attachment_image_url($id, $size);
-   echo $image;
+   return $image;
 }
 
 /**
@@ -415,7 +415,7 @@ function bcb_image_url($id, $size = "full") {
  */
 function bcb_image_alt($id) {
    $alt = get_post_meta($id, '_wp_attachment_image_alt', true);
-   echo $alt;
+   return $alt;
 }
 
 /**
