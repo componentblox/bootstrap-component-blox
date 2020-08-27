@@ -21,7 +21,7 @@
 		<div class="card h-100">
 			<?php if (has_post_thumbnail()) { ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>">
-				<img class="w-100 card-img-top card-object-cover" src="<?php bcb_image_url(bcb_image_id(), 'medium');?>" alt="<?php bcb_image_alt(bcb_image_id());?>"/>
+				<img class="w-100 card-img-top card-object-cover" src="<?php echo bcb_image_url(bcb_image_id(), 'medium');?>" alt="<?php echo bcb_image_alt(bcb_image_id());?>"/>
 			</a>
 			<?php }?>
 			<div class="card-body">
