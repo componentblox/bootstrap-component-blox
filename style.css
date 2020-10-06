@@ -314,7 +314,8 @@ table#wp-calendar #today, table#wp-calendar #today a {
     color: rgba(0,0,0,.5);
 }
 
-#sidebar-navbar.collapse {
+#sidebar-navbar.collapse,
+#sidebar-navbar.collapsing {
 	display: block;
 }
 #sidebar-navbar.show {
