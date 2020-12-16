@@ -98,7 +98,7 @@ add_action('init', 'bcb_register_menu');
  *
  * @param string $classes custom menu classes.
  */
-function bcb_main_nav($classes = 'ml-auto') {
+function bcb_main_nav($classes = 'ms-auto') {
     wp_nav_menu(
     array(
         'theme_location'  => 'main-menu',
