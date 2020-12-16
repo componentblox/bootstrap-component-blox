@@ -14,7 +14,7 @@
 $category = get_the_category();
 
 if (has_post_thumbnail()) { ?>
-	<img id="bcb-featured-image" class="img-fluid w-100" src="<?php echo bcb_image_url(bcb_image_id());?>" alt="<?php echo bcb_image_alt(bcb_image_id());?>"/>
+	<img id="bcb-featured-image" class="w-100" src="<?php echo bcb_image_url(bcb_image_id());?>" alt="<?php echo bcb_image_alt(bcb_image_id());?>"/>
 <?php }?>
 
 <h1 class="mt-4"><?php the_title_attribute();?></h1>
@@ -22,7 +22,7 @@ if (has_post_thumbnail()) { ?>
 <div class="post_meta mb-3">
 	<span class="author badge badge-light border p-2"><?php esc_html_e( 'Published by ', 'bootstrap-component-blox' );?> <?php the_author_posts_link();?></span>
 	<span class="date badge badge-light border p-2"> <?php the_time('F j, Y');?></span> 
-	<span class="date badge badge-light border p-2"><?php esc_html_e('Category: ' , 'bootstrap-component-blox'); if(!empty($category)) { echo '<a href="' .  esc_url(get_category_link($category[0]->term_id)) . '">' . esc_html( $category[0]->name );}?></a></span>
+	<span class="category badge badge-light border p-2"><?php esc_html_e('Category: ' , 'bootstrap-component-blox'); if(!empty($category)) { echo '<a href="' .  esc_url(get_category_link($category[0]->term_id)) . '">' . esc_html( $category[0]->name );}?></a></span>
 	
 	<?php if(comments_open()) {?>
 	
