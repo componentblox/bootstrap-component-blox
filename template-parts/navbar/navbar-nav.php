@@ -20,7 +20,7 @@
             }?>
     	</a>
     	
-    	<button id="toggler" class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse" data-target="#navbar-main-menu" aria-controls="navbar-main-menu" aria-expanded="false" aria-label="Toggle Navigation">
+    	<button id="toggler" class="navbar-toggler collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main-menu" aria-controls="navbar-main-menu" aria-expanded="false" aria-label="Toggle Navigation">
     		<?php get_template_part('template-parts/navbar/navbar' , 'toggler');?>
     	</button>
     
