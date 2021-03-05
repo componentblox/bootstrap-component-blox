@@ -8,31 +8,31 @@
 if(is_active_sidebar('footer-area-1')){?>
 <div id="footer-widgets" class="footer-widgets px-3">
     <div class="container-fluid">
-        <div class="row py-5">
+        <div class="row pb-0 pt-5 pb-lg-5">
 	    
-	        <?php if(is_active_sidebar('footer-area-1')){ ?>
+	        <?php if(is_active_sidebar('footer-area-1')){?>
 	        <div class="col mb-4 mb-lg-0">
-				<?php dynamic_sidebar('footer-area-1'); ?>  
+				<?php dynamic_sidebar('footer-area-1');?>  
             </div>
-     	    <?php } ?>
+     	    <?php }?>
     
-            <?php if(is_active_sidebar('footer-area-2')){ ?>
+            <?php if(is_active_sidebar('footer-area-2')){?>
     		<div class="col mb-4 mb-lg-0">
-                <?php dynamic_sidebar('footer-area-2'); ?>  
+                <?php dynamic_sidebar('footer-area-2');?>  
     		</div>
-            <?php } ?>
+            <?php }?>
     
-            <?php if(is_active_sidebar('footer-area-3')){ ?>
+            <?php if(is_active_sidebar('footer-area-3')){?>
     		<div class="col mb-4 mb-lg-0">
-                <?php dynamic_sidebar('footer-area-3'); ?>  
+                <?php dynamic_sidebar('footer-area-3');?>  
     		</div>
-            <?php } ?>
+            <?php }?>
     
-            <?php if(is_active_sidebar('footer-area-4')){ ?>
+            <?php if(is_active_sidebar('footer-area-4')){?>
     		<div class="col mb-4 mb-lg-0">
-                <?php dynamic_sidebar('footer-area-4'); ?>  
+                <?php dynamic_sidebar('footer-area-4');?>  
     		</div>
-            <?php } ?>
+            <?php }?>
 
         </div>
     </div>
