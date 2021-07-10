@@ -20,7 +20,7 @@
             }?>
         </a>
         
-        <button id="toggler" class="sidebar-navbar-collapse btn text-right collapsed" data-toggle="collapse" data-target="#sidebar-navbar" type="button" aria-expanded="false">
+        <button id="toggler" class="sidebar-navbar-collapse btn text-right collapsed" data-bs-toggle="collapse" data-bs-target="#sidebar-navbar" type="button" aria-expanded="false">
             <?php get_template_part('/template-parts/navbar/navbar' , 'toggler');?>
         </button>
 
@@ -28,7 +28,7 @@
 </nav>
 
 <nav id="sidebar-navbar" class="<?php echo esc_attr(get_theme_mod('sidebar_classes'));?> navbar collapse navbar">
-    <div id="sidebar-navbar-dismiss" data-toggle="collapse" data-target="#sidebar-navbar">
+    <div id="sidebar-navbar-dismiss" data-bs-toggle="collapse" data-bs-target="#sidebar-navbar">
         <i class="fas fa-times text-muted"></i>
     </div>
     <?php bcb_main_nav('mt-3');?>
