@@ -55,7 +55,7 @@ function bcb_custom_comments( $comment, $args, $depth ) {
 						<?php comment_text();?>
 					</div>
 				
-					<button class="btn btn-light float-right">
+					<button class="btn btn-light float-end">
 						<?php 
 						comment_reply_link( array_merge($args, array(
 							'reply_text' => 'Reply', 'bootstrap-component-blox',

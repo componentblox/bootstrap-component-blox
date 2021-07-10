@@ -9,7 +9,7 @@
 
 if(comments_template()) {?>
 <hr>
-<div class="card my-4 border">
+<div class="card my-4">
 	<h5 class="card-header"><?php esc_html_e('Leave a Comment' , 'bootstrap-component-blox');?></h5>
 	<div class="card-body">
 		<?php comments_template();?>
