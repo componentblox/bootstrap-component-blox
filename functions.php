@@ -461,9 +461,11 @@ add_action('wp_footer', 'bcb_include_search_modal');
  * @param string $name Icon Name
  * @param string $size Controls Sizing
  */
-function bcb_icon($name, $size = '20')  {?>
+function bcb_icon($name, $size = '20') {
+    $trimmed_name = trim($name, "bi-");
+    ?>
     <svg width="<?php echo $size;?>" height="<?php echo $size;?>" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <?php include(locate_template('/icons/' . $name . '.svg'));?>
+        <?php include(locate_template('/icons/' . $trimmed_name . '.svg'));?>
     </svg>
 <?php }
 
