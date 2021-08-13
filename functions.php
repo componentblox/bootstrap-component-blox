@@ -140,7 +140,7 @@ function bcb_aux_nav($classes = 'ml-auto') {
  */
 function bcb_add_search_to_nav($items, $args) {
     if(get_theme_mod('navbar_search') && $args->theme_location == 'main-menu' ) {
-        $items .= '<li><span class="nav-link"><i class="fas fa-search" data-toggle="modal" data-target="#searchModal"></i></span></li>';
+        $items .= '<li><span class="nav-link"><i class="fas fa-search" data-bs-toggle="modal" data-bs-target="#searchModal"></i></span></li>';
     }
     return $items;
 }
