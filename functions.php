@@ -72,7 +72,7 @@ require_once( get_template_directory() . '/custom-comments.php' );
 if(!is_admin()) {
     function bcb_enqueue_theme_styles_scripts(){
         wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '5.0.1' , false);
-        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.15.3/css/all.css', false, '5.15.2');
+        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.15.4/css/all.css', false, '5.15.4');
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
         wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.0.1' , true);
         wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
@@ -461,11 +461,18 @@ add_action('wp_footer', 'bcb_include_search_modal');
  * @param string $name Icon Name
  * @param string $size Controls Sizing
  */
-function bcb_icon($name, $size = '20') {
-    $trimmed_name = trim($name, "bi-");
+function bcb_icon($name = 'question', $size = '20') {
+    $trimmed_name = str_replace("bi-",  "" , $name);
     ?>
     <svg width="<?php echo $size;?>" height="<?php echo $size;?>" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <?php include(locate_template('/icons/' . $trimmed_name . '.svg'));?>
+        <?php 
+            $icon_svg_file = locate_template('/icons/' . $trimmed_name . '.svg');
+            if($icon_svg_file)
+                include($icon_svg_file);
+            else {
+                include(locate_template('/icons/' . 'question-diamond-fill' . '.svg'));
+            }
+        ?>
     </svg>
 <?php }
 
