@@ -381,7 +381,7 @@ add_filter('upload_mimes', 'bcb_mime_types');
  */
 function bcb_add_woocommerce_support() {
     if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-        if (false === wc_string_to_bool(get_option('bcb_disable_woocommerce_theme_support', 'yes'))) {
+        if (false === wc_string_to_bool(get_option('bcb_disable_woocommerce_theme_support', 'no'))) {
             add_theme_support( 'woocommerce' );
         }
     }
