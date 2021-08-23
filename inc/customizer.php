@@ -28,7 +28,7 @@ add_theme_support( 'custom-header', array(
 	'wp-head-callback'       => '',
 	'admin-head-callback'    => '',
 	'admin-preview-callback' => '',
-) );
+));
 
 /**
  * Add Body Settings.
@@ -47,7 +47,6 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'description' => __( 'Adds Class Option to Menu', 'bootstrap-component-blox' ),
 		'priority' => 125,
 	));
-        
 	
 	// Footer.
 	$wp_customize->add_panel( 'footer_panel', array(
@@ -128,6 +127,15 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'description' => '',
 		'panel' => 'footer_panel',
 	));
+
+	// Woocommerce Theme Support
+	$wp_customize->add_section( 'woocomerce_theme_support', array(
+		'priority' => 0,
+		'capability' => 'edit_theme_options',
+		'title' => __( 'Theme Support', 'bootstrap-component-blox' ),
+		'description' => '',
+		'panel' => 'woocommerce',
+	));
 	
 	// Settings. 
 
@@ -185,6 +193,15 @@ function add_custom_customizer_settings( $wp_customize ) {
         'transport' => 'postMessage',
 		'sanitize_callback' => 'wp_kses_post',
     ));
+
+    // Woocommerce Theme Support	 
+    $wp_customize->add_setting( 'bcb_disable_woocommerce_theme_support', array(
+      'default' => 'no',
+      'type' => 'option',
+      'capability' => 'manage_woocommerce',
+      'sanitize_callback' => 'wc_bool_to_string',
+      'sanitize_js_callback' => 'wc_string_to_bool',
+   	));
  
     // Controls.
 
@@ -262,7 +279,16 @@ function add_custom_customizer_settings( $wp_customize ) {
         'priority' => 5,
         'type' => 'textarea',
         'capability' => 'edit_theme_options',
-    ));        
+    )); 
 
+    // Woocommerce Theme Support.
+    $wp_customize->add_control( 'bcb_disable_woocommerce_theme_support', array(
+      	'label' => 'Disable Theme Support',
+      	'description' => '',
+      	'section' => 'woocomerce_theme_support',
+      	'settings' => 'bcb_disable_woocommerce_theme_support',
+      	'type' => 'checkbox',
+   	)); 
+     
 }
 add_action('customize_register','add_custom_customizer_settings');
