@@ -380,8 +380,10 @@ add_filter('upload_mimes', 'bcb_mime_types');
  * Hook: Woocommerce Support
  */
 function bcb_add_woocommerce_support() {
-    if (false === wc_string_to_bool(get_option('bcb_disable_woocommerce_theme_support', 'yes'))) {
-        add_theme_support( 'woocommerce' );
+    if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+        if (false === wc_string_to_bool(get_option('bcb_disable_woocommerce_theme_support', 'yes'))) {
+            add_theme_support( 'woocommerce' );
+        }
     }
 }
 add_action( 'after_setup_theme', 'bcb_add_woocommerce_support' );
