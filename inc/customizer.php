@@ -28,7 +28,7 @@ add_theme_support( 'custom-header', array(
 	'wp-head-callback'       => '',
 	'admin-head-callback'    => '',
 	'admin-preview-callback' => '',
-));
+) );
 
 /**
  * Add Body Settings.
@@ -55,8 +55,16 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'title' => __( 'Footer', 'bootstrap-component-blox' ),
 		'description' => __( 'Controls the navigation layouts', 'bootstrap-component-blox' ),
 	));
-	
 
+	// Woocommerce Settings.
+	$wp_customize->add_panel( 'bcb_woocommerce_panel', array(
+		'capability' => 'edit_theme_options',
+		'theme_supports' => '',
+		'title' => __( 'Woocommerce Theme Settings', 'bootstrap-component-blox' ),
+		'description' => __( 'Adds Woocommerce Custom Settings', 'bootstrap-component-blox' ),
+		'priority' => 200,
+	));
+	
     // Sections.
 
     // Navbar Type.
@@ -134,7 +142,7 @@ function add_custom_customizer_settings( $wp_customize ) {
 		'capability' => 'edit_theme_options',
 		'title' => __( 'Theme Support', 'bootstrap-component-blox' ),
 		'description' => '',
-		'panel' => 'woocommerce',
+		'panel' => 'bcb_woocommerce_panel',
 	));
 	
 	// Settings. 
