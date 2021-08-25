@@ -64,4 +64,6 @@ $wp_customize->add_setting( 'bcb_disable_woocommerce_theme_support', array(
 	'sanitize_js_callback' => 'wc_string_to_bool',
 ));
 
-bcb_customizer_settings();
+if(file_exists(get_stylesheet_directory() . '/customizer/settings.php')) {
+	include(get_stylesheet_directory() . '/customizer/settings.php');
+}

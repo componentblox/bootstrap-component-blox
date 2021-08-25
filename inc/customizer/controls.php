@@ -85,4 +85,6 @@ $wp_customize->add_control( 'bcb_disable_woocommerce_theme_support', array(
 	'type' => 'checkbox',
 )); 
 
-bcb_customizer_controls();
+if(file_exists(get_stylesheet_directory() . '/customizer/controls.php')) {
+	include(get_stylesheet_directory() . '/customizer/controls.php');
+}

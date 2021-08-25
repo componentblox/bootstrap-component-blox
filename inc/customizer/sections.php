@@ -78,4 +78,6 @@ $wp_customize->add_section( 'woocomerce_theme_support', array(
 	'panel' => 'bcb_woocommerce_panel',
 ));
 
-bcb_customizer_sections();
+if(file_exists(get_stylesheet_directory() . '/customizer/sections.php')) {
+	include(get_stylesheet_directory() . '/customizer/sections.php');
+}

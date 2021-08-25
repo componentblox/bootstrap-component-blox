@@ -26,4 +26,6 @@ $wp_customize->add_panel( 'bcb_woocommerce_panel', array(
 	'priority' => 200,
 ));
 
-bcb_customizer_panels();
+if(file_exists(get_stylesheet_directory() . '/customizer/panels.php')) {
+	include(get_stylesheet_directory() . '/customizer/panels.php');
+}
