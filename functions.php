@@ -410,6 +410,34 @@ function bcb_after_navbar() {
 }
 
 /**
+ * Hook: Customizer Panels.
+ */
+function bcb_customizer_panels() {
+    do_action('bcb_customizer_panels');
+}
+
+/**
+ * Hook: Customizer Sections.
+ */
+function bcb_customizer_sections() {
+    do_action('bcb_customizer_sections');
+}
+
+/**
+ * Hook: Customizer Settings.
+ */
+function bcb_customizer_settings() {
+    do_action('bcb_customizer_settings');
+}
+
+/**
+ * Hook: Customizer Controls.
+ */
+function bcb_customizer_controls() {
+    do_action('bcb_customizer_controls');
+}
+
+/**
  *  Utility: output image URL when provided an image ID.
  *
  * @param string #id image ID.
