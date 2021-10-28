@@ -247,7 +247,7 @@ table#wp-calendar #today, table#wp-calendar #today a {
 }
 #nav-header .dropdown-menu {
 	top: 95%;
-	width: 100%;
+	min-width: 100%;
 }
 
 #nav-header .dropdown-menu .dropdown-menu {
