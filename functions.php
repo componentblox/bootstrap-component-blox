@@ -71,10 +71,10 @@ require_once( get_template_directory() . '/custom-comments.php' );
 // Load styles and scripts.
 if(!is_admin()) {
     function bcb_enqueue_theme_styles_scripts(){
-        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '5.0.1' , false);
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '5.1.3' , false);
         wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.15.4/css/all.css', false, '5.15.4');
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
-        wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.0.1' , true);
+        wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.1.3' , true);
         wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
         wp_enqueue_script('bootstrap-component-blox-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0', true );  
     }
@@ -502,7 +502,7 @@ function bcb_icon($name = 'question', $size = '20') {
             if($icon_svg_file)
                 include($icon_svg_file);
             else {
-                include(locate_template('/icons/' . 'question-diamond-fill' . '.svg'));
+                include(locate_template('/icons/question-diamond-fill.svg'));
             }
         ?>
     </svg>
@@ -535,6 +535,9 @@ add_shortcode( 'bcb_icon', 'bcb_icon_shortcode' );
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
 add_filter( 'widget_text', 'shortcode_unautop');
 add_filter( 'widget_text', 'do_shortcode');
+add_theme_support('align-wide');
+add_theme_support('responsive-embeds');
+add_theme_support('wp-block-styles');
 
 // Check theme for update releases
 require('update-checker.php');
