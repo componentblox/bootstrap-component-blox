@@ -119,7 +119,7 @@ function bcb_main_nav($classes = 'ms-auto') {
  *
  * @param string $classes custom menu classes.
  */
-function bcb_aux_nav($classes = 'ml-auto') {
+function bcb_aux_nav($classes = 'ms-auto') {
     wp_nav_menu(
     array(
         'theme_location'  => 'aux-menu',
