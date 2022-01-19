@@ -67,6 +67,14 @@ $wp_customize->add_control( 'body_classes' , array(
 	'settings'   => 'body_container_classes'
 ));
 
+// Disable Single Post Sidebar.
+$wp_customize->add_control( 'single_post_sidebar', array(
+	'label' => 'Disable Sidebar',
+	'section' => 'single_post_sidebar_section',
+	'type' => 'checkbox',
+	'capability' => 'edit_theme_options',
+)); 
+
 // Footer Credit.
 $wp_customize->add_control( 'footer_credit', array(
 	'label' => __( 'Footer Credit' , 'bootstrap-component-blox' ),

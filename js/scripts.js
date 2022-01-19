@@ -3,8 +3,8 @@
  */
 
 jQuery(document).ready(function($) {
-	
-	// Add Bootstrap dropdown classes to nested menu items
+    
+    // Add Bootstrap dropdown classes to nested menu items
     let menuItemHasChildren = document.querySelectorAll('.navbar .menu-item-has-children');
     menuItemHasChildren.forEach(function(childItem) {
         childItem.classList.add('dropdown');
@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
     });
 
     // Add Bootstrap toggle classes to nested menu items
-    let sidebarCardUl = document.querySelectorAll('#sidebar .card ul');
+    let sidebarCardUl = document.querySelectorAll('#sidebar .card ul, #sidebar .custom-html-widget');
     sidebarCardUl.forEach(function(ul) {
         ul.outerHTML = `<div class="card-body">${ul.outerHTML}</div>`;
     });

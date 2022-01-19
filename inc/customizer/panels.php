@@ -17,6 +17,14 @@ $wp_customize->add_panel( 'footer_panel', array(
 	'description' => __( 'Controls the navigation layouts', 'bootstrap-component-blox' ),
 ));
 
+// Single Layout.
+$wp_customize->add_panel( 'single_post_panel', array(
+	'capability' => 'edit_theme_options',
+	'theme_supports' => '',
+	'title' => __( 'Single Post', 'bootstrap-component-blox' ),
+	'description' => __( 'Controls the single post layout', 'bootstrap-component-blox' ),
+));
+
 // Woocommerce Settings.
 $wp_customize->add_panel( 'bcb_woocommerce_panel', array(
 	'capability' => 'edit_theme_options',
