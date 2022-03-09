@@ -14,7 +14,7 @@
             </div>
 
             <div class="col text-end">
-                <button id="toggler" class="navbar-toggler collapsed d-inline-block d-lg-none" data-bs-toggle="collapse" data-bs-target="#navbar-main-menu" aria-controls="navbar-main-menu" aria-expanded="false" aria-label="Toggle Navigation">
+                <button id="toggler" class="navbar-toggler collapsed d-inline-block d-lg-none border-0" data-bs-toggle="collapse" data-bs-target="#navbar-main-menu" aria-controls="navbar-main-menu" aria-expanded="false" aria-label="Toggle Navigation">
                     <?php get_template_part('template-parts/navbar/navbar' , 'toggler');?>
                 </button >
             </div>
