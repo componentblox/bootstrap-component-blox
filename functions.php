@@ -381,10 +381,17 @@ add_filter('upload_mimes', 'bcb_mime_types');
  * Output Fixed Sidebar classes.
  */
 function bcb_fixed_sidebar_classes() {
-    if(get_theme_mod('navbar_type') == 'fixed_side') { 
-        return 'col-lg-8 col-xl-9'; 
-    }
+    if(get_theme_mod('navbar_type') == 'fixed_side') {?>
+        <script>
+            let addColumnClasses = document.querySelectorAll('main');
+        
+            addColumnClasses.forEach(function(addColumnClass) {
+                addColumnClass.classList.add('col-lg-8' , 'col-xl-9');
+            });
+        </script>
+    <?php }
 }
+add_action( 'wp_footer' , 'bcb_fixed_sidebar_classes' );
 
 /**
  * Hook: Woocommerce Support
