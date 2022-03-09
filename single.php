@@ -17,7 +17,7 @@ if($disable_single_post_sidebar) {
     $column_value = '8';
 }?>
 
-<main id="main-container" class="row container mx-auto my-5" role="main">
+<main id="main-container" class="row container mx-auto my-5 <?php echo bcb_fixed_sidebar_classes();?>" role="main">
 	<section class="col-12 col-lg-<?php echo $column_value;?>">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">

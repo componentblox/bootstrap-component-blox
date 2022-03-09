@@ -10,6 +10,7 @@ $wp_customize->add_control( 'navbar_type', array(
 	'choices'  => array(
 		'top'  => 'Top',
 		'side' => 'Side',
+		'fixed_side' => 'Fixed Side',
 	),
 	'capability' => 'edit_theme_options',
 ));     

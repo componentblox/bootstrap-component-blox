@@ -12,7 +12,7 @@
 
 get_header();?>
 
-<main id="main-container" class="row container mx-auto my-5" role="main">
+<main id="main-container" class="row container mx-auto my-5 <?php echo bcb_fixed_sidebar_classes();?>" role="main">
 	<section class="col-12">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">

@@ -377,6 +377,15 @@ function bcb_mime_types($mimes) {
 }
 add_filter('upload_mimes', 'bcb_mime_types');
 
+/** 
+ * Output Fixed Sidebar classes.
+ */
+function bcb_fixed_sidebar_classes() {
+    if(get_theme_mod('navbar_type') == 'fixed_side') { 
+        return 'col-lg-8 col-xl-9'; 
+    }
+}
+
 /**
  * Hook: Woocommerce Support
  */
