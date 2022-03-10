@@ -9,7 +9,7 @@
 
 ?>
 
-<nav class="navbar-light navbar navbar-expand-lg py-0 <?php echo esc_attr(get_theme_mod('navbar_classes'));?>">
+<nav id="bcb-main-navbar" class="navbar-light navbar navbar-expand-lg py-0 <?php echo esc_attr(get_theme_mod('navbar_classes'));?>">
 	<div class="container-fluid <?php echo esc_attr(get_theme_mod('navbar_inner_classes'));?>">
 						
     	<a id="navbar-brand-logo" class="navbar-brand" href="<?php echo get_site_url();?>"> 

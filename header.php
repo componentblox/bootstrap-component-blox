@@ -30,11 +30,13 @@
                 if(get_theme_mod('navbar_type') == 'side') {
                     get_template_part('template-parts/navbar/navbar' , 'sidebar');
                 } elseif(get_theme_mod('navbar_type') == 'fixed_side') {
-                    get_template_part('template-parts/navbar/navbar' , 'fixed-sidebar');
-                } else {
+                    get_template_part('template-parts/navbar/navbar' , 'fixed-sidebar');?>
+                    <div class="d-block d-lg-none">
+                        <?php get_template_part('template-parts/navbar/navbar' , 'nav');?>
+                    </div>
+                <?php } else {
                     get_template_part('template-parts/navbar/navbar' , 'nav');
-                }
-            ?>
+                }?>
         </header>  
         <?php }?>  
         <?php bcb_after_navbar();?>    
