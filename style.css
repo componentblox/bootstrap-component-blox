@@ -4,7 +4,7 @@
 	Author: Component Blox
 	Author URI:  https://componentblox.com
 	Description: Bootstrap Component Blox (BCB) is Bootstrap Wordpress theme that integrates perfectly with <a href="https://dashboard.componentblox.com/">Component Blox</a>. BCB is simple, lightweight, fast, and most importantly stable. <strong>Note:</strong> the core theme is updated periodically for performance enhancements, adding helpful utility functions and executing general maintenance, so using a <a href="https://theme.componentblox.com/">child theme</a> is highly recommended. BCB theme templates include: fullwidth blog, custom navbar, sidebar navbar, custom toggler, blog archive.
-    Version: 1.8.6
+    Version: 1.8.7
 	Tested up to: 5.8.3
 	Requires PHP: 6.0
 	License: GNU General Public License v3
@@ -92,6 +92,9 @@ body {
 .bypostauthor {
 	display: block
 }
+.mw-300 {
+    max-width: 300px!important;
+}
 .infinite-scroll .posts-navigation, .infinite-scroll.neverending .site-footer {
 	display: none
 }
@@ -110,9 +113,6 @@ embed, iframe, object {
 .card-object-cover {
 	height: 250px; 
 	object-fit: cover; 
-}
-.bg-inherit {
-	background: inherit;
 }
 .wp-caption {
 	margin-bottom: 1.5em;
@@ -281,7 +281,9 @@ table#wp-calendar #today, table#wp-calendar #today a {
 	position: relative;
 	top: 2px;
 }
-
+footer {
+	z-index: 9;
+}
 #footer-widgets ul {
 	padding-left: 20px;
 }
@@ -391,6 +393,9 @@ table#wp-calendar #today, table#wp-calendar #today a {
     	max-height: 400px;
     	overflow: scroll;
 	}
+	.mw-300 {
+        max-width: 100%!important;
+    }
 }
 @media(max-width: 768px) {
 	#nav-header .wp-toolbar {
