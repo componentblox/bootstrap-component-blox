@@ -386,7 +386,7 @@ function bcb_fixed_sidebar_classes() {
             let addColumnClasses = document.querySelectorAll('main');
         
             addColumnClasses.forEach(function(addColumnClass) {
-                addColumnClass.classList.add('col');
+                addColumnClass.classList.add('col-lg-9' , 'col-xl-10');
             });
         </script>
     <?php }

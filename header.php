@@ -20,11 +20,11 @@
         <?php wp_head(); ?>
 
     <body <?php body_class(get_theme_mod('body_container_classes'));?>>
-        <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo '<div class="d-block d-lg-flex">';}?>
+        <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo '<div class="row g-0">';}?>
         <?php wp_body_open();?>     
         <?php bcb_before_navbar();?>
         <?php if(!is_page_template('templates/post-blank.php')) {?>
-        <header id="nav-header" class="clear <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo 'col mw-300'; };?>" role="header">
+        <header id="nav-header" class="clear <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo 'col-lg-3 col-xl-2'; };?>" role="header">
             <?php 
                 if(get_theme_mod('navbar_type') == 'side') {
                     get_template_part('template-parts/navbar/navbar' , 'sidebar');
