@@ -11,17 +11,17 @@
 
 <!doctype html>
 <html <?php language_attributes(); ?> class="no-js">
-	
-	<head>
-		<?php get_template_part('header' , 'scripts');?>
-		<meta charset="<?php bloginfo('charset'); ?>">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<?php wp_head(); ?>
-        <?php if(get_theme_mod('navbar_type') == 'fixed_side') {$fixed_sidebar_row_classes = 'row px-3 px-lg-0 g-0';}?>
+    
+    <head>
+        <?php get_template_part('header' , 'scripts');?>
+        <meta charset="<?php bloginfo('charset'); ?>">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php wp_head(); ?>
 
-	<body <?php body_class( $fixed_sidebar_row_classes . get_theme_mod('body_container_classes'));?>>
-		<?php wp_body_open();?>		
+    <body <?php body_class(get_theme_mod('body_container_classes'));?>>
+        <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo '<div class="d-block d-lg-flex">';}?>
+        <?php wp_body_open();?>     
         <?php bcb_before_navbar();?>
         <?php if(!is_page_template('templates/post-blank.php')) {?>
         <header id="nav-header" class="clear <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo 'col mw-300'; };?>" role="header">
