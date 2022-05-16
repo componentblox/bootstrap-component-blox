@@ -13,7 +13,7 @@
 
 $category = get_the_category();
 
-if (has_post_thumbnail()) {?>
+if (bcb_image_url(bcb_image_id())) {?>
 	<img id="bcb-featured-image" class="w-100" src="<?php echo bcb_image_url(bcb_image_id());?>" alt="<?php echo bcb_image_alt(bcb_image_id());?>"/>
 <?php }?>
 
