@@ -2,26 +2,24 @@
  * File scipts.js.
  */
 
+ // On page load set theme mode
+let bcbOnpageLoad = localStorage.getItem("bcbThemeMode") || "";
+let bodyElement = document.body;
+bodyElement.classList.add(bcbOnpageLoad);
+
+// Toggle theme mode
+function bcbModeToggle() {
+    bodyElement.classList.toggle("bcb-dark-mode");
+    let bcbThemeMode = localStorage.getItem("bcbThemeMode");
+    if (bcbThemeMode && bcbThemeMode === "bcb-dark-mode") {
+        localStorage.setItem("bcbThemeMode", "");
+    } else {
+        localStorage.setItem("bcbThemeMode", "bcb-dark-mode");
+    }
+}
+
 jQuery(document).ready(function($) {
 
-    // On page load set theme mode
-    let bcbOnpageLoad = localStorage.getItem("theme") || "";
-    let element = document.body;
-    element.classList.add(bcbOnpageLoad);
-    document.getElementById("theme").textContent = localStorage.getItem("theme") || "light";
-
-    // Toggle theme mode
-    function bcbModeToggle() {
-        let element = document.body;
-        element.classList.toggle("bcb-dark-mode");
-
-        let theme = localStorage.getItem("theme");
-        if (theme && theme === "bcb-dark-mode") {
-            localStorage.setItem("theme", "");
-        } else {
-            localStorage.setItem("theme", "bcb-dark-mode");
-        }
-    }
     
     // Add Bootstrap dropdown classes to nested menu items
     let menuItemHasChildren = document.querySelectorAll('.navbar .menu-item-has-children');
