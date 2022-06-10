@@ -2,10 +2,12 @@
  * File scipts.js.
  */
 
- // On page load set theme mode
+// On page load set theme mode
 let bcbOnpageLoad = localStorage.getItem("bcbThemeMode") || "";
 let bodyElement = document.body;
-bodyElement.classList.add(bcbOnpageLoad);
+if(bcbOnpageLoad) {
+    bodyElement.classList.add(bcbOnpageLoad);
+}
 
 // Toggle theme mode
 function bcbModeToggle() {
