@@ -48,13 +48,6 @@ $wp_customize->add_setting( 'footer_classes', array(
 	'sanitize_callback' => 'esc_attr',
 ));
 
-// Disable Single Post Sidebar.	 
-$wp_customize->add_setting( 'single_post_sidebar', array(
-	'default' => '',
-	'transport' => 'refresh',
-	'sanitize_callback' => 'esc_attr',
-));
-
 // Footer Credit.		 
 $wp_customize->add_setting( 'footer_credit', array(
 	'default' => '',

@@ -51,15 +51,6 @@ $wp_customize->add_section( 'body' , array(
 	'priority'   => 130,
 ));
 
-// Disable Single Post Sidebar.
-$wp_customize->add_section( 'single_post_sidebar_section', array(
-	'priority' => 0,
-	'capability' => 'edit_theme_options',
-	'title' => __( 'Layout', 'bootstrap-component-blox' ),
-	'description' => '',
-	'panel' => 'single_post_panel',
-));
-
 // Footer Classes.
 $wp_customize->add_section( 'footer_class_section', array(
 	'priority' => 20,

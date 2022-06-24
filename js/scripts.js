@@ -22,7 +22,6 @@ function bcbModeToggle() {
 
 jQuery(document).ready(function($) {
 
-    
     // Add Bootstrap dropdown classes to nested menu items
     let menuItemHasChildren = document.querySelectorAll('.navbar .menu-item-has-children');
     menuItemHasChildren.forEach(function(childItem) {
@@ -112,18 +111,69 @@ jQuery(document).ready(function($) {
         }
     };
 
-    $('[data-toggle="sticky-onscroll"]').each(function () {
-        let sticky = $(this);
-        let stickyWrapper = $('<div>').addClass('sticky-wrapper');
+    jQuery('[data-toggle="sticky-onscroll"]').each(function () {
+        let sticky = jQuery(this);
+        let stickyWrapper = jQuery('<div>').addClass('sticky-wrapper');
         sticky.before(stickyWrapper);
 
         // Scroll & resize events
-        $(window).on('scroll.sticky-onscroll resize.sticky-onscroll', function () {
-            stickyToggle(sticky, stickyWrapper, $(this));
+        jQuery(window).on('scroll.sticky-onscroll resize.sticky-onscroll', function () {
+            stickyToggle(sticky, stickyWrapper, jQuery(this));
         });
 
         // On page load
-        stickyToggle(sticky, stickyWrapper, $(window));
+        stickyToggle(sticky, stickyWrapper, jQuery(window));
+    });
+
+    // The cookie name
+    let bcbCookieName = 'bcbPopup'; 
+    
+    // Cookie expiry in days
+    let bcbCookieLifetime = 1; 
+ 
+    // Set cookie
+    let _setCookie = function (cname, cvalue, exdays) {
+        let d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    };
+ 
+    // Get cookie
+    let _getCookie = function (cname) {
+        let name = cname + "=";
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    };
+ 
+    // Should the cookie popup be shown?
+    let _shouldShowPopup = function () {
+        if (_getCookie(bcbCookieName)) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+ 
+    // Show the cookie popup on load
+    if (_shouldShowPopup()) {
+        setTimeout(function() {
+            jQuery('#bcb-popup').modal('show');
+        }, 3000)
+    }
+ 
+    // Modal dismiss
+    jQuery('[data-bs-dismiss="modal"]').on('click', function () {
+        _setCookie(bcbCookieName, 1, bcbCookieLifetime);
     });
 
 });
