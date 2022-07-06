@@ -468,11 +468,7 @@ function bcb_customizer_controls() {
  * @param string $size thumbnail size.
  */
 function bcb_image_url($id = "", $size = "full") {
-    if($id) {
-        $image = wp_get_attachment_image_url($id, $size);
-    } else {
-        $image = '<i class="bi bi-card-image display-1"></i>';
-    }
+    $image = wp_get_attachment_image_url($id, $size);
     return $image;
 }
 
