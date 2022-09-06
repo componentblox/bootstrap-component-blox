@@ -71,11 +71,11 @@ require_once( get_template_directory() . '/custom-comments.php' );
 // Load styles and scripts.
 if(!is_admin()) {
     function bcb_enqueue_theme_styles_scripts(){
-        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '5.2.0-beta1' , false);
-        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v6.1.0/css/all.css', false, '6.0.0');
-        wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css' , false, '1.8.0');
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '5.2.0' , false);
+        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v6.2.0/css/all.css', false, '6.2.0');
+        wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css' , false, '1.9.0');
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
-        wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.2.0-beta1' , true);
+        wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.2.0' , true);
         wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
         wp_enqueue_script('bootstrap-component-blox-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0', true );  
     }
@@ -554,6 +554,18 @@ function bcb_icon_shortcode($atts) {
     return ob_get_clean();
 }
 add_shortcode( 'bcb_icon', 'bcb_icon_shortcode' );
+
+/**
+ * Utility: Render Selected Taxonomy Name
+ *
+ * @param string $tax Taxonomy Name
+ * @param string $fields Taxonomy Field (e.g., Names, Slugs, ID, etc)
+ * @param string $separator (e.g., comma, dash, post, ect))
+ */
+function bcb_taxonomy_terms($tax , $fields = "names", $separator = ", ") {
+    $tax_name = wp_get_post_terms(get_the_ID(), $tax, array('fields' => $fields));
+    return implode($separator , $tax_name);
+}
 
 // Add filters.
 add_filter('nav_menu_css_class', function($classes) { $classes[] = 'nav-item'; return $classes;}, 10, 1 );
