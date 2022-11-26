@@ -172,7 +172,7 @@ jQuery(document).ready(function($) {
     }
  
     // Modal dismiss
-    jQuery('[data-bs-dismiss="modal"]').on('click', function () {
+    jQuery('#bcb-popup [data-bs-dismiss="modal"]').on('click', function () {
         _setCookie(bcbCookieName, 1, bcbCookieLifetime);
     });
 
