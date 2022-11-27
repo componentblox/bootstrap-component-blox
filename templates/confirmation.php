@@ -20,7 +20,7 @@ get_header('blank');?>
 									<path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none"></path>
 								</svg>
 								<h4 class="pa-text-primary fw-bold"><?php echo get_the_title();?></h4>
-								<p class="mb-0 fs-5 fw-500"><?php get_the_content();?></p>
+								<p class="mb-0 fs-5 fw-500"><?php echo get_the_content();?></p>
 							</div>
 						</div>
 					</div>
