@@ -4,7 +4,7 @@
 	Author: Component Blox
 	Author URI:  https://componentblox.com
 	Description: Bootstrap Component Blox (BCB) is Bootstrap Wordpress theme that integrates perfectly with <a href="https://dashboard.componentblox.com/">Component Blox</a>. BCB is simple, lightweight, fast, and most importantly stable. <strong>Note:</strong> the core theme is updated periodically for performance enhancements, adding helpful utility functions and executing general maintenance, so using a <a href="https://theme.componentblox.com/">child theme</a> is highly recommended. BCB theme templates include: fullwidth blog, custom navbar, sidebar navbar, custom toggler, blog archive.
-    Version: 2.4.0
+    Version: 2.5.0
 	Tested up to: 5.8.3
 	Requires PHP: 6.0
 	License: GNU General Public License v3
@@ -381,6 +381,61 @@ footer {
 	-webkit-animation-name: slideUp;
 	animation-name: slideUp;
 }
+#bcb-confirmation .checkmark-bg {
+	stroke-dasharray: 166;
+	stroke-dashoffset: 166;
+	stroke-width: 2;
+	stroke-miterlimit: 10;
+	stroke: var(--bs-success);
+	fill: none;
+	animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+#bcb-confirmation .checkmark {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	display: block;
+	stroke-width: 2;
+    stroke: #fff;
+	stroke-miterlimit: 10;
+	margin: 0 auto;
+	box-shadow: inset 0px 0px 0px var(--bs-success);
+	animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+}
+
+#bcb-confirmation .checkmark-check {
+	transform-origin: 50% 50%;
+	stroke-dasharray: 48;
+	stroke-dashoffset: 48;
+	animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+}
+
+@keyframes stroke {
+	100% {
+		stroke-dashoffset: 0
+	}
+}
+
+@keyframes scale {
+	0%, 100% {
+		transform: none
+	}
+	50% {
+		transform: scale3d(1.1, 1.1, 1)
+	}
+}
+
+@keyframes fill {
+	100% {
+		box-shadow: inset 0px 0px 0px 30px var(--bs-success);
+	}
+}
+
+.page-template-confirmation .modal-backdrop.fade {
+    opacity: 0;
+}
+
 @media(max-width: 992px) {
 	.border-left {
 		border-left: none!important

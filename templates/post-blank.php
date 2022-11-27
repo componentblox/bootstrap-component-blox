@@ -9,7 +9,7 @@
  * @package bootstrap-component-blox
  */
 
-get_header(); ?>
+get_header('blank'); ?>
 
 <main id="main-container" role="main" class="px-0">
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
@@ -23,4 +23,4 @@ get_header(); ?>
 	</article>
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer('blank'); ?>
