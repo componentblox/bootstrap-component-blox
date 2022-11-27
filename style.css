@@ -381,6 +381,7 @@ footer {
 	-webkit-animation-name: slideUp;
 	animation-name: slideUp;
 }
+
 #bcb-confirmation .checkmark-bg {
 	stroke-dasharray: 166;
 	stroke-dashoffset: 166;
