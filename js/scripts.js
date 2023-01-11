@@ -176,8 +176,10 @@ jQuery(document).ready(function($) {
     }
  
     // Modal dismiss
-    bcbPopup.addEventListener('hidden.bs.modal', event => {
-        _setCookie(bcbCookieName, 1, bcbCookieLifetime);
-    });
+    if(bcbPopup) {
+        bcbPopup.addEventListener('hidden.bs.modal', event => {
+            _setCookie(bcbCookieName, 1, bcbCookieLifetime);
+        });
+    }
 
 });
