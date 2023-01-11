@@ -125,10 +125,12 @@ jQuery(document).ready(function($) {
         stickyToggle(sticky, stickyWrapper, jQuery(window));
     });
 
-    // The cookie name
+    // Modal Popup
+
+    // Cookie name
     let bcbCookieName = 'bcbPopup'; 
     
-    // Cookie expiry in days
+    // Set cookie expiry time
     let bcbCookieLifetime = 1; 
  
     // Set cookie
@@ -163,16 +165,18 @@ jQuery(document).ready(function($) {
             return true;
         }
     };
+
+    let bcbPopup = document.getElementById('bcb-popup');
  
     // Show the cookie popup on load
     if (_shouldShowPopup()) {
         setTimeout(function() {
-            jQuery('#bcb-popup').modal('show');
+            bcbPopup.modal('show');
         }, 3000)
     }
  
     // Modal dismiss
-    jQuery('#bcb-popup [data-bs-dismiss="modal"]').on('click', function () {
+    bcbPopup.addEventListener('hidden.bs.modal', event => {
         _setCookie(bcbCookieName, 1, bcbCookieLifetime);
     });
 
