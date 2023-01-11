@@ -35,18 +35,18 @@ get_header('blank');?>
 if(bcb_check_template_name('confirmation.php')) {?>
 <script>
 
-	// get confirmation modal
+	// Get confirmation modal
 	let bcbConfirmation = document.getElementById('bcb-confirmation');
 	
-	// show confirmation modal function
+	// Show confirmation modal function
 	function bcbLoadModal() {
 		jQuery('#bcb-confirmation').modal('show');
 	}
 
-	// delay show confirmation modal function
+	// Delay show confirmation modal function
 	setTimeout(bcbLoadModal , 1000);
 	
-	// redirect to homepage after closing modal
+	// Redirect to homepage after closing modal
 	bcbConfirmation.addEventListener('hidden.bs.modal', event => {
 		window.location.href = "/";
 	})
