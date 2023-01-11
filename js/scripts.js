@@ -171,7 +171,7 @@ jQuery(document).ready(function($) {
     // Show the cookie popup on load
     if (_shouldShowPopup()) {
         setTimeout(function() {
-            bcbPopup.modal('show');
+            jQuery('#bcb-popup').modal('show');
         }, 3000)
     }
  
