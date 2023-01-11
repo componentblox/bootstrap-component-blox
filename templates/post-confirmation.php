@@ -32,7 +32,7 @@ get_header('blank');?>
 </main>
 
 <?php
-if(bcb_check_template_name('confirmation.php')) {?>
+if(bcb_check_template_name('post-confirmation.php')) {?>
 <script>
 
 	// Get confirmation modal
