@@ -7,7 +7,6 @@
  * @package bootstrap-component-blox
  */
 
-    bcb_before_footer();
     wp_footer(); 
     get_template_part('footer' , 'scripts');?>
    
