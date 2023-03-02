@@ -72,7 +72,7 @@ require_once( get_template_directory() . '/custom-comments.php' );
 if(!is_admin()) {
     function bcb_enqueue_theme_styles_scripts(){
         wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '5.3.0' , false);
-        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v6.2.1/css/all.css', false, '6.2.1');
+        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v6.3.0/css/all.css', false, '6.3.0');
         wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css' , false, '1.10.3');
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
         wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.3.0' , true);
@@ -554,6 +554,17 @@ function bcb_icon_shortcode($atts) {
     return ob_get_clean();
 }
 add_shortcode( 'bcb_icon', 'bcb_icon_shortcode' );
+
+/**
+ * Utility: Render Shortcode for copyright year
+ *
+ */
+function bcb_copyright_year() {
+    ob_start();
+    echo date('Y');
+    return ob_get_clean();
+}
+add_shortcode( 'bcb-year', 'bcb_copyright_year' );
 
 /**
  * Utility: Render Selected Taxonomy Name

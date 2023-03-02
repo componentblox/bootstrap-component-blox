@@ -2,14 +2,18 @@
 
 /* Template Name: Confirmation */
 
-get_header('blank');?>
+get_header('blank');
+
+if(bcb_image_id()) {
+	$bcb_confirmation_bg = 'style="background: url(' . bcb_image_url(bcb_image_id()) . ') center/cover;"';
+}?>
 
 <main id="main-container" role="main" class="container-fluid px-0">
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
 			
 			<!-- Confirmation -->
-			<div class="modal fade" aria-hidden="true" id="bcb-confirmation" tabindex="-1">
+			<div class="modal fade" aria-hidden="true" id="bcb-confirmation" tabindex="-1" <?php echo $bcb_confirmation_bg;?>>
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content bg-white position-relative shadow-sm rounded-10 border-0">
 						<div data-bs-dismiss="modal" class="position-absolute top-0 rounded-circle start-100 translate-middle bg-white d-flex align-items-center justify-content-center shadow-sm" style="width: 30px; height: 30px"><i class="fa-solid fa-xmark"></i></div>
