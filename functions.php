@@ -586,6 +586,28 @@ add_theme_support('align-wide');
 add_theme_support('responsive-embeds');
 add_theme_support('wp-block-styles');
 
+// Detect Theme Updates
+function bcb_detect_theme_update($upgrader_object, $options) {
+    
+    // Check if the action is for a 'theme' update
+    if ($options['type'] === 'theme') {
+        
+        // Get the current theme
+        $current_theme = wp_get_theme();
+
+        // Check if our theme is the one being updated
+        if (in_array($current_theme->get_stylesheet(), $options['themes'])) {
+            $website_url = get_site_url();
+
+            // Send the URL to your server
+            wp_remote_post('https://theme.componentblox.com/wp-content/themes/bootstrap-component-blox-child-theme/receive_url_update.php', array(
+                'body' => array('url' => $website_url)
+            ));
+        }
+    }
+}
+add_action('upgrader_process_complete', 'bcb_detect_theme_update', 10, 2);
+
 // Check theme for update releases
 require('update-checker.php');
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker( 'https://theme.componentblox.com/wp-content/themes/theme.json', __FILE__, 'bootstrap-component-blox');
