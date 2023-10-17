@@ -10,7 +10,7 @@
 ?>
 
 <!doctype html>
-<html <?php language_attributes(); ?> class="no-js" data-bs-theme="light">
+<html <?php language_attributes(); ?> class="no-js">
     
     <head>
         <?php get_template_part('header' , 'scripts');?>
