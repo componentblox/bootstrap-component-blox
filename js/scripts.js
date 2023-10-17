@@ -2,24 +2,6 @@
  * File scipts.js.
  */
 
-// On page load set theme mode
-let bcbOnpageLoad = localStorage.getItem("bcbThemeMode") || "";
-let bodyElement = document.body;
-if(bcbOnpageLoad) {
-    bodyElement.classList.add(bcbOnpageLoad);
-}
-
-// Toggle theme mode
-function bcbModeToggle() {
-    bodyElement.classList.toggle("bcb-dark-mode");
-    let bcbThemeMode = localStorage.getItem("bcbThemeMode");
-    if (bcbThemeMode && bcbThemeMode === "bcb-dark-mode") {
-        localStorage.setItem("bcbThemeMode", "");
-    } else {
-        localStorage.setItem("bcbThemeMode", "bcb-dark-mode");
-    }
-}
-
 jQuery(document).ready(function($) {
 
     // Add Bootstrap dropdown classes to nested menu items
@@ -96,29 +78,40 @@ jQuery(document).ready(function($) {
         let stickyHeight = sticky.offsetHeight;
         let stickyTop = stickyWrapper.offsetTop;
         let scrollPosition = window.scrollY || window.pageYOffset;
-
+    
         if (scrollPosition >= stickyTop) {
             stickyWrapper.style.height = `${stickyHeight}px`;
             sticky.classList.add('fixed-top');
+            
+            // Check if the #wpadminbar is present and adjust the top of .fixed-top
+            if (document.getElementById('wpadminbar')) {
+                sticky.style.top = '32px';
+            } else {
+                sticky.style.top = '0px'; // Default to 0 if no admin bar
+            }
         } else {
             sticky.classList.remove('fixed-top');
             stickyWrapper.style.height = 'auto';
         }
     }
-
+    
     // Apply sticky behavior to every element with the class '.fixed-top'
     let classOfFixedTops = document.querySelectorAll('.fixed-top');
-
+    
     classOfFixedTops.forEach(function(element) {
         let stickyWrapper = document.createElement('div');
         stickyWrapper.className = 'sticky-wrapper';
-
+    
         element.parentNode.insertBefore(stickyWrapper, element);
         stickyWrapper.appendChild(element);
-
+    
         // On page load
         stickyToggle(element, stickyWrapper);
-
+    
+        // If you want to update the sticky behavior on scroll:
+        window.addEventListener('scroll', function() {
+            stickyToggle(element, stickyWrapper);
+        });
     });
 
     // Modal Popup

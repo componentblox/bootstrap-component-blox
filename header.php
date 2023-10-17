@@ -10,7 +10,7 @@
 ?>
 
 <!doctype html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?>  <?php echo get_theme_mod('theme_color_scheme') ? 'data-bs-theme="dark"' : ''; ?> class="no-js">
     
     <head>
         <?php get_template_part('header' , 'scripts');?>
@@ -24,7 +24,7 @@
         <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo '<div class="row g-0">';}?>
         <?php wp_body_open();?>     
         <?php bcb_before_navbar();?>
-        <header id="nav-header" class="clear <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo 'col-lg-3 col-xl-2'; };?>" role="header">
+       <header id="nav-header" class="clear <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo 'col-lg-3 col-xl-2'; };?><?php echo get_theme_mod('sticky_top') ? 'sticky-top' : ''; ?>" role="header">
             <?php 
             if(get_theme_mod('navbar_type') == 'side') {
                 get_template_part('template-parts/navbar/navbar' , 'sidebar');

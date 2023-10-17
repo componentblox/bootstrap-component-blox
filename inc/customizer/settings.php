@@ -1,8 +1,22 @@
 <?php
 
+// Sticky Top.
+$wp_customize->add_setting('sticky_top', array(
+    'default'           => false,
+    'capability'        => 'edit_theme_options',
+    'sanitize_callback' => 'absint',
+));
+
+// Theme Color Scheme.
+$wp_customize->add_setting('theme_color_scheme', array(
+    'default'           => false,  
+    'capability'        => 'edit_theme_options',
+    'sanitize_callback' => 'absint',
+));
+
 // Navbar Type.
 $wp_customize->add_setting( 'navbar_type', array(
-	'default' => '',
+	'default'   => 'top',
 	'transport' => 'postMessage',
 	'sanitize_callback' => 'esc_attr',
 ));   

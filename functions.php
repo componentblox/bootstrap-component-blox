@@ -77,7 +77,9 @@ if(!is_admin()) {
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
         wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.3.2' , true);
         wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
-        // wp_enqueue_script('bootstrap-color-scheme', get_template_directory_uri() . '/js/bootstrap-color-scheme.js' , array() , '1.0' , true);
+        if ( get_theme_mod('theme_color_scheme') ) {
+            wp_enqueue_script('bootstrap-color-scheme', get_template_directory_uri() . '/js/bootstrap-color-scheme.js' , array() , '1.0' , true);
+        }
         wp_enqueue_script('bootstrap-component-blox-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '1.0', true );  
     }
     add_action('wp_enqueue_scripts', 'bcb_enqueue_theme_styles_scripts' , 11);
