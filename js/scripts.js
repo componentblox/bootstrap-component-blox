@@ -23,13 +23,13 @@ function bcbModeToggle() {
 jQuery(document).ready(function($) {
 
     // Add Bootstrap dropdown classes to nested menu items
-    let menuItemHasChildren = document.querySelectorAll('.navbar .menu-item-has-children');
+    let menuItemHasChildren = document.querySelectorAll('.navbar .menu-item-has-children:not(.bcb-mega-menu)');
     menuItemHasChildren.forEach(function(childItem) {
         childItem.classList.add('dropdown');
     });
 
     // Add Bootstrap toggle classes to nested menu items
-    let menuItemHasChildrenAnchor = document.querySelectorAll('.navbar .menu-item-has-children > a');
+    let menuItemHasChildrenAnchor = document.querySelectorAll('.navbar .menu-item-has-children:not(.bcb-mega-menu) > a');
     menuItemHasChildrenAnchor.forEach(function(childItemAnchor) {
         childItemAnchor.classList.add('dropdown-toggle');
     });
@@ -39,17 +39,6 @@ jQuery(document).ready(function($) {
     addAnimationClasses.forEach(function(animationClasses) {
         animationClasses.classList.add('sub-menu-animate' , 'slideUp');
     });
- 
-    // Add attributes to sub menus
-    let menuAttributes = document.querySelectorAll('.dropdown-toggle');
-    menuAttributes.forEach(function(attributes) {
-        function setAttributes(el, options) {
-            Object.keys(options).forEach(function(attr) {
-                el.setAttribute(attr, options[attr]);
-            })
-        }
-        setAttributes(attributes, {"role": "button", "aria-haspopup": "true", "aria-expanded": "false" , "data-toggle": "dropdown" });
-    });
 
     // Add Bootstrap toggle classes to nested menu items
     let sidebarCardUl = document.querySelectorAll('#sidebar .card ul, #sidebar .custom-html-widget');
@@ -57,19 +46,30 @@ jQuery(document).ready(function($) {
         ul.outerHTML = `<div class="card-body">${ul.outerHTML}</div>`;
     });
 
-    // Change dropdown from click to hover
-    let navbarDropdown = document.querySelectorAll('.navbar .dropdown');
+    // Change dropdown from click to hover, only for non mega-menus
+    let navbarDropdown = document.querySelectorAll('.navbar .dropdown:not(.bcb-mega-menu)');
     navbarDropdown.forEach(function(dropdown) {
         dropdown.addEventListener('mouseenter', function( event ) {   
             dropdownMenu = this.querySelector('.dropdown-menu');
-                dropdownMenu.style.display = 'block';
+            dropdownMenu.style.display = 'block';
       
         });
         dropdown.addEventListener('mouseleave', function( event ) {   
             dropdownMenu = this.querySelector('.dropdown-menu');
-                dropdownMenu.style.display = 'none';
-      
+            dropdownMenu.style.display = 'none';
         });
+    });
+    
+    // Reposition Mega Menu Modals right under the corresponding .bcb-mega-menu links
+    let megaMenuItems = document.querySelectorAll('.navbar .bcb-mega-menu > a'); // This targets anchor tags within .bcb-mega-menu items.
+    megaMenuItems.forEach(function(menuLink) {
+        let modalId = 'bcb-menu-item-' + menuLink.parentNode.id.split("-")[2]; // parentNode refers to the .bcb-mega-menu element.
+        let modalElement = document.getElementById(modalId);
+        
+        if (modalElement) {
+            // Insert the modal directly after the menu link
+            menuLink.insertAdjacentElement('afterend', modalElement);
+        }
     });
 
     // Add Bootstrap pagination classes
@@ -91,38 +91,34 @@ jQuery(document).ready(function($) {
         }
     });
 
-    // Add data attribute to any div that has a class of '.fixed-top'
-    let classOfFixedTop = document.querySelector('.fixed-top');
-    if(classOfFixedTop) {
-        classOfFixedTop.setAttribute('data-toggle', 'sticky-onscroll');
+    // Sticky Navbar
+    function stickyToggle(sticky, stickyWrapper) {
+        let stickyHeight = sticky.offsetHeight;
+        let stickyTop = stickyWrapper.offsetTop;
+        let scrollPosition = window.scrollY || window.pageYOffset;
+
+        if (scrollPosition >= stickyTop) {
+            stickyWrapper.style.height = `${stickyHeight}px`;
+            sticky.classList.add('fixed-top');
+        } else {
+            sticky.classList.remove('fixed-top');
+            stickyWrapper.style.height = 'auto';
+        }
     }
 
-    // Sticky Navbar
-    let stickyToggle = function (sticky, stickyWrapper, scrollElement) {
-        let stickyHeight = sticky.outerHeight();
-        let stickyTop = stickyWrapper.offset().top;
-        if (scrollElement.scrollTop() >= stickyTop) {
-            stickyWrapper.height(stickyHeight);
-            sticky.addClass('fixed-top');
-        }
-        else {
-            sticky.removeClass('fixed-top');
-            stickyWrapper.height('auto');
-        }
-    };
+    // Apply sticky behavior to every element with the class '.fixed-top'
+    let classOfFixedTops = document.querySelectorAll('.fixed-top');
 
-    jQuery('[data-toggle="sticky-onscroll"]').each(function () {
-        let sticky = jQuery(this);
-        let stickyWrapper = jQuery('<div>').addClass('sticky-wrapper');
-        sticky.before(stickyWrapper);
+    classOfFixedTops.forEach(function(element) {
+        let stickyWrapper = document.createElement('div');
+        stickyWrapper.className = 'sticky-wrapper';
 
-        // Scroll & resize events
-        jQuery(window).on('scroll.sticky-onscroll resize.sticky-onscroll', function () {
-            stickyToggle(sticky, stickyWrapper, jQuery(this));
-        });
+        element.parentNode.insertBefore(stickyWrapper, element);
+        stickyWrapper.appendChild(element);
 
         // On page load
-        stickyToggle(sticky, stickyWrapper, jQuery(window));
+        stickyToggle(element, stickyWrapper);
+
     });
 
     // Modal Popup
