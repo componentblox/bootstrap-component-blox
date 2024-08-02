@@ -20,6 +20,10 @@
  	display: none;
 }
 
+.modal-header {
+    justify-content: space-between!important;
+}
+
 :focus {
 	outline: 0!important;
 	box-shadow: none!important;
