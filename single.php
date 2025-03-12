@@ -20,10 +20,10 @@ if(!is_active_sidebar('sidebar-area-1')) {
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">
 
-			<?php 
-			while (have_posts()) { the_post();
-				get_template_part('template-parts/post/post' , 'content');
-			}?>
+				<?php 
+				while (have_posts()) { the_post();
+					get_template_part('template-parts/post/post' , 'content');
+				}?>
 			
 			</div>
 		</article>
@@ -31,7 +31,7 @@ if(!is_active_sidebar('sidebar-area-1')) {
 
 	<?php 
 	if(is_active_sidebar('sidebar-area-1')) {?>
-	<aside class="col-12 col-lg-4">
+	<aside class="col-lg-4">
 		<?php get_sidebar();?>
 	</aside>
 	<?php }?>

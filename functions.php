@@ -72,7 +72,7 @@ require_once( get_template_directory() . '/custom-comments.php' );
 if(!is_admin()) {
     function bcb_enqueue_theme_styles_scripts(){
         wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '5.3.3' , false);
-        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v6.5.2/css/all.css', false, '6.5.2');
+        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v6.7.2/css/all.css', false, '6.7.2');
         wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css' , false, '1.11.3');
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
         wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.3.3' , true);

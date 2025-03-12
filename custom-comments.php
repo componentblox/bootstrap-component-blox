@@ -31,11 +31,11 @@ function bcb_custom_comments( $comment, $args, $depth ) {
 		default :
 	?>
 	
-	<li id="li-comment-<?php comment_ID();?>" class="p-3 mb-3 shadow-sm">
+	<li id="li-comment-<?php comment_ID();?>" class="p-3 mb-3 border rounded">
 		<article id="comment-<?php comment_ID();?>" <?php comment_class('clr');?>>
 			<div class="media mb-2">
 				<?php echo get_avatar($comment, 45);?>
-				<div class="media-body ml-3">
+				<div class="media-body ms-3">
 					
 					<cite class="fn"><?php comment_author_link();?></cite>
 					
@@ -55,7 +55,7 @@ function bcb_custom_comments( $comment, $args, $depth ) {
 						<?php comment_text();?>
 					</div>
 				
-					<button class="btn btn-light float-end">
+					<button class="btn btn-dark">
 						<?php 
 						comment_reply_link( array_merge($args, array(
 							'reply_text' => 'Reply', 'bootstrap-component-blox',
@@ -67,6 +67,7 @@ function bcb_custom_comments( $comment, $args, $depth ) {
 				</div>
 			</div>
 		</article>
+	</li>
 	<?php
 		break;
 	endswitch;
