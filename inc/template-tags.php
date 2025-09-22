@@ -26,7 +26,7 @@ if ( ! function_exists( 'bcb_posted_on' ) ) :
 		);
 
 		$posted_on = sprintf(
-			esc_html( 'Posted on %s', 'post date', 'bootstrap-component-blox' ),
+			esc_html_x( 'Posted on %s', 'post date', 'bootstrap-component-blox' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
