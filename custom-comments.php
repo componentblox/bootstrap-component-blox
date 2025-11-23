@@ -48,7 +48,7 @@ function bcb_custom_comments( $comment, $args, $depth ) {
 					</div>
 				
 					<?php if ('0' == $comment->comment_approved) : ?>
-						<p class="comment-awaiting-moderation"><?php esc_attr('Your comment is awaiting moderation.' , 'bootstrap-component-blox' );?></p>
+						<p class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.' , 'bootstrap-component-blox' );?></p>
 					<?php endif;?>
 				
 					<div class="comment-content entry clr">
