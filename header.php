@@ -15,14 +15,15 @@
     <head>
         <?php get_template_part('header' , 'scripts');?>
         <meta charset="<?php bloginfo('charset'); ?>">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php do_action('bcb_head_meta'); ?>
         <?php wp_head(); ?>
     </head>
 
     <body <?php body_class(get_theme_mod('body_container_classes'));?>>
         <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo '<div class="row g-0">';}?>
-        <?php wp_body_open();?>     
+        <?php wp_body_open();?>
+        <a class="screen-reader-text" href="#main-container">Skip to content</a>
         <?php bcb_before_navbar();?>
        <header id="nav-header" class="clear <?php if(get_theme_mod('navbar_type') == 'fixed_side') { echo 'col-lg-3 col-xl-2'; };?><?php echo get_theme_mod('sticky_top') ? 'sticky-top' : ''; ?>" role="header">
             <?php 

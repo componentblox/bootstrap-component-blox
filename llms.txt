@@ -1,0 +1,92 @@
+# Bootstrap Component Blox (BCB)
+
+> A WordPress parent theme built on Bootstrap 5 for building client sites via child themes.
+
+## Overview
+
+BCB provides a lightweight, stable foundation with Bootstrap 5.3.8, Font Awesome 6.7.2, and Bootstrap Icons 1.13.1. All site-specific work happens in child themes — the parent is never modified directly.
+
+## Architecture
+
+- Parent theme defines the framework: grid, nav, widgets, helpers, hooks
+- Child themes define the project: colors, typography, components, page templates
+- Two manifest files drive all development (see below)
+- All templates are orchestrators — they only call `get_template_part()`
+- Each page gets its own scoped CSS file, conditionally enqueued
+
+## Manifest System
+
+Two markdown files serve as the single source of truth:
+
+1. `bcb-manifest.md` (parent theme) — API reference: helper functions, file conventions, section patterns, CSS architecture, responsive rules, enqueue patterns, Swiper integration, hooks, customizer settings
+2. `project-manifest.md` (child theme) — project config: CSS prefix, color palette, typography, button variants, image registry, page templates, component classes
+
+An AI agent should read both manifests before writing any code.
+
+## Key Helper Functions
+
+All prefixed with `bcb_`:
+
+- `bcb_image_url($id, $size)` — returns attachment URL by ID
+- `bcb_image_alt($id)` — returns attachment alt text by ID
+- `bcb_icon($name, $size)` — renders Bootstrap Icon via CDN font
+- `bcb_main_nav($classes)` — outputs main navigation
+- `bcb_aux_nav($classes)` — outputs auxiliary navigation
+- `bcb_check_template_name($name)` — checks current page template filename
+- `bcb_get_the_content($id)` — renders any post's content by ID
+- `bcb_pagination()` — outputs Bootstrap-styled pagination
+- `bcb_taxonomy_terms($tax, $fields, $separator)` — returns taxonomy term string
+
+## Action Hooks for Extension
+
+- `bcb_before_navbar` / `bcb_after_navbar` — inject content around navbar
+- `bcb_before_footer` — inject content before footer
+- `bcb_customizer_panels` / `bcb_customizer_sections` / `bcb_customizer_settings` / `bcb_customizer_controls` — extend the Customizer
+
+## Child Theme File Structure
+
+```
+child-theme/
+├── style.css                        CSS variables, utilities, shared classes
+├── functions.php                    Enqueue, setup, conditional loads
+├── templates/{page}.php             Page template orchestrators
+├── archive-{cpt}.php               CPT archive orchestrators
+├── single-{cpt}.php                CPT single orchestrators
+└── template-parts/
+    ├── {context}/{context}-{section}.php   Section markup
+    ├── css/{context}.css                   Scoped stylesheets
+    └── js/                                 Third-party JS
+```
+
+## Section Template Pattern
+
+Every section follows:
+```php
+<section id="{prefix}-{name}" class="px-3 py-4 p-lg-5">
+    <div class="container">
+        <div class="row">
+            <!-- content -->
+        </div>
+    </div>
+</section>
+```
+
+## CSS Conventions
+
+- Every project uses a unique prefix (e.g. `gec-`, `tc-`)
+- CSS variables: `--{prefix}-primary`, `--{prefix}-dark`, `--{prefix}-font`, `--{prefix}-font-header`
+- Button variants: `.{prefix}-btn-primary`, `.{prefix}-btn-dark`, `.{prefix}-btn-light`, `.{prefix}-btn-orange`
+- Scoped CSS per page — one file per view in `template-parts/css/`
+- `style.css` is read-only for agents unless explicitly permitted
+
+## Conditional Enqueue Pattern
+
+```php
+if (bcb_check_template_name('about.php')) {
+    wp_enqueue_style('about-styles', get_stylesheet_directory_uri() . '/template-parts/css/about.css');
+}
+```
+
+## For Full Reference
+
+Read `bcb-manifest.md` in the parent theme directory for complete documentation.

@@ -30,7 +30,7 @@ if ( ! function_exists( 'bcb_posted_on' ) ) :
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
-		echo esc_attr('<span class="posted-on">' . $posted_on . '</span>');
+		echo wp_kses_post('<span class="posted-on">' . $posted_on . '</span>');
 
 	}
 endif;
@@ -46,7 +46,7 @@ if ( ! function_exists( 'bootstrap_component_blox_posted_by' ) ) :
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo esc_attr('<span class="byline"> ' . $byline . '</span>');
+		echo wp_kses_post('<span class="byline"> ' . $byline . '</span>');
 
 	}
 endif;

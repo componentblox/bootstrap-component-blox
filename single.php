@@ -19,12 +19,12 @@ if(!is_active_sidebar('sidebar-area-1')) {
 	<section class="col-lg-<?php echo $column_value;?>">
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">
-
-				<?php 
+				<?php do_action('bcb_before_content'); ?>
+				<?php
 				while (have_posts()) { the_post();
 					get_template_part('template-parts/post/post' , 'content');
 				}?>
-			
+				<?php do_action('bcb_after_content'); ?>
 			</div>
 		</article>
 	</section>

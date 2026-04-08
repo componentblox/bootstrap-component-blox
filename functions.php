@@ -71,11 +71,11 @@ require_once( get_template_directory() . '/custom-comments.php' );
 // Load styles and scripts.
 if(!is_admin()) {
     function bcb_enqueue_theme_styles_scripts(){
-        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', '5.3.3' , false);
-        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v6.7.2/css/all.css', false, '6.7.2');
-        wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css' , false, '1.11.3');
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '5.3.8');
+        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v6.7.2/css/all.css', array(), '6.7.2');
+        wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css', array(), '1.13.1');
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
-        wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.3.3' , true);
+        wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.3.8' , true);
         wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
         if ( get_theme_mod('theme_color_scheme') ) {
             wp_enqueue_script('bootstrap-color-scheme', get_template_directory_uri() . '/js/bootstrap-color-scheme.js' , array() , '1.0' , true);
@@ -334,16 +334,6 @@ if(!function_exists('bcb_pagination')) :
 endif;
 
 /**
- * Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail. 
- *
- * @param string $html Removes thumbnail width and height HTML Markup.
- */
-function bcb_remove_thumbnail_dimensions($html) {
-    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
-    return $html;
-}
-
-/** 
  * Check current template file name
  */
 function bcb_check_template_name($template_name) {
@@ -376,32 +366,20 @@ function bcb_enable_threaded_comments() {
 }
 add_action('get_header', 'bcb_enable_threaded_comments');
 
-/** 
- * Enable SVG Import.
- * 
- * @param string $mimes Media type.
+/**
+ * SVG uploads disabled for security — SVGs can contain XSS payloads.
+ * To re-enable safely, use a sanitizer library like enshrined/svg-sanitize.
  */
-function bcb_mime_types($mimes) {
-    $mimes['svg'] = 'image/svg+xml';
-    return $mimes;
-}
-add_filter('upload_mimes', 'bcb_mime_types');
 
-/** 
- * Output Fixed Sidebar classes.
+/**
+ * Enqueue fixed sidebar column classes script when needed.
  */
 function bcb_fixed_sidebar_classes() {
-    if(get_theme_mod('navbar_type') == 'fixed_side') {?>
-        <script>
-            let addColumnClasses = document.querySelectorAll('main');
-        
-            addColumnClasses.forEach(function(addColumnClass) {
-                addColumnClass.classList.add('col-lg-9' , 'col-xl-10');
-            });
-        </script>
-    <?php }
+    if (get_theme_mod('navbar_type') == 'fixed_side') {
+        wp_enqueue_script('bcb-fixed-sidebar', get_template_directory_uri() . '/js/fixed-sidebar.js', array(), '1.0', true);
+    }
 }
-add_action( 'wp_footer' , 'bcb_fixed_sidebar_classes' );
+add_action('wp_enqueue_scripts', 'bcb_fixed_sidebar_classes');
 
 /**
  * Hook: Woocommerce Support
@@ -499,7 +477,7 @@ function bcb_image_id() {
  */
 function bcb_search_form($searchClasses = "") {?>
     <form class="bcb-search position-relative" method="get" action="<?php echo esc_url(home_url('/'));?>" role="search">
-        <input class="<?php echo $searchClasses;?>" type="text" name="s" placeholder="Search..." value="<?php the_search_query(); ?>">
+        <input class="<?php echo esc_attr($searchClasses);?>" type="text" name="s" placeholder="Search..." value="<?php the_search_query(); ?>">
         <button type="submit" role="button" aria-label="search" class="fa fa-search"></button>
     </form>
 <?php }
@@ -517,44 +495,44 @@ add_action('wp_footer', 'bcb_include_search_modal');
 /**
  * Utility: Icon Render Function
  *
- * @param string $name Icon Name
- * @param string $size Controls Sizing
+ * Renders a Bootstrap Icon using the CDN font (no local SVG files needed).
+ * Fallback: bi-star-fill if no name provided.
+ *
+ * @param string $name Icon name without the bi- prefix (e.g. 'check-circle')
+ * @param string $size Pixel size for font-size
  */
-function bcb_icon($name = 'question', $size = '20') {
-    $trimmed_name = str_replace("bi-",  "" , $name);
-    ?>
-    <svg width="<?php echo $size;?>" height="<?php echo $size;?>" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <?php 
-            $icon_svg_file = locate_template('/icons/' . $trimmed_name . '.svg');
-            if($icon_svg_file)
-                include($icon_svg_file);
-            else {
-                include(locate_template('/icons/question-diamond-fill.svg'));
-            }
-        ?>
-    </svg>
-<?php }
+function bcb_icon($name = 'star-fill', $size = '20') {
+    $name = sanitize_html_class(str_replace('bi-', '', $name));
+    if (empty($name)) {
+        $name = 'star-fill';
+    }
+    $size = absint($size);
+    if ($size < 1) {
+        $size = 20;
+    }
+    ?><i class="bi bi-<?php echo esc_attr($name); ?>" style="font-size:<?php echo $size; ?>px" aria-hidden="true"></i><?php
+}
 
 /**
  * Utility: Icon Render Shortcode Function
  *
- * @param string $name Icon Name
- * @param string $size Control Sizing
+ * @param array $atts Shortcode attributes: name, size
  */
 function bcb_icon_shortcode($atts) {
-    $a = shortcode_atts( array(
-        'name' => '',
+    $a = shortcode_atts(array(
+        'name' => 'star-fill',
         'size' => '20',
     ), $atts);
-    
-    $size = $a['size'];
-    
-    ob_start();?>
-    <svg width="<?php echo $size;?>" height="<?php echo $size;?>" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <?php include(locate_template('/icons/' . $a['name'] . '.svg'));?>
-    </svg>
-    <?php 
-    return ob_get_clean();
+
+    $name = sanitize_html_class(str_replace('bi-', '', $a['name']));
+    if (empty($name)) {
+        $name = 'star-fill';
+    }
+    $size = absint($a['size']);
+    if ($size < 1) {
+        $size = 20;
+    }
+    return '<i class="bi bi-' . esc_attr($name) . '" style="font-size:' . $size . 'px" aria-hidden="true"></i>';
 }
 add_shortcode( 'bcb_icon', 'bcb_icon_shortcode' );
 
@@ -589,36 +567,11 @@ add_theme_support('align-wide');
 add_theme_support('responsive-embeds');
 add_theme_support('wp-block-styles');
 
-function bcb_detect_theme_update() {
-
-    // Check if our theme was just updated
-    if (false === get_transient('bcb_theme_updated')) {
-        return;
-    }
-
-    // Delete the transient to ensure the code doesn't run again until the next update
-    delete_transient('bcb_theme_updated');
-
-    $website_url = get_site_url();
-
-    // Send the URL to your server
-    $response = wp_remote_post('https://theme.componentblox.com/wp-content/themes/bootstrap-component-blox-child-theme/receive_url_update.php', array(
-        'body' => array('url' => $website_url),
-        'sslverify' => false  // Use with caution, only if you're sure about the security of the receiving end
-    ));
-
-    // For debugging, log the response
-    error_log('Response from wp_remote_post: ' . print_r($response, true));
-
-}
-add_action('after_setup_theme', 'bcb_detect_theme_update');
-
-function bcb_set_theme_update_transient() {
-    set_transient('bcb_theme_updated', true);
-}
-add_action('upgrader_process_complete', 'bcb_set_theme_update_transient', 10, 2);
-
-
-// Check theme for update releases
+// Check theme for update releases via GitHub Releases.
 require('update-checker.php');
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker( 'https://theme.componentblox.com/wp-content/themes/theme.json', __FILE__, 'bootstrap-component-blox');
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+    'https://github.com/componentblox/bootstrap-component-blox/',
+    __FILE__,
+    'bootstrap-component-blox'
+);
+$myUpdateChecker->getVcsApi()->enableReleaseAssets();
