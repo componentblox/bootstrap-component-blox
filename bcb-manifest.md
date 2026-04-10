@@ -15,7 +15,7 @@
 | Bootstrap Icons | 1.13.1 | CDN (`cdn.jsdelivr.net`) |
 | jQuery | WordPress bundled | Core dependency |
 
-- **PHP:** 6.0+ required
+- **PHP:** 8.0+ required
 - **WordPress:** tested up to 6.7.2
 - **WooCommerce:** optional support (can be disabled via Customizer)
 
@@ -35,12 +35,12 @@ All functions are prefixed with `bcb_`. Use these instead of raw WordPress equiv
 
 **Background image pattern:**
 ```php
-style="background: url(<?php echo bcb_image_url(ID); ?>) center/cover no-repeat"
+style="background: url(<?php echo esc_url(bcb_image_url(ID)); ?>) center/cover no-repeat"
 ```
 
 **Image tag pattern:**
 ```php
-<img src="<?php echo bcb_image_url(ID); ?>" alt="<?php echo bcb_image_alt(ID); ?>" class="img-fluid">
+<img src="<?php echo esc_url(bcb_image_url(ID)); ?>" alt="<?php echo esc_attr(bcb_image_alt(ID)); ?>" class="w-100">
 ```
 
 **WordPress thumbnail aspect-ratio fix:**
@@ -134,17 +134,17 @@ child-theme/
 ├── style.css                          ← Global CSS: variables, utilities, shared classes
 ├── functions.php                      ← Enqueue styles/scripts, child theme setup
 ├── header-scripts.php                 ← Google Fonts and external <link> tags
+├── css/                               ← Scoped stylesheets + third-party CSS
+│   └── {context}.css                  ← e.g. generator.css, about.css
+├── js/                                ← Third-party JS stored locally
 ├── templates/
 │   └── {page}.php                     ← Page template — orchestrator only
 ├── archive.php                        ← Default archive (category, tag, date, author)
 ├── archive-{cpt}.php                 ← CPT archive orchestrator
 ├── single-{cpt}.php                  ← CPT single orchestrator
 └── template-parts/
-    ├── {context}/                     ← e.g. home/, service/, generator/
-    │   └── {context}-{section}.php   ← e.g. home-header.php, generator-hero.php
-    ├── css/                           ← Scoped stylesheets + third-party CSS
-    │   └── {context}.css             ← e.g. generator.css, about.css
-    └── js/                            ← Third-party JS stored locally
+    └── {context}/                     ← e.g. home/, service/, generator/
+        └── {context}-{section}.php   ← e.g. home-header.php, generator-hero.php
 ```
 
 **Naming pattern:** `{context}-{section}.php` — e.g. `home-header.php`, `service-slider.php`
@@ -180,7 +180,7 @@ Every page template / view gets its own dedicated CSS file. This prevents regres
 
 ### Rules
 
-1. **One CSS file per view** — named `{context}.css` inside `template-parts/css/`
+1. **One CSS file per view** — named `{context}.css` inside `css/`
 2. **Conditionally enqueued** — only loaded on the page that needs it
 3. **`style.css` is read-only for agents** — contains global variables, utilities, and shared styles. Agents read it to discover reusable classes but never write to it unless the operator explicitly permits
 4. **All new section-specific CSS goes in the scoped file** — overlays, section IDs, component classes, responsive overrides
@@ -194,12 +194,12 @@ wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 
 // Scoped — conditionally loaded per template
 if (bcb_check_template_name('generator.php')) {
-    wp_enqueue_style('generator-styles', get_stylesheet_directory_uri() . '/template-parts/css/generator.css');
+    wp_enqueue_style('generator', get_stylesheet_directory_uri() . '/css/generator.css');
 }
 
 // CPT scoped styles
 if (is_singular('service')) {
-    wp_enqueue_style('service-single-styles', get_stylesheet_directory_uri() . '/template-parts/css/service-single.css');
+    wp_enqueue_style('service-single', get_stylesheet_directory_uri() . '/css/service-single.css');
 }
 ```
 
@@ -207,9 +207,9 @@ if (is_singular('service')) {
 
 | Template | CSS file | Enqueue handle |
 |---|---|---|
-| `templates/{page}.php` | `template-parts/css/{page}.css` | `{page}-styles` |
-| `archive-{cpt}.php` | `template-parts/css/{cpt}-archive.css` | `{cpt}-archive-styles` |
-| `single-{cpt}.php` | `template-parts/css/{cpt}-single.css` | `{cpt}-single-styles` |
+| `templates/{page}.php` | `css/{page}.css` | `{page}` |
+| `archive-{cpt}.php` | `css/{cpt}-archive.css` | `{cpt}-archive` |
+| `single-{cpt}.php` | `css/{cpt}-single.css` | `{cpt}-single` |
 
 ---
 
@@ -325,15 +325,15 @@ Defined per project using the prefix pattern:
 
 ## 10. Enqueuing Pattern
 
-- Save CSS/JS files **locally** under `template-parts/css/` and `template-parts/js/` — never use CDN links for build stability
+- Save CSS/JS files **locally** under `css/` and `js/` — never use CDN links for build stability
 - Enqueue in `functions.php` using `get_stylesheet_directory_uri()`
 - Third-party libraries used across multiple pages can be enqueued globally
 - Scoped page stylesheets must be enqueued conditionally (see section 6)
 
 ```php
 // Third-party — global
-wp_enqueue_style('library-name', get_stylesheet_directory_uri() . '/template-parts/css/library.css');
-wp_enqueue_script('library-name', get_stylesheet_directory_uri() . '/template-parts/js/library.js', array('jquery'), '1.0.0', false);
+wp_enqueue_style('library-name', get_stylesheet_directory_uri() . '/css/library.css');
+wp_enqueue_script('library-name', get_stylesheet_directory_uri() . '/js/library.js', array('jquery'), '1.0.0', false);
 ```
 
 ---
@@ -366,7 +366,7 @@ When a section requires a slider:
 - Responsive breakpoints: 1 slide mobile, 2 at 768px, 3 at 992px
 - Autoplay with `disableOnInteraction: false`
 - Custom navigation using Bootstrap Icons (`bi-chevron-left` / `bi-chevron-right`) — not Swiper's default arrows
-- Enqueue Swiper CSS/JS from `template-parts/css/` and `template-parts/js/`
+- Enqueue Swiper CSS/JS from `css/` and `js/`
 
 ```js
 document.addEventListener('DOMContentLoaded', function() {
