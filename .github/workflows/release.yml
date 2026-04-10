@@ -20,12 +20,9 @@ jobs:
 
       - name: Create release ZIP
         run: |
-          zip -r bootstrap-component-blox.zip . \
-            -x ".git/*" \
-            -x ".github/*" \
-            -x "*.md" \
-            -x "node_modules/*" \
-            -x ".gitignore"
+          mkdir bootstrap-component-blox
+          rsync -a --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='.gitignore' --exclude='README.md' . bootstrap-component-blox/
+          zip -r bootstrap-component-blox.zip bootstrap-component-blox/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
