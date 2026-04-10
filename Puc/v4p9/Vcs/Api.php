@@ -224,8 +224,11 @@ if ( !class_exists('Puc_v4p9_Vcs_Api') ):
 				return null;
 			}
 
-			/** @noinspection PhpUndefinedClassInspection */
-			return Parsedown::instance()->text($changelog);
+			if ( class_exists('Parsedown') ) {
+				/** @noinspection PhpUndefinedClassInspection */
+				return Parsedown::instance()->text($changelog);
+			}
+			return $changelog;
 		}
 
 		/**
