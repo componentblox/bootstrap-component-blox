@@ -1,6 +1,6 @@
 # BCB Manifest — Bootstrap Component Blox
 
-> Version: 2.8.0
+> Version: 2.8.3
 > The authoritative reference for building child themes on `bootstrap-component-blox`.
 > This file ships with the parent theme and evolves alongside it.
 
