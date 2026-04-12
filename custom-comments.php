@@ -43,12 +43,12 @@ function bcb_custom_comments( $comment, $args, $depth ) {
 						<?php printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 							esc_url(get_comment_link($comment->comment_ID)),
 							esc_attr(get_comment_time('c')),
-							sprintf(esc_html_x('%1$s', '1: date', 'bootstrap-component-blox'), esc_attr(get_comment_date()))
+							sprintf(esc_html('%1$s', '1: date', 'bootstrap-component-blox'), esc_attr(get_comment_date()))
 						);?> 
 					</div>
 				
 					<?php if ('0' == $comment->comment_approved) : ?>
-						<p class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.' , 'bootstrap-component-blox' );?></p>
+						<p class="comment-awaiting-moderation"><?php esc_attr('Your comment is awaiting moderation.' , 'bootstrap-component-blox' );?></p>
 					<?php endif;?>
 				
 					<div class="comment-content entry clr">
