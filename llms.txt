@@ -16,12 +16,13 @@ BCB provides a lightweight, stable foundation with Bootstrap 5.3.8, Font Awesome
 
 ## Manifest System
 
-Two markdown files serve as the single source of truth:
+Three markdown files serve as the single source of truth:
 
-1. `bcb-manifest.md` (parent theme) — API reference: helper functions, file conventions, section patterns, CSS architecture, responsive rules, enqueue patterns, Swiper integration, hooks, customizer settings
-2. `project-manifest.md` (child theme) — project config: CSS prefix, color palette, typography, button variants, image registry, page templates, component classes
+1. `bcb-manifest-core.md` (parent theme) — compact quick reference: helper function signatures, file structure, section pattern, scoped CSS rules, responsive rules, enqueue pattern, safety constraints. Always read first.
+2. `bcb-manifest.md` (parent theme) — full API reference: complete code examples, CPT patterns, CSS architecture, Swiper/GSAP boilerplate, hooks, customizer settings. Read when building sections or pages.
+3. `project-manifest.md` (child theme) — project config: CSS prefix, color palette, typography, button variants, image registry, page templates, component classes
 
-An AI agent should read both manifests before writing any code.
+An AI agent should read `bcb-manifest-core.md` + `project-manifest.md` before any work, and load `bcb-manifest.md` when building new sections or pages.
 
 ## Key Helper Functions
 
@@ -49,13 +50,18 @@ All prefixed with `bcb_`:
 child-theme/
 ├── style.css                        CSS variables, utilities, shared classes
 ├── functions.php                    Enqueue, setup, conditional loads
+├── header-scripts.php               Google Fonts and external <link> tags
+├── acf-json/                        ACF local JSON sync (auto-generated)
+├── css/{context}.css                Scoped stylesheets (one per page/view)
+├── js/                              Custom JS (animations, interactions)
 ├── templates/{page}.php             Page template orchestrators
+├── archive.php                      Default archive (category, tag, date, author)
 ├── archive-{cpt}.php               CPT archive orchestrators
 ├── single-{cpt}.php                CPT single orchestrators
 └── template-parts/
-    ├── {context}/{context}-{section}.php   Section markup
-    ├── css/{context}.css                   Scoped stylesheets
-    └── js/                                 Third-party JS
+    ├── common/                      Shared parts reused across pages
+    └── {context}/
+        └── {context}-{section}.php  Section markup
 ```
 
 ## Section Template Pattern
@@ -76,14 +82,14 @@ Every section follows:
 - Every project uses a unique prefix (e.g. `gec-`, `tc-`)
 - CSS variables: `--{prefix}-primary`, `--{prefix}-dark`, `--{prefix}-font`, `--{prefix}-font-header`
 - Button variants: `.{prefix}-btn-primary`, `.{prefix}-btn-dark`, `.{prefix}-btn-light`, `.{prefix}-btn-orange`
-- Scoped CSS per page — one file per view in `template-parts/css/`
+- Scoped CSS per page — one file per view in `css/`
 - `style.css` is read-only for agents unless explicitly permitted
 
 ## Conditional Enqueue Pattern
 
 ```php
 if (bcb_check_template_name('about.php')) {
-    wp_enqueue_style('about-styles', get_stylesheet_directory_uri() . '/template-parts/css/about.css');
+    wp_enqueue_style('about', get_stylesheet_directory_uri() . '/css/about.css');
 }
 ```
 

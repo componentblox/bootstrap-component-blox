@@ -1,6 +1,6 @@
 # BCB Manifest — Bootstrap Component Blox
 
-> Version: 2.8.3
+> Version: 2.8.4
 > The authoritative reference for building child themes on `bootstrap-component-blox`.
 > This file ships with the parent theme and evolves alongside it.
 
@@ -134,17 +134,20 @@ child-theme/
 ├── style.css                          ← Global CSS: variables, utilities, shared classes
 ├── functions.php                      ← Enqueue styles/scripts, child theme setup
 ├── header-scripts.php                 ← Google Fonts and external <link> tags
-├── css/                               ← Scoped stylesheets + third-party CSS
-│   └── {context}.css                  ← e.g. generator.css, about.css
-├── js/                                ← Third-party JS stored locally
+├── acf-json/                          ← ACF local JSON sync (auto-generated)
+├── css/                               ← Scoped stylesheets (one per page/view)
+│   └── {context}.css                  ← e.g. home.css, why-beach-house-shake.css
+├── js/                                ← Custom JS (animations, interactions)
 ├── templates/
 │   └── {page}.php                     ← Page template — orchestrator only
 ├── archive.php                        ← Default archive (category, tag, date, author)
 ├── archive-{cpt}.php                 ← CPT archive orchestrator
 ├── single-{cpt}.php                  ← CPT single orchestrator
 └── template-parts/
-    └── {context}/                     ← e.g. home/, service/, generator/
-        └── {context}-{section}.php   ← e.g. home-header.php, generator-hero.php
+    ├── common/                        ← Shared parts reused across pages
+    │   └── common-{section}.php       ← e.g. common-hero.php, common-contact.php
+    └── {context}/                     ← e.g. home/, service/, shingle/
+        └── {context}-{section}.php   ← e.g. home-hero.php, shingle-classic.php
 ```
 
 **Naming pattern:** `{context}-{section}.php` — e.g. `home-header.php`, `service-slider.php`
@@ -193,13 +196,11 @@ Every page template / view gets its own dedicated CSS file. This prevents regres
 wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 
 // Scoped — conditionally loaded per template
-if (bcb_check_template_name('generator.php')) {
-    wp_enqueue_style('generator', get_stylesheet_directory_uri() . '/css/generator.css');
+if (is_front_page()) {
+    wp_enqueue_style('home', get_stylesheet_directory_uri() . '/css/home.css');
 }
-
-// CPT scoped styles
-if (is_singular('service')) {
-    wp_enqueue_style('service-single', get_stylesheet_directory_uri() . '/css/service-single.css');
+if (bcb_check_template_name('about.php')) {
+    wp_enqueue_style('about', get_stylesheet_directory_uri() . '/css/about.css');
 }
 ```
 
@@ -271,24 +272,28 @@ These are defined in child theme `style.css` and available across all pages:
 | `.rounded-lg` | `border-radius: 20px` |
 | `.z-front` | `z-index: 5` |
 | `.z-back` | `z-index: 1` |
-| `.p-lg-6` | `padding-top: 120px; padding-bottom: 120px` (60px on tablet) |
-| `.mw-1500` | `max-width: 1500px` |
+| `.p-lg-6` | `padding-top: 120px; padding-bottom: 120px` (optional — add per project if needed) |
 | `.{prefix}-font-body` | Forces body font on elements inheriting heading font |
 | `.{prefix}-font-header` | Applies heading font explicitly |
-| `.bcb-overlay` | Absolute dark overlay (50% opacity) — use on sections with background images. Parent must be `position: relative` |
+| `.bcb-overlay` | Absolute dark overlay (50% opacity) — parent needs `position: relative`. Projects may define a custom `.overlay` class (e.g. gradient overlays) instead |
 
 ### Button System
 
-All buttons use: heading font, uppercase, 600 weight, 9px border-radius, 24px font-size (18px below 1600px). Hover states invert colors. Use `.btn-sm` for smaller contexts.
+Base `.btn` class sets: `font-weight: 600`, `text-transform: uppercase`, `padding: 10px 25px`, `cursor: pointer`. Border-radius, font-size, and hover behavior are **project-specific** — defined in child theme `style.css`.
+
+Common button variants (exact colors/hover defined per project in the project manifest):
 
 | Variant | Role | Pattern |
 |---|---|---|
-| `.{prefix}-btn-primary` | Primary CTA | Brand color bg, white text, dark border |
-| `.{prefix}-btn-dark` | Secondary CTA | Dark bg, white text, dark border |
-| `.{prefix}-btn-light` | CTA on dark backgrounds | White bg, dark text, white border |
-| `.{prefix}-btn-orange` | Accent/special offer | Orange bg, white text, orange border |
+| `.{prefix}-btn-primary` | Primary CTA | Brand color bg, white text |
+| `.{prefix}-btn-dark` | Secondary CTA | Dark bg, white text |
+| `.{prefix}-btn-light` | CTA on dark backgrounds | White bg, dark text |
 
-Exact colors are defined per project in the project manifest.
+Additional variants (e.g. `.{prefix}-btn-orange`, `.{prefix}-btn-light-outline`) are added per project as needed.
+
+### Heading Font Inheritance
+
+`h1–h5` and `.{prefix}-font-header` inherit the heading font. `.btn` does **not** inherit heading font by default — add it per project if the design requires it.
 
 ### Font Size Hierarchy
 
@@ -299,7 +304,6 @@ Exact colors are defined per project in the project manifest.
 | Card titles | `fs-1` | ~2.5rem |
 | Sub-headings / feature titles | `h3 display-6` | ~2.5rem |
 | Body copy | default / `fs-5` | — |
-| Buttons | custom (24px) | — |
 
 **Weight convention:** Heading font handles weight via the typeface itself. Body font uses `fw-500` by default, `fw-600` for emphasis.
 
@@ -308,7 +312,7 @@ Exact colors are defined per project in the project manifest.
 Defined per project using the prefix pattern:
 - `.{prefix}-text-primary`, `.{prefix}-text-dark`
 - `.{prefix}-bg-primary`, `.{prefix}-bg-dark`
-- `.{prefix}-divider` — accent divider bar
+- `.{prefix}-divider` — 3px solid primary accent bar (width controlled by container)
 
 ---
 
@@ -317,23 +321,26 @@ Defined per project using the prefix pattern:
 - **Always** provide a mobile-first value before the desktop value
 - **Grid gaps:** `g-4 g-lg-5` — never `g-5` alone
 - **Bottom margins:** `mb-4 mb-lg-5` — never `mb-5` alone
-- **Section padding:** use `p-lg-6` (120px) for sections needing breathing room on desktop
-- **Standard breakpoints:** 1600px, 992px, 768px, 576px
+- **Section padding:** use `p-lg-5` for standard sections; add `.p-lg-6` per project if 120px padding is needed
+- **Standard breakpoints:** 1200px, 992px, 768px, 576px
 - **Never use inline `style` for font-family.** Use font utility classes or let inheritance handle it.
 
 ---
 
 ## 10. Enqueuing Pattern
 
-- Save CSS/JS files **locally** under `css/` and `js/` — never use CDN links for build stability
-- Enqueue in `functions.php` using `get_stylesheet_directory_uri()`
-- Third-party libraries used across multiple pages can be enqueued globally
-- Scoped page stylesheets must be enqueued conditionally (see section 6)
+- Scoped page stylesheets live in `css/` and are enqueued conditionally (see section 6)
+- Custom JS lives in `js/` — enqueue globally or conditionally as needed
+- Third-party libraries (Swiper, GSAP, etc.) can be loaded via **CDN** or stored **locally** — CDN is preferred for cache efficiency
+- Enqueue in `functions.php` using `get_stylesheet_directory_uri()` for local files
 
 ```php
-// Third-party — global
-wp_enqueue_style('library-name', get_stylesheet_directory_uri() . '/css/library.css');
-wp_enqueue_script('library-name', get_stylesheet_directory_uri() . '/js/library.js', array('jquery'), '1.0.0', false);
+// Third-party — CDN (preferred)
+wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11', true);
+
+// Custom JS — local
+wp_enqueue_script('{prefix}-animations', get_stylesheet_directory_uri() . '/js/animations.js', array('gsap'), '1.0.0', true);
 ```
 
 ---
@@ -352,8 +359,13 @@ wp_enqueue_script('library-name', get_stylesheet_directory_uri() . '/js/library.
 - Example: `<?php bcb_icon('lightning-charge-fill', 48); ?>`
 
 ### Forms
-- WPForms embedded via shortcode: `<?php echo do_shortcode('[wpforms id="ID"]'); ?>`
-- Form wrapper uses `.has-form` class for submit button and spacing overrides
+
+Forms are project-specific. Common integrations:
+
+- **WPForms:** `<?php echo do_shortcode('[wpforms id="ID"]'); ?>`
+- **HubSpot:** Inline `<script>` embed via `hbspt.forms.create({ portalId, formId, region })`
+
+Form wrapper uses `.has-form` class for submit button and spacing overrides. Style overrides go in `style.css` to match the project's form provider.
 
 ---
 
@@ -361,27 +373,71 @@ wp_enqueue_script('library-name', get_stylesheet_directory_uri() . '/js/library.
 
 When a section requires a slider:
 
+- Enqueue Swiper CSS/JS via CDN in `functions.php`
 - Init via inline `<script>` at the bottom of the template part
 - Wrap in `DOMContentLoaded` listener
-- Responsive breakpoints: 1 slide mobile, 2 at 768px, 3 at 992px
 - Autoplay with `disableOnInteraction: false`
-- Custom navigation using Bootstrap Icons (`bi-chevron-left` / `bi-chevron-right`) — not Swiper's default arrows
-- Enqueue Swiper CSS/JS from `css/` and `js/`
+- Custom pagination/navigation styled per project — not Swiper's defaults
 
 ```js
 document.addEventListener('DOMContentLoaded', function() {
     new Swiper('.{prefix}-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
         loop: true,
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        navigation: {
-            nextEl: '.{prefix}-swiper-next',
-            prevEl: '.{prefix}-swiper-prev',
+        autoplay: { delay: 6000, disableOnInteraction: false },
+        pagination: {
+            el: '.{prefix}-swiper .swiper-pagination',
+            clickable: true,
         },
-        breakpoints: {
-            768: { slidesPerView: 2 },
-            992: { slidesPerView: 3 },
+    });
+});
+```
+
+---
+
+## 12a. GSAP Scroll Animation Pattern
+
+For scroll-triggered animations, enqueue GSAP + ScrollTrigger via CDN, then create a custom `js/animations.js` file.
+
+### Enqueue
+
+```php
+wp_enqueue_script('gsap', 'https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js', array(), '3', true);
+wp_enqueue_script('gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js', array('gsap'), '3', true);
+wp_enqueue_script('{prefix}-animations', get_stylesheet_directory_uri() . '/js/animations.js', array('gsap', 'gsap-st'), '1.0.0', true);
+```
+
+### Fade Classes
+
+Add these CSS classes to any element to animate it on scroll. Siblings with the same class within the same parent stagger automatically.
+
+| Class | Effect |
+|---|---|
+| `.{prefix}-fade-up` | Fades in from below |
+| `.{prefix}-fade-down` | Fades in from above |
+| `.{prefix}-fade-start` | Fades in from the left |
+| `.{prefix}-fade-end` | Fades in from the right |
+
+### Line Grow Class
+
+| Class | Effect |
+|---|---|
+| `.{prefix}-line-grow` | Scrub-based width expansion (pair with accent line element) |
+
+### Inline Script Animations
+
+For section-specific animations (e.g. parallax on a hero video), use an inline `<script>` at the bottom of the template part:
+
+```js
+document.addEventListener('DOMContentLoaded', function () {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to('#section-id video', {
+        scale: 1.1,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '#section-id',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
         }
     });
 });
