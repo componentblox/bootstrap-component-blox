@@ -1,6 +1,6 @@
 # BCB Core Manifest — Bootstrap Component Blox
 
-> Version: 2.8.4
+> Version: see parent theme `style.css` header
 > Quick reference for every child theme task. For full code examples, CPT patterns, and integration boilerplate, see `bcb-manifest.md`.
 
 ---

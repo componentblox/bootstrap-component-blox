@@ -1,6 +1,6 @@
 # BCB Manifest — Bootstrap Component Blox
 
-> Version: 2.8.4
+> Version: see parent theme `style.css` header
 > The authoritative reference for building child themes on `bootstrap-component-blox`.
 > This file ships with the parent theme and evolves alongside it.
 
@@ -480,7 +480,174 @@ Child themes can extend the Customizer via the `bcb_customizer_*` action hooks.
 
 ---
 
-## 15. Theme Update & Release Workflow
+## 15. Design Token Map
+
+Use this table to translate mockup values (Figma, Stitch, screenshots) to BCB/Bootstrap classes. Consult this before writing any custom CSS — most visual properties already have a class.
+
+### Typography
+
+| Mockup value | BCB / Bootstrap class | Usage |
+|---|---|---|
+| ~48px heading | `display-3` | Hero `<h1>` |
+| ~36px heading | `display-5` | Section `<h2>` headings |
+| ~30px heading | `display-6` | Sub-headings, feature titles |
+| ~24px text | `fs-1` | Card titles |
+| ~20px text | `fs-5` | Body copy emphasis |
+| Default body | _(none needed)_ | Standard paragraph text |
+| Button text | _(defined per project in `.btn`)_ | Buttons |
+| Weight 600 | `.fw-600` | Emphasis on body font |
+| Weight 500 | `.fw-500` | Default body weight |
+
+### Spacing
+
+| Mockup value | BCB / Bootstrap class | Notes |
+|---|---|---|
+| 80–120px section padding | `.p-lg-6` | Use on sections needing breathing room |
+| 48px gap between items | `g-4 g-lg-5` | Grid gaps — always pair mobile + desktop |
+| 32–48px bottom margin | `mb-4 mb-lg-5` | Element spacing — always pair mobile + desktop |
+| 16–24px padding | `px-3 py-4` | Standard section inner padding |
+| 120px top+bottom (desktop) | `.p-lg-6` | Reduces to 60px at 992px breakpoint |
+
+### Visual
+
+| Mockup value | BCB / Bootstrap class | Notes |
+|---|---|---|
+| 20px border-radius | `.rounded-lg` | Cards, images |
+| 50% border-radius | `.rounded-circle` | Avatars, badges (Bootstrap native) |
+| Brand color text | `.{prefix}-text-primary` | Headings on light backgrounds |
+| Dark text | `.{prefix}-text-dark` | Headings, body text |
+| White text | `.text-white` | Text on dark/image backgrounds |
+| Brand color background | `.{prefix}-bg-primary` | Sections, badges |
+| Dark background | `.{prefix}-bg-dark` | Sections, cards |
+| Dark overlay on image | `.bcb-overlay` or custom `.overlay` | Parent needs `position: relative`; use gradient overlays for custom effects |
+| Accent line / divider | `.{prefix}-line` or `.{prefix}-divider` | Project-specific naming and dimensions |
+| Element in front of overlay | `.z-front` | `z-index: 5` + `position: relative` |
+| Element behind overlay | `.z-back` | `z-index: 1` |
+
+### Icons
+
+| Mockup element | Implementation | Example |
+|---|---|---|
+| Decorative quote marks | Font Awesome | `<i class="fa-solid fa-quote-right"></i>` |
+| Decorative arrows/chevrons | Font Awesome | `<i class="fa-solid fa-chevron-right"></i>` |
+| UI icons (check, star, person) | Bootstrap Icons | `<i class="bi bi-check-circle"></i>` or `bcb_icon('check-circle', 24)` |
+| Social media icons | Font Awesome brands | `<i class="fa-brands fa-facebook-f"></i>` |
+| Star ratings | Bootstrap Icons | `<i class="bi bi-star-fill"></i>` |
+
+---
+
+## 16. Common Component Patterns
+
+Copy and adapt these patterns when building from mockups. Each follows the section template structure from section 5.
+
+### Hero with Overlay
+
+Full-width background image with dark overlay, centered text, and CTA buttons.
+
+```php
+<section id="{prefix}-hero" class="position-relative px-3 py-4 p-lg-6" style="background: url(<?php echo esc_url(bcb_image_url(ID)); ?>) center/cover no-repeat">
+    <div class="bcb-overlay"></div>
+    <div class="container position-relative z-front">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <h1 class="display-3 text-white mb-3">Main Headline</h1>
+                <p class="fs-5 text-white mb-4">Supporting text that explains the value proposition.</p>
+                <a href="#" class="btn {prefix}-btn-primary btn-lg">Primary CTA</a>
+                <a href="#" class="btn {prefix}-btn-light btn-lg ms-2">Secondary CTA</a>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+### Icon Feature Grid
+
+Three-column grid with icon badges, headings, and descriptions. Common for "Why Choose Us" or "Our Services" sections.
+
+```php
+<section id="{prefix}-features" class="px-3 py-4 p-lg-5">
+    <div class="container">
+        <div class="row text-center mb-4 mb-lg-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 {prefix}-text-primary mb-3">Section Heading</h2>
+                <div class="{prefix}-divider mx-auto mb-3"></div>
+                <p class="fs-5">Brief description of what this section covers.</p>
+            </div>
+        </div>
+        <div class="row g-4 g-lg-5">
+            <div class="col-lg-4 text-center">
+                <div class="{prefix}-bg-primary d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px;">
+                    <i class="bi bi-lightning-charge-fill text-white" style="font-size: 36px;"></i>
+                </div>
+                <h3 class="h5 fw-600 {prefix}-text-dark">Feature Title</h3>
+                <p>Short description of this feature or benefit.</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="{prefix}-bg-primary d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px;">
+                    <i class="bi bi-shield-check text-white" style="font-size: 36px;"></i>
+                </div>
+                <h3 class="h5 fw-600 {prefix}-text-dark">Feature Title</h3>
+                <p>Short description of this feature or benefit.</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="{prefix}-bg-primary d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px;">
+                    <i class="bi bi-people-fill text-white" style="font-size: 36px;"></i>
+                </div>
+                <h3 class="h5 fw-600 {prefix}-text-dark">Feature Title</h3>
+                <p>Short description of this feature or benefit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+### Testimonial / Review Card
+
+Single review card with avatar initial, name, star rating, and quote. Use inside a Swiper slider or Bootstrap grid.
+
+```php
+<div class="{prefix}-review-card border rounded-lg p-4">
+    <div class="d-flex align-items-center mb-3">
+        <div class="{prefix}-bg-dark rounded-circle d-flex align-items-center justify-content-center text-white {prefix}-font-header" style="width: 50px; height: 50px; font-size: 20px;">
+            J
+        </div>
+        <div class="ms-3">
+            <strong class="{prefix}-text-dark">John D.</strong>
+            <div class="{prefix}-text-primary">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </div>
+        </div>
+    </div>
+    <p class="mb-0"><i class="fa-solid fa-quote-left {prefix}-text-primary me-2"></i>The review text goes here. Keep it to 2-3 sentences.</p>
+</div>
+```
+
+### CTA Band
+
+Full-width colored background with heading and call-to-action button. Used between content sections.
+
+```php
+<section id="{prefix}-cta" class="{prefix}-bg-primary px-3 py-4 p-lg-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-8">
+                <h2 class="display-5 text-white mb-3 mb-lg-0">Ready to Get Started?</h2>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="#" class="btn {prefix}-btn-light btn-lg">Contact Us Today</a>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+---
+
+## 17. Theme Update & Release Workflow
 
 Updates are distributed via **GitHub Releases** using the bundled Puc v4.9 library.
 
