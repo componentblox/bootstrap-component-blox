@@ -106,10 +106,10 @@ child-theme/
 
 ```php
 if (is_front_page()) {
-    wp_enqueue_style('home', get_stylesheet_directory_uri() . '/css/home.css');
+    wp_enqueue_style('{prefix}-home', get_stylesheet_directory_uri() . '/css/home.css');
 }
 if (bcb_check_template_name('about.php')) {
-    wp_enqueue_style('about', get_stylesheet_directory_uri() . '/css/about.css');
+    wp_enqueue_style('{prefix}-about', get_stylesheet_directory_uri() . '/css/about.css');
 }
 ```
 
@@ -117,9 +117,9 @@ if (bcb_check_template_name('about.php')) {
 
 | Template | CSS file | Handle |
 |---|---|---|
-| `templates/{page}.php` | `css/{page}.css` | `{page}` |
-| `archive-{cpt}.php` | `css/{cpt}-archive.css` | `{cpt}-archive` |
-| `single-{cpt}.php` | `css/{cpt}-single.css` | `{cpt}-single` |
+| `templates/{page}.php` | `css/{page}.css` | `{prefix}-{page}` |
+| `archive-{cpt}.php` | `css/{cpt}-archive.css` | `{prefix}-{cpt}-archive` |
+| `single-{cpt}.php` | `css/{cpt}-single.css` | `{prefix}-{cpt}-single` |
 
 ---
 

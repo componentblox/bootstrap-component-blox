@@ -156,7 +156,7 @@ add_filter( 'wp_nav_menu_items', 'bcb_add_search_to_nav', 10, 2 );
  * @param string $menu adds additional class to sub-menu class.
  */
 function bcb_change_submenu_class($menu) {  
-  $menu = preg_replace('/ class="sub-menu"/','/ class="sub-menu dropdown-menu" /', $menu);  
+  $menu = preg_replace('/ class="sub-menu"/',' class="sub-menu dropdown-menu"', $menu);
   return $menu;  
 }  
 add_filter('wp_nav_menu','bcb_change_submenu_class');  
@@ -171,7 +171,7 @@ add_filter('wp_nav_menu','bcb_change_submenu_class');
  */
 function bcb_walker_nav_menu_start_el($item_output, $item, $depth, $args) {
     $classes     = 'nav-link';
-    $item_output = preg_replace('/<a /', '<a class="'.$classes.'"', $item_output, 1);
+    $item_output = preg_replace('/<a /', '<a class="'.$classes.'" ', $item_output, 1);
     return $item_output;
 }
 add_filter('walker_nav_menu_start_el', 'bcb_walker_nav_menu_start_el', 10, 4);
