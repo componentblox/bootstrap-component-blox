@@ -170,3 +170,19 @@ if (bcb_check_template_name('about.php')) {
 - **Shortcodes:** `echo do_shortcode('[...]')` directly — do NOT wrap with `wp_kses_post()` (breaks form elements)
 - **Icons:** `bcb_icon()` uses CDN font. No local SVGs in v2.8.0+. Never re-enable SVG uploads without a sanitizer plugin
 - **Deprecated in v2.8.0:** `bcb_remove_thumbnail_dimensions()`, `bcb_mime_types()`, `bcb_detect_theme_update()`, `/icons/` directory — delete any calls found in child themes
+
+## Shared UI v1, available in 2.9.0
+
+Opt in with `add_theme_support('bcb-ui-v1')` during `after_setup_theme`.
+Existing children preserve legacy behavior. Remove duplicate child dropdown controllers when adopting.
+The parent owns desktop hover/mobile tap, Bootstrap state, keyboard focus and pointer focus suppression.
+Keep branding in the child through `--bcb-focus-color`, `--bcb-menu-surface`, `--bcb-menu-hover`,
+`--bcb-menu-color`, `--bcb-confirmation-surface` and `--bcb-focus-radius`.
+Use `bcb-utility`, `bcb-link-standalone`, `bcb-card-link` for component links; prose remains underlined.
+Render `bcb_language_switcher(['flags' => false])` in the header. TranslatePress supplies current-page
+language URLs. No plugin or fewer than two published languages produces no markup.
+`templates/post-confirmation.php` keeps its assignment path, renders native page title/content with
+normal furniture for opted-in children, and delegates legacy rendering otherwise. Override its
+`template-parts/confirmation/confirmation-page.php` partial only for a distinct client design.
+The pipeline configures WPForms page confirmations and SMTP; the parent never stores credentials,
+creates pages/forms, changes notifications or redirects a form before successful processing.

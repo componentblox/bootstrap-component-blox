@@ -54,6 +54,8 @@ function bcb_add_editor_styles() {
 }
 add_action('init', 'bcb_add_editor_styles');
 
+require_once get_template_directory() . '/inc/ui.php';
+
 // Require custom template tags.
 require get_template_directory() . '/inc/template-tags.php';
 
@@ -76,7 +78,7 @@ if(!is_admin()) {
         wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css', array(), '1.13.1');
         wp_enqueue_style('bootstrap-component-blox', get_stylesheet_uri());
         wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js' , array() , '5.3.8' , true);
-        wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0' , true);
+        wp_enqueue_script('bootstrap-component-blox', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'bootstrap'), wp_get_theme(get_template())->get('Version') , true);
         if ( get_theme_mod('theme_color_scheme') ) {
             wp_enqueue_script('bootstrap-color-scheme', get_template_directory_uri() . '/js/bootstrap-color-scheme.js' , array() , '1.0' , true);
         }

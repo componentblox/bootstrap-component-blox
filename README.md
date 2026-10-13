@@ -11,7 +11,7 @@ A lightweight, stable WordPress parent theme built on Bootstrap 5. Designed for 
 | Bootstrap Icons | 1.13.1 |
 | jQuery | WordPress bundled |
 
-**Requirements:** PHP 6.0+, WordPress 6.7.2+
+**Requirements:** PHP 8.0+, WordPress 6.7.2+
 
 ## Features
 
@@ -58,15 +58,19 @@ child-theme/
 ## Releasing a New Version
 
 1. Bump the version in `style.css`
-2. Commit and push to `main`
+2. Commit and push to `master`
 3. Tag and push:
    ```
-   git tag v2.8.0
-   git push origin v2.8.0
+   git tag v2.9.0
+   git push origin v2.9.0
    ```
-4. GitHub Actions creates the release with a clean `.zip` asset automatically
-5. Sites running the theme see the update in Dashboard > Updates
+4. GitHub Actions validates PHP/JS and creates a draft release with a clean `.zip` asset
+5. Validate compatibility and production auto-update exposure, then publish the draft. Only published releases appear in Dashboard > Updates. Never publish while unreviewed automatic installs are possible.
 
 ## License
 
 GNU General Public License v3 -- see [LICENSE](LICENSE)
+
+## Shared UI opt-in
+
+New child themes call `add_theme_support('bcb-ui-v1')` on `after_setup_theme`. Existing children keep legacy behavior until reviewed. See `bcb-manifest-core.md` for the token and component contract. No SMTP or form configuration is performed by theme activation.

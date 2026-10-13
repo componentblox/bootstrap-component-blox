@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
     });
 
     // Change dropdown from click to hover, only for non mega-menus
-    let navbarDropdown = document.querySelectorAll('.navbar .dropdown:not(.bcb-mega-menu)');
+    let navbarDropdown = document.body.classList.contains('bcb-ui-v1') ? [] : document.querySelectorAll('.navbar .dropdown:not(.bcb-mega-menu)');
     navbarDropdown.forEach(function(dropdown) {
         dropdown.addEventListener('mouseenter', function( event ) {   
             dropdownMenu = this.querySelector('.dropdown-menu');

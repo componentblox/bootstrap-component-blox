@@ -1,34 +1,46 @@
-name: Create Theme Release
-
+name: Validate and package theme
 on:
+  pull_request:
   push:
-    tags:
-      - 'v*'
-
+    branches: [master]
+    tags: ['v*']
 permissions:
-  contents: write
-
+  contents: read
 jobs:
-  release:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Get version from tag
-        id: version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-
-      - name: Create release ZIP
+      - name: PHP syntax and compatibility contracts
         run: |
-          mkdir bootstrap-component-blox
-          rsync -a --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='.gitignore' --exclude='README.md' . bootstrap-component-blox/
-          zip -r bootstrap-component-blox.zip bootstrap-component-blox/
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+          find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l
+          php tests/ui.php
+      - name: JavaScript syntax
+        run: |
+          node --check js/bcb-ui.js
+          node --check js/scripts.js
+      - name: Package
+        run: |
+          VERSION=$(sed -n 's/^[[:space:]]*Version: *//p' style.css | tr -d '\r')
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then VERSION="${GITHUB_REF#refs/tags/v}"; fi
+          python3 scripts/package-release.py --version "$VERSION" --output "$RUNNER_TEMP/bootstrap-component-blox.zip"
+      - uses: actions/upload-artifact@v4
         with:
-          name: v${{ steps.version.outputs.VERSION }}
+          name: bootstrap-component-blox
+          path: ${{ runner.temp }}/bootstrap-component-blox.zip
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: bootstrap-component-blox
+      - uses: softprops/action-gh-release@v2
+        with:
           files: bootstrap-component-blox.zip
           generate_release_notes: true
-          draft: false
+          draft: true
           prerelease: false
